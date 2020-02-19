@@ -46,7 +46,7 @@
     include 'header-guest.php';
     ?>
     <div class="container" style="padding: 20px; margin: 10 px auto; margin-left: auto; margin-right: auto;">
-        <img src="assets/img/etc/header-web.jpg" alt="header"">
+        <img src="assets/img/etc/header-web.jpg" alt="header">
     </div>
 
     </div>

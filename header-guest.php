@@ -44,8 +44,8 @@
         </div>
         </a>
         <div class="auth" style="font-size: 20px;">
-            <a href="login.php">Login</a> |
-            <a href="signup.php">Sign Up</a>
+            <a href="login-user.php">Login</a> |
+            <a href="register-user.php">Sign Up</a>
         </div>
     </nav>
 </header>
