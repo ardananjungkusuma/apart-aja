@@ -23,3 +23,33 @@
     color: white;
     text-decoration: none
 }
+
+.parallax {
+    background-image: url('../img/etc/scrollimg1.jpg');
+    min-height: 300px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#top-img {
+    background-image: url('../img/etc/header-web.jpg');
+    min-height: 300px;
+}
+
+.button-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+}

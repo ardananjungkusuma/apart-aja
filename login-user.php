@@ -31,6 +31,7 @@ include 'connection.php';
                 <img src="assets/img/etc/registration-form-1-user.jpg" alt="">
             </div>
             <form action="" method="POST">
+                <i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="index.php" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
                 <h3>User Login</h3>
                 <div class="form-wrapper">
                     <input type="text" placeholder="Username or Email" name="usernameOrEmail" class="form-control" required>
@@ -52,13 +53,13 @@ include 'connection.php';
     if (isset($_POST['login'])) {
         $usernameOrEmail = $_POST['usernameOrEmail'];
         $password = md5($_POST['password']);
-        $queryAuthLoginUser = "SELECT * FROM user where password='$password' AND (username='$usernameOrEmail' OR email = '$usernameOrEmail')";
+        $queryAuthLoginUser = "select * from user where password='$password' AND (username='$usernameOrEmail' OR email = '$usernameOrEmail')";
         $executeAuth = mysqli_query($connect, $queryAuthLoginUser);
         $checkAuth = mysqli_num_rows($executeAuth);
-        if ($check > 0) {
+        if ($checkAuth > 0) {
             session_start();
             $_SESSION['usernameOrEmail'] = $usernameOrEmail;
-            $_SESSION['status'] = 'user_login';
+            $_SESSION['status_login'] = 'user_login';
     ?>
             <script>
                 Swal.fire({

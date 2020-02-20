@@ -27,9 +27,10 @@ include 'connection.php';
 	<div class="wrapper" style="background-image: url('assets/img/etc/bg-registration-form-1.jpg');">
 		<div class="inner">
 			<div class="image-holder">
-				<img src="assets/img/etc/registration-form-1-user.jpg" alt="">
+				<img src="assets/img/etc/registration2-form-1-user.jpg" alt="">
 			</div>
-			<form action="" method="POST">
+			<form action="" method=" POST">
+				<i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="index.php" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
 				<h3>User Registration</h3>
 				<div class="form-wrapper">
 					<input type="text" placeholder="Full Name" name="nama" class="form-control" required>
