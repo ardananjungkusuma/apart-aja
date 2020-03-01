@@ -20,6 +20,7 @@ include 'connection.php';
 			}
 		}
 	</script>
+	<script src="assets/js/sweetalert2@9.js"></script>
 </head>
 
 <body>
@@ -29,7 +30,7 @@ include 'connection.php';
 			<div class="image-holder">
 				<img src="assets/img/etc/registration2-form-1-user.jpg" alt="">
 			</div>
-			<form action="" method=" POST">
+			<form role="form" enctype="multipart/form-data" method="POST">
 				<i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="index.php" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
 				<h3>User Registration</h3>
 				<div class="form-wrapper">
@@ -45,7 +46,7 @@ include 'connection.php';
 					<i class="zmdi zmdi-email"></i>
 				</div>
 				<div class="form-wrapper">
-					<select name="jenisKelamin" id="jenis_kelamin" class="form-control" required>
+					<select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
 						<option value="" disabled selected>----Choose Gender----</option>
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
@@ -70,7 +71,7 @@ include 'connection.php';
 		$email = $_POST['email'];
 		$username = $_POST['username'];
 		$password = $_POST['password'];
-		$jenisKelamin = $_POST['jenisKelamin'];
+		$jenisKelamin = $_POST['jenis_kelamin'];
 		$sqlValidateUsernamePassword = "SELECT * FROM user where username = '$username' OR email = '$email'";
 		$runValidate = mysqli_query($connect, $sqlValidateUsernamePassword);
 		$checkValidateUsernameEmail = mysqli_num_rows($runValidate);
@@ -87,8 +88,8 @@ include 'connection.php';
 			<?php
 			header("Refresh:1; url=login-user.php");
 		} else {
-			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_identitas,status_user)
-			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','Belum Terverifikasi')";
+			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identitas,gambar_verif_identitas,status_user,level)
+			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','assets/img/etc/ava_default.jpg','Belum Terverifikasi','1')";
 			if (mysqli_query($connect, $registerUser)) { ?>
 				<script>
 					Swal.fire({
@@ -107,7 +108,6 @@ include 'connection.php';
 				</script>
 	<?php
 			}
-			mysqli_close($connect);
 		}
 	}
 	?>
