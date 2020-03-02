@@ -14,25 +14,28 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         <div class="row">
             <div class="col-md-8" style="margin: 0 auto;">
                 <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Apartemen Anda</h3>
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action active">
-                        Cras justo odio
-                    </a>
+                <ul class="list-group">
                     <?php
-                    $queryGetAllRuanganById = "select * from ruangan_apartemen where id_pengelola = '$id_username'";
+                    $queryGetAllRuanganById = "select * from apartemen where id_pengelola = '$id_username'";
                     $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
                     while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
                     ?>
-                        <a href="" class="list-group-item list-group-item-action"><?= $ruanganApartemen['nama'] ?></a>
+                        <li class="list-group-item">
+                            <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?></a>
+                            <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" class="badge badge-danger float-right">Detail</a>
+                        </li>
                     <?php
 
                     }
 
                     ?>
-                </div>
+                </ul>
             </div>
         </div>
     </div>
+    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    </body>
 <?php
 } else { ?>
     <script>
@@ -41,3 +44,5 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
 <?php
 }
 ?>
+
+</html>
