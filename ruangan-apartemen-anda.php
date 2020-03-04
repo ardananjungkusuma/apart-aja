@@ -20,7 +20,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
                 ?>
                     <div class="card" style="width: 18rem;display:inline-block">
-                        <img style="width:286px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
+                        <img style="width:287px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
                             <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_sewa'], 0, ',', '.');; ?>/Bulan</p>
