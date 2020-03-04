@@ -16,7 +16,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             margin-top: 10px;
                         }
                     </style>
-                    <form method="POST">
+                    <form method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nama Apartemen</label>
                             <input type="text" id="nama_apartemen" name="nama_apartemen" class="form-control mb-2" placeholder="Nama" required>
@@ -26,6 +26,15 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <input type="text" id="kota" name="kota" class="form-control mb-2" placeholder="Kab/Kota" required>
                             <label>Provinsi</label>
                             <input type="text" id="provinsi" name="provinsi" class="form-control mb-2" placeholder="Provinsi" required>
+                            <label>Gambar Depan Apartement</label>
+                            <div class="file-field">
+                                <div class="btn btn-primary btn-sm float-left">
+                                    <span>Choose Image</span>
+                                    <input type="file" name="gambar" id="gambar">
+                                </div>
+                            </div>
+                            <label>Link Google Maps</label>
+                            <input type="text" id="maps_link" name="maps_link" class="form-control mb-2" placeholder="https://goo.gl/maps/oY8TDJzL5JcQvgu17" required>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Ruangan Apartemen</button><br><br>
                     </form>
@@ -37,15 +46,21 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         </body>
         <?php
         if (isset($_POST['submit'])) {
+            $namafolder = "assets/img/gambar_apartemen/";
+            $image = $_FILES['gambar']['name'];
+            $nama_file = $namafolder . date('dmYHis') . $image;
+            move_uploaded_file($_FILES["gambar"]["tmp_name"], $nama_file);
             $nama_apartemen = $_POST['nama_apartemen'];
             $alamat_apartemen = $_POST['alamat_apartemen'];
             $kota = $_POST['kota'];
             $provinsi = $_POST['provinsi'];
+            $googleLink = $_POST['maps_link'];
             $queryGetInfoUser = "select * from pengelola_apartemen where username = '$usernameOrEmailNow'";
             $resultProfile = mysqli_query($connect, $queryGetInfoUser);
             while ($user = mysqli_fetch_array($resultProfile)) {
                 $id_username = $user['id_pengelola'];
-                $queryInsertApartement = "INSERT INTO apartemen(id_pengelola,nama_apartemen,alamat_apartemen,kota_kabupaten,provinsi) VALUES ('$id_username','$nama_apartemen','$alamat_apartemen','$kota','$provinsi')";
+                $queryInsertApartement = "INSERT INTO apartemen(id_pengelola,nama_apartemen,alamat_apartemen,kota_kabupaten,provinsi,gambar_apartemen,maps_link)
+                 VALUES ('$id_username','$nama_apartemen','$alamat_apartemen','$kota','$provinsi','$nama_file','$googleLink')";
             }
             if (mysqli_query($connect, $queryInsertApartement)) {
         ?>
@@ -60,8 +75,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 <h1><? echo $id_username . $usernameOrEmailNow ?></h1>
                 <script>
                     alert('Error Adding Apartement');
-
-                    // window.location = 'tambah-apartemen.php';
                 </script>
         <?php
             }

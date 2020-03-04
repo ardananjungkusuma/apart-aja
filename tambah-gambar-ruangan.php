@@ -39,42 +39,31 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <?php
     if (isset($_POST['submit'])) {
+        $id_ruangan = $_GET['id_ruangan'];
         $namafolder = "assets/img/gambar_apartemen/";
-        if (!empty($_FILES["gambar"]["tmp_name"])) {
-            $deskripsi = $_POST['deskripsi'];
-            $nama_file = $_FILES['gambar']['type'];
-            if ($nama_file == "image/jpeg" || $nama_file == "image/jpg" || $nama_file == "image/gif" || $nama_file == "image/x-png") {
-                if (mysqli_num_rows($resultProfile) > 0) {
-                    $gambar = $namafolder . basename($_FILES['gambar']['name']);
-                    if (move_uploaded_file($_FILES['gambar']['tmp_name'], $gambar)) {
-                        $tambah_gambar = "INSERT INTO gambar_apartemen(id_ruangan,gambar,deskripsi_singkat) VALUES ('$id_ruangan','$gambar','$deskripsi')";
-                        if (mysqli_query($connect, $tambah_gambar)) {
+        $deskripsi = $_POST['deskripsi'];
+        $image = $_FILES['gambar']['name'];
+        $nama_file = $namafolder . date('dmYHis') . $image;
+        move_uploaded_file($_FILES["gambar"]["tmp_name"], $nama_file);
+        $tambah_gambar = "INSERT INTO gambar_apartemen(id_ruangan,gambar,deskripsi_singkat) 
+        VALUES ('$id_ruangan','$nama_file','$deskripsi')";
+        if (mysqli_query($connect, $tambah_gambar)) {
     ?>
-                            <script>
-                                alert('Success Menambahkan Gambar');
-                                window.location = 'detail-ruang-apartemen-anda.php?id_ruangan=<?= $id_ruangan ?>';
-                            </script>
-                        <?php
-                        } else { ?>
-                            <script>
-                                alert('Error Connect MySQL');
-                                window.location = 'ruangan-apartemen-anda.php';
-                            </script>
-                        <?php
-
-                        }
-                    } else {
-                        ?>
-                        <script>
-                            alert('Gambar Yang Anda Masukkan Formatnya Salah');
-                            window.location = 'tambah-gambar-ruangan.php';
-                        </script>
+            <script>
+                alert('Success Menambahkan Gambar');
+                window.location = 'detail-ruang-apartemen-anda.php?id_ruangan=<?= $id_ruangan ?>';
+            </script>
+        <?php
+        } else { ?>
+            <script>
+                alert('Error Connect MySQL');
+                window.location = 'ruangan-apartemen-anda.php';
+            </script>
     <?php
-                    }
-                }
-            }
+
         }
     }
+
     ?>
     </body>
 <?php

@@ -14,22 +14,26 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         <div class="row">
             <div class="col-md-8" style="margin: 0 auto;">
                 <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Apartemen Anda</h3>
-                <ul class="list-group">
-                    <?php
-                    $queryGetAllRuanganById = "select * from apartemen where id_pengelola = '$id_username'";
-                    $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
-                    while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
-                    ?>
-                        <li class="list-group-item">
-                            <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?></a>
-                            <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" class="badge badge-danger float-right">Detail</a>
-                        </li>
-                    <?php
 
-                    }
+                <?php
+                $queryGetAllRuanganById = "select * from apartemen where id_pengelola = '$id_username'";
+                $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
+                while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
+                ?>
+                    <div class="card" style="width: 18rem;display:inline-block">
+                        <img style="width:286px;" src="<?= $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
+                            <p class="card-text"><?= $ruanganApartemen['kota_kabupaten'] ?>-<?= $ruanganApartemen['provinsi'] ?><br>
+                                <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-primary">Detail</a>
+                            </p>
+                        </div>
+                    </div>
+                <?php
 
-                    ?>
-                </ul>
+                }
+
+                ?>
             </div>
         </div>
     </div>

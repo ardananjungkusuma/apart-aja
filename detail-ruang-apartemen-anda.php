@@ -22,22 +22,25 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                     while ($apartemen = mysqli_fetch_array($resultDetailApartemen)) {
                     ?>
                         <div class="card-body">
-                            <h4 class="card-title"><?= $apartemen['nama'] ?> Room</h4>
+                            <center>
+                                <img src="<?= $apartemen['gambar_utama'] ?>" style="width: 400px;border: 5px solid black;">
+                            </center>
+                            <h4 style="margin-top: 10px;" class="card-title"><?= $apartemen['nama'] ?> Room</h4>
                             <p class="card-text">
                                 <label for=""><b>Jenis Ruangan : </b></label>
                                 <?= $apartemen['jenis_ruangan']; ?>
                             </p>
                             <p class="card-text">
                                 <label for=""><b>Harga Sewa / Bulan :</b></label>
-                                <?= $apartemen['harga_sewa']; ?>
+                                Rp. <?= number_format($apartemen['harga_sewa'], 0, ',', '.');; ?>
                             </p>
                             <p class="card-text">
                                 <label for=""><b>Harga Beli :</b></label>
-                                <?= $apartemen['harga_beli']; ?>
+                                Rp. <?= number_format($apartemen['harga_beli'], 0, ',', '.');; ?>
                             </p>
                             <p class="card-text">
-                                <label for=""><b>Detail Ruangan : </b></label>
-                                <?= $apartemen['detail_ruangan']; ?>
+                                <label for=""><b>Detail Ruangan : </b></label><br>
+                                <span style="white-space: pre-line"><?= $apartemen['detail_ruangan']; ?></span>
                             </p>
                             <p class="card-text">
                                 <label for=""><b>Sisa Ruangan :</b></label>
@@ -50,9 +53,9 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             $resultGambarRuangan = mysqli_query($connect, $queryGambarRuangan);
                             while ($gambar = mysqli_fetch_array($resultGambarRuangan)) {
                             ?>
-                                <figure>
-                                    <img class="card-img-top" id="myImg" style="width: 300px" src="<?= $gambar['gambar'] ?>" alt="Card image cap">
-                                    <figcaption><?= $gambar['deskripsi_singkat'] ?></figcaption>
+                                <figure style="display: inline-block">
+                                    <img class="card-img-top" id="myImg" style="width: 300px" src="<?= $gambar['gambar'] ?>" alt="<?= $gambar['deskripsi_singkat'] ?>">
+                                    <figcaption style="text-align: center">Gambar <?= $gambar['deskripsi_singkat'] ?></figcaption>
                                 </figure>
                             <?php
                             }

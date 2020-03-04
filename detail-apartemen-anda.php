@@ -15,17 +15,21 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         <div class="row">
             <div class="col-md-8" style="margin: 0 auto;">
                 <h3 style="margin-top:20px;margin-bottom: 20px">Detail Apartemen</h3>
+                <a href="apartemen-anda.php" class="btn btn-primary">Kembali</a>
                 <ul class="list-group">
                     <?php
                     $queryDetailApartemen = "select * from apartemen where id_apartemen = '$id_apartemen'";
                     $resultDetailApartemen = mysqli_query($connect, $queryDetailApartemen);
                     while ($apartemen = mysqli_fetch_array($resultDetailApartemen)) {
+                        $idApartemen = $apartemen['id_apartemen'];
                     ?>
-                        <div class="card-header">
-                            Detail Apartemen
-                        </div>
                         <div class="card-body">
-                            <h5 class="card-title"><?= $apartemen['nama_apartemen'] ?></h5>
+                            <center>
+                                <img style="width:286px;margin-bottom: 15px" src="<?= $apartemen['gambar_apartemen'] ?>" alt="Card image cap">
+                            </center>
+                            <center>
+                                <h5 class="card-title">"<?= $apartemen['nama_apartemen'] ?> Apartement"</h5>
+                            </center>
                             <p class="card-text">
                                 <label for=""><b>Alamat Apartemen : </b></label>
                                 <?= $apartemen['alamat_apartemen']; ?>
@@ -38,7 +42,33 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                 <label for=""><b>Provinsi :</b></label>
                                 <?= $apartemen['provinsi']; ?>
                             </p>
-                            <a href="apartemen-anda.php" class="btn btn-primary">Kembali</a>
+                            <p class="card-text">
+                                <label for=""><b>Link GMaps :</b></label>
+                                <a target="_blank" href="<?= $apartemen['maps_link']; ?>">Klik Disini</a>
+                            </p>
+                            <p class="card-text">
+                                <label><b>
+                                        <h4>
+                                            <center>Kumpulan Ruangan dari Apartemen ini</center>
+                                        </h4>
+                                    </b></label>
+                            </p><br>
+                            <?php
+                            $queryGetAllRuanganById = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.id_apartemen = '$idApartemen'";
+                            $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
+                            while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
+                            ?>
+                                <div class="card" style="width: 18rem;display:inline-block">
+                                    <img style="width:286px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
+                                        <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_sewa'], 0, ',', '.');; ?>/Bulan</p>
+                                        <a href="detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
+                                    </div>
+                                </div>
+                            <?php
+                            }
+                            ?>
                         </div>
 
                     <?php
