@@ -59,6 +59,7 @@ include 'connection.php';
                 </div>
                 <input type="checkbox" onclick="passwordShowUnshow()">Show/Unshow Password
                 <h4 style="margin-top: 5px;">Already have an account? <a href="login-user.php" style="text-decoration: none;color:#333">Login Here!</a></h4>
+
                 <button type="register" value="register" name="register">Register
                     <i class="zmdi zmdi-arrow-right"></i>
                 </button>

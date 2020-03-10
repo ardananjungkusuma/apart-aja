@@ -42,7 +42,8 @@ include 'connection.php';
                     <i class="zmdi zmdi-lock"></i>
                 </div>
                 <input type="checkbox" onclick="passwordShowUnshow()">Show/Unshow Password
-                <h4 style="margin-top: 5px;">Don't have an account? <a href="register-user.php" style="text-decoration: none;color:#333">Register Here!</a></h4>
+                <h4 style="margin-top: 5px;">Don't have an account? <a href="register-pengelola.php" style="text-decoration: none;color:#333">Register Here!</a></h4>
+                <h4>Login as User? <a href="login-user.php" style="text-decoration: none;color:#333">Click Here!</a></h4>
                 <button type="login" value="login" name="login">Login
                     <i class="zmdi zmdi-arrow-right"></i>
                 </button>
