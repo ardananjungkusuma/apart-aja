@@ -17,10 +17,7 @@
     <link rel="stylesheet" href="assets/mobirise-slider/style.css">
     <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
-    <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
-
 
 </head>
 
@@ -31,7 +28,7 @@
                 <div class="mbr-navbar__container">
                     <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
                         <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                            <span class="mbr-brand__logo"><a href="index.php"><img src="assets/images/logoapartaja-350x105.jpg" class="mbr-navbar__brand-img mbr-brand__img" alt="Mobirise"></a></span>
+                            <span class="mbr-brand__logo"><a href="index.php"><img src="assets/images/logoapartaja-350x105.jpg" class="mbr-navbar__brand-img mbr-brand__img"></a></span>
                         </span>
                     </div>
                     <div class="mbr-navbar__hamburger mbr-hamburger"><span class="mbr-hamburger__line"></span></div>

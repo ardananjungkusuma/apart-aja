@@ -25,7 +25,7 @@
 </section>
 <hr>
 <span>
-    <center>&copy;2020.Apart Aja, Inc. All rights reserved</center>
+    <center>&copy;<?= date('Y') ?>.Apart Aja, Inc. All rights reserved</center>
 </span>
 
 

@@ -30,7 +30,7 @@
                 <div class="mbr-navbar__container">
                     <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
                         <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                            <span class="mbr-brand__logo"><a href="index.php"><img src="assets/images/logoapartaja-350x105.jpg" class="mbr-navbar__brand-img mbr-brand__img" alt="Mobirise"></a></span>
+                            <span class="mbr-brand__logo"><a href="index.php"><img src="assets/images/logoapartaja-350x105.jpg" class="mbr-navbar__brand-img mbr-brand__img"></a></span>
                         </span>
                     </div>
                     <div class="mbr-navbar__hamburger mbr-hamburger"><span class="mbr-hamburger__line"></span></div>
@@ -324,11 +324,6 @@
             </div>
         </div>
     </section>
-
-    <figure class="mbr-figure mbr-figure--wysiwyg mbr-figure--full-width mbr-figure--caption-outside-bottom" id="map1-11" data-rv-view="46">
-        <div class="mbr-figure__map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCx3d07zxHPLvkFBLlAR3Ng8a9wsAsGoJ8&amp;q=place_id:EjZKbC4gU29la2Fybm8gSGF0dGEsIEtvdGEgTWFsYW5nLCBKYXdhIFRpbXVyLCBJbmRvbmVzaWEiLiosChQKEgmN_ZxE3inWLRHJKaheqvj2ZxIUChIJ-8I9BiIo1i0Rok0aSEaUh3g" allowfullscreen=""></iframe></div>
-    </figure>
-    <br>
     <?php
     include 'footer.php';
     ?>
