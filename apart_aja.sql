@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2020 at 03:26 AM
+-- Generation Time: Mar 11, 2020 at 09:54 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -44,8 +44,9 @@ CREATE TABLE `apartemen` (
 --
 
 INSERT INTO `apartemen` (`id_apartemen`, `id_pengelola`, `nama_apartemen`, `alamat_apartemen`, `kota_kabupaten`, `provinsi`, `gambar_apartemen`, `maps_link`) VALUES
-(1, 1, 'McVinsque', 'Jl. Panglima Sudirman 21', 'Malang', 'Jawa Timur', 'assets/img/gambar_apartemen/04032020084525a.jpg', 'https://goo.gl/maps/oY8TDJzL5JcQvgu17'),
-(2, 1, 'Playa De Seville', 'Jl. Panglima Sudirman 22', 'Tangerang', 'Banten', 'assets/img/gambar_apartemen/04032020095952playadeseville.jpg', 'https://goo.gl/maps/DDSjthwMd8h8KD3X6');
+(1, 1, 'Lullaby', 'Jl. Panglima Sudirman 21', 'Malang', 'Jawa Timur', 'assets/img/gambar_apartemen/11032020085558a.jpg', 'https://goo.gl/maps/oY8TDJzL5JcQvgu17'),
+(2, 1, 'Playa', 'Jl. Panglima Sudirman 22', 'Tangerang', 'Banten', 'assets/img/gambar_apartemen/110320200704591.jpg', 'https://goo.gl/maps/DDSjthwMd8h8KD3X6'),
+(9, 3, 'Flower Park', 'Jl. Imam Bonjol 21', 'Malang', 'Jawa Tengah', 'assets/img/gambar_apartemen/11032020092532playadeseville.jpg', '');
 
 -- --------------------------------------------------------
 
@@ -87,7 +88,20 @@ INSERT INTO `gambar_apartemen` (`id_gambar`, `id_ruangan`, `gambar`, `deskripsi_
 (6, 3, 'assets/img/gambar_apartemen/04032020100302Screenshot_3.jpg', 'Ruang Tamu 2'),
 (7, 3, 'assets/img/gambar_apartemen/04032020100317Screenshot_5.jpg', 'Kamar Tidur'),
 (8, 3, 'assets/img/gambar_apartemen/04032020100326Screenshot_6.jpg', 'Kamar Tidur'),
-(9, 3, 'assets/img/gambar_apartemen/04032020100339Screenshot_7.jpg', 'Toilet');
+(9, 3, 'assets/img/gambar_apartemen/04032020100339Screenshot_7.jpg', 'Toilet'),
+(12, 6, 'assets/img/gambar_apartemen/110320200934232.jpg', 'Bed'),
+(13, 6, 'assets/img/gambar_apartemen/110320200934403.jpg', 'Depan Bed'),
+(14, 6, 'assets/img/gambar_apartemen/110320200934575.jpg', 'Dapur dan Minibar'),
+(15, 6, 'assets/img/gambar_apartemen/110320200935304.jpg', 'Area Sekitar TV'),
+(16, 6, 'assets/img/gambar_apartemen/110320200935527.jpg', 'Toilet'),
+(17, 6, 'assets/img/gambar_apartemen/110320200936096.jpg', 'Shower dan Wastafel'),
+(18, 6, 'assets/img/gambar_apartemen/110320200938268.jpg', 'Menuju Pintu Keluar'),
+(19, 7, 'assets/img/gambar_apartemen/11032020094443Screenshot_2.jpg', 'Anggrek'),
+(21, 7, 'assets/img/gambar_apartemen/11032020094524Screenshot_3.jpg', 'Toilet'),
+(22, 7, 'assets/img/gambar_apartemen/11032020094535Screenshot_4.jpg', 'Toilet'),
+(23, 7, 'assets/img/gambar_apartemen/11032020094544Screenshot_5.jpg', 'Toilet'),
+(24, 7, 'assets/img/gambar_apartemen/11032020094554Screenshot_6.jpg', 'Cermin'),
+(25, 7, 'assets/img/gambar_apartemen/11032020094604Screenshot_1.jpg', 'Kasur');
 
 -- --------------------------------------------------------
 
@@ -141,7 +155,8 @@ CREATE TABLE `pengelola_apartemen` (
 
 INSERT INTO `pengelola_apartemen` (`id_pengelola`, `nama`, `no_telpon`, `jenis_kelamin`, `email`, `username`, `password`, `gambar_identitas`, `status_pengelola`) VALUES
 (1, 'Ardan Anjung Kusuma', '6285258967800', 'Pria', 'ardananjungkusuma@gmail.com', 'ardananjungkusuma', 'd2219d75098abd01493908d2f7f4d13d', 'assets/img/identitas/ktpardancontoh.jpg', 'Sudah Terverifikasi'),
-(2, 'Agit Ari', '62851213512', 'Pria', 'agitari@gmail.com', 'agitari', '47efee1c35ca222d8a29c7eb8616e3b5', 'assets/img/identitas/ktpardancontoh.jpg', 'Sudah Terverifikasi');
+(2, 'Agit Ari', '62851213512', 'Pria', 'agitari@gmail.com', 'agitari', '47efee1c35ca222d8a29c7eb8616e3b5', 'assets/img/identitas/ktpardancontoh.jpg', 'Sudah Terverifikasi'),
+(3, 'Adristi Iftitah Yuniar', 'None', 'Female', 'adristi@gmail.com', 'adristi', '65d2eddc1daa96cc4db3ef4a33b14d92', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi');
 
 -- --------------------------------------------------------
 
@@ -156,7 +171,7 @@ CREATE TABLE `ruangan_apartemen` (
   `nama` varchar(255) NOT NULL,
   `jenis_ruangan` varchar(250) NOT NULL,
   `harga_sewa` int(80) NOT NULL,
-  `harga_beli` int(80) NOT NULL,
+  `harga_beli` bigint(20) NOT NULL,
   `detail_ruangan` text NOT NULL,
   `sisa_ruang_apartemen` int(10) NOT NULL,
   `gambar_utama` text NOT NULL
@@ -167,8 +182,10 @@ CREATE TABLE `ruangan_apartemen` (
 --
 
 INSERT INTO `ruangan_apartemen` (`id_ruangan`, `id_apartemen`, `id_pengelola`, `nama`, `jenis_ruangan`, `harga_sewa`, `harga_beli`, `detail_ruangan`, `sisa_ruang_apartemen`, `gambar_utama`) VALUES
-(1, 1, 1, 'Vertique', 'Mini Suite', 2500000, 325000000, 'Fasilitas :\r\n1. Kasur 2 Orang\r\n2. Ruang Tamu\r\n3. Kamar Mandi Dalam(Tidak Termasuk Air Panas)\r\n4. Televisi\r\n5. Dapur Kecil', 50, 'assets/img/gambar_apartemen/04032020091144Screenshot_5.jpg'),
-(3, 2, 1, 'Seville Eksklusif', 'Luxury Suite', 5500000, 585000000, 'Fasilitas :\r\n1. Televisi\r\n2. Dapur\r\n3. 2 Toilet\r\n4. 2 Kasur (1 Double, 1 Single)\r\n5. Wifi 50Mbps', 10, 'assets/img/gambar_apartemen/04032020100157Screenshot_2.jpg');
+(1, 1, 1, 'Fluffy', 'Mini Suite', 2500000, 325000000, 'Fasilitas :\r\n1. Kasur 2 Orang\r\n2. Ruang Tamu\r\n3. Kamar Mandi Dalam(Tidak Termasuk Air Panas)\r\n4. Televisi\r\n5. Dapur Kecil', 50, 'assets/img/gambar_apartemen/04032020091144Screenshot_5.jpg'),
+(3, 2, 1, 'Seville Eksklusif', 'Luxury Suite', 5500000, 585000000, 'Fasilitas :\r\n1. Televisi\r\n2. Dapur\r\n3. 2 Toilet\r\n4. 2 Kasur (1 Double, 1 Single)\r\n5. Wifi 50Mbps', 10, 'assets/img/gambar_apartemen/04032020100157Screenshot_2.jpg'),
+(6, 9, 3, 'Flamboyan', 'Luxury Suite', 4000000, 650000000, 'Fasilitas\r\n1. Air Panas\r\n2. Wifi 50Mbp/s\r\n3. Dapur (inc : Microwave, Kulkas, MiniBar', 25, 'assets/img/gambar_apartemen/110320200928282.jpg'),
+(7, 9, 3, 'Anggrek', 'Mini Suite', 2500000, 200000000, 'Fasilitas :\r\n1. Air Panas\r\n2. Wifi 20Mbp/s', 25, 'assets/img/gambar_apartemen/11032020094411Screenshot_1.jpg');
 
 -- --------------------------------------------------------
 
@@ -252,7 +269,9 @@ INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_telpon`, `jenis_kelamin`, `
 (3, 'Agit Ari Irawan', 'None', 'None', 'Male', 'agitari@gmail.com', 'agit', 'a505c964caa2a7a9f158378df55462f9', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
 (4, 'Hunayn Risatayn', 'None', 'None', 'Male', 'hunaynr@gmail.com', 'hunayn', '01e340317b4ea5bf03eae0912a2d4546', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
 (5, 'Nur Hanifah', 'None', 'None', 'Female', 'hanifah@gmail.com', 'hanifah', 'ac83ce3d55576ec2d15feaeca6715d01', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(6, 'Osa Mahanani', 'None', 'None', 'Female', 'osamahanani@gmail.com', 'osa', '374762714ec840404a3c2c4afc32cc22', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1);
+(6, 'Osa Mahanani', 'None', 'None', 'Female', 'osamahanani@gmail.com', 'osa', '374762714ec840404a3c2c4afc32cc22', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
+(7, 'Denny Nur', 'None', 'None', 'Male', 'dennynur@gmail.com', 'denny', '34814f45c5b89ee4ea7e77662747a0e6', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
+(8, 'Ivan Abdurrafie', 'None', 'None', 'Male', 'ivan123@gmail.com', 'ivan1', 'b7727d252be76bc6d142e19315cfc8fd', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1);
 
 --
 -- Indexes for dumped tables
@@ -345,7 +364,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `apartemen`
 --
 ALTER TABLE `apartemen`
-  MODIFY `id_apartemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_apartemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `fasilitas_tambahan`
@@ -357,7 +376,7 @@ ALTER TABLE `fasilitas_tambahan`
 -- AUTO_INCREMENT for table `gambar_apartemen`
 --
 ALTER TABLE `gambar_apartemen`
-  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_gambar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `kritik_saran`
@@ -375,13 +394,13 @@ ALTER TABLE `pemilik_apartemen`
 -- AUTO_INCREMENT for table `pengelola_apartemen`
 --
 ALTER TABLE `pengelola_apartemen`
-  MODIFY `id_pengelola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pengelola` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `ruangan_apartemen`
 --
 ALTER TABLE `ruangan_apartemen`
-  MODIFY `id_ruangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ruangan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `transaksi_fasilitas`
@@ -405,7 +424,7 @@ ALTER TABLE `transaksi_penyewaan`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
