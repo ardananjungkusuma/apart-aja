@@ -4,12 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="generator" content="Mobirise v4.12.0, mobirise.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
     <link rel="shortcut icon" href="assets/images/logoapartaja-128x38.png" type="image/x-icon">
     <meta name="description" content="Website Creator Description">
 
-    <title>Ruangan</title>
+    <title>Daftar Ruangan</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&subset=cyrillic,latin,greek,vietnamese">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
@@ -41,8 +40,8 @@
                             <div class="mbr-navbar__column">
                                 <ul class="mbr-navbar__items mbr-navbar__items--right float-left mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active mbr-buttons--only-links">
                                     <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="index.php#header4-7">HOME</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="page1.html#form1-c">DAFTAR</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="https://mobirise.com">LOG IN</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="register-user.php">REGISTER</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="login-user.php">LOGIN</a></li>
                                 </ul>
                             </div>
                         </nav>

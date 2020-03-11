@@ -73,7 +73,7 @@ include 'connection.php';
         $username = $_POST['username'];
         $password = $_POST['password'];
         $jenisKelamin = $_POST['jenis_kelamin'];
-        $sqlValidateUsernamePassword = "SELECT * FROM user where username = '$username' OR email = '$email'";
+        $sqlValidateUsernamePassword = "SELECT * FROM pengelola_apartemen where username = '$username' OR email = '$email'";
         $runValidate = mysqli_query($connect, $sqlValidateUsernamePassword);
         $checkValidateUsernameEmail = mysqli_num_rows($runValidate);
 
@@ -89,9 +89,9 @@ include 'connection.php';
             <?php
             header("Refresh:1; url=login-user.php");
         } else {
-            $registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identitas,gambar_verif_identitas,status_user,level)
-			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','assets/img/etc/ava_default.jpg','Belum Terverifikasi','1')";
-            if (mysqli_query($connect, $registerUser)) { ?>
+            $registerPengelola = "INSERT INTO pengelola_apartemen(nama,no_telpon,jenis_kelamin,email,username,password,gambar_identitas,status_pengelola)
+			VALUES ('$nama','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','Belum Terverifikasi')";
+            if (mysqli_query($connect, $registerPengelola)) { ?>
                 <script>
                     Swal.fire({
                         icon: 'success',
@@ -101,7 +101,7 @@ include 'connection.php';
                     })
                 </script>
             <?php
-                header("Refresh:1; url=login-user.php");
+                header("Refresh:1; url=login-pengelola.php");
             } else { ?>
                 <script>
                     alert('Error Connect MySQL');
