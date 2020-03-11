@@ -33,8 +33,9 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                     <input type="file" name="gambar" id="gambar">
                                 </div>
                             </div>
-                            <label>Link Google Maps</label>
-                            <input type="text" id="maps_link" name="maps_link" class="form-control mb-2" placeholder="https://goo.gl/maps/oY8TDJzL5JcQvgu17" required>
+                            <label style="margin-top: 15px">Link Google Maps</label><br>
+                            <input type="text" id="maps_link" name="maps_link" class="form-control mb-2" placeholder="https://goo.gl/maps/oY8TDJzL5JcQvgu17">
+                            <small>*Tidak Wajib Diisi</small>
                         </div>
                         <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Ruangan Apartemen</button><br><br>
                     </form>
@@ -66,7 +67,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         ?>
                 <script>
                     alert('Success Menambahkan Apartemen');
-                    window.location = 'pengelola-dashboard.php';
+                    window.location = 'apartemen-anda.php';
                 </script>
             <?php
             } else {

@@ -89,7 +89,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
     ?>
             <script>
                 alert('Success Menambahkan Ruangan Apartemen');
-                window.location = 'pengelola-dashboard.php';
+                window.location = 'ruangan-apartemen-anda.php';
             </script>
         <?php
         } else {

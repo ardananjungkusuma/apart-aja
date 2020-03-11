@@ -30,7 +30,8 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <input type="file" name="gambar" id="gambar">
                         </div>
                     </div><br><br>
-                    <button class="btn btn-success" type="submit" name="submit">Add Images</button>
+                    <button class="btn btn-success" type="submit" name="submit">Tambah Data</button>
+                    <a href="ruangan-apartemen-anda.php" class="btn btn-primary">Kembali</a>
                 </form>
             </div>
         </div>

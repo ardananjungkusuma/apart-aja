@@ -316,7 +316,7 @@
                             </div>
                         </div>
                         <div class="mbr-section__container">
-                            <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="page3.html#slider-1f">CHECK</a></div>
+                            <div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="daftar-ruangan.php">CHECK</a></div>
                         </div>
                     </div>
 
@@ -328,74 +328,7 @@
     <figure class="mbr-figure mbr-figure--wysiwyg mbr-figure--full-width mbr-figure--caption-outside-bottom" id="map1-11" data-rv-view="46">
         <div class="mbr-figure__map"><iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCx3d07zxHPLvkFBLlAR3Ng8a9wsAsGoJ8&amp;q=place_id:EjZKbC4gU29la2Fybm8gSGF0dGEsIEtvdGEgTWFsYW5nLCBKYXdhIFRpbXVyLCBJbmRvbmVzaWEiLiosChQKEgmN_ZxE3inWLRHJKaheqvj2ZxIUChIJ-8I9BiIo1i0Rok0aSEaUh3g" allowfullscreen=""></iframe></div>
     </figure>
-
-    <section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="social-buttons2-p" data-rv-view="48" style="background-color: rgb(255, 255, 255);">
-
-
-        <div class="mbr-section__container container">
-            <div class="mbr-header mbr-header--inline row" style="padding-top: 40.8px; padding-bottom: 40.8px;">
-                <div class="col-sm-4">
-                    <h3 class="mbr-header__text">FOLLOW US</h3>
-                </div>
-                <div class="mbr-social-icons mbr-social-icons--style-1 col-sm-8"><a class="mbr-social-icons__icon socicon-bg-twitter" title="Twitter" target="_blank" href="https://twitter.com/mobirise"><i class="socicon socicon-twitter"></i></a> <a class="mbr-social-icons__icon socicon-bg-facebook" title="Facebook" target="_blank" href="https://www.facebook.com"><i class="socicon socicon-facebook"></i></a> <a class="mbr-social-icons__icon socicon-bg-googleplus" title="Google+" target="_blank" href="https://plus.google.com/u/0/+Mobirise/posts"><i class="socicon socicon-googleplus"></i></a> <a class="mbr-social-icons__icon socicon-bg-youtube" title="YouTube" target="_blank" href="http://www.youtube.com/channel/UCt_tncVAetpK5JeM8L-8jyw"><i class="socicon socicon-youtube"></i></a> <a class="mbr-social-icons__icon socicon-bg-instagram" title="Instagram" target="_blank" href="https://instagram.com/mobirise/"><i class="socicon socicon-instagram"></i></a> <a class="mbr-social-icons__icon socicon-bg-pinterest" title="Pinterest" target="_blank" href="https://www.pinterest.com/mobirise/"><i class="socicon socicon-pinterest"></i></a> <a class="mbr-social-icons__icon socicon-bg-github" title="GitHub" target="_blank" href="https://github.com/Mobirise"><i class="socicon socicon-github"></i></a> <a class="mbr-social-icons__icon socicon-bg-behance" title="Behance" target="_blank" href="https://www.behance.net/Mobirise"><i class="socicon socicon-behance"></i></a> <a class="mbr-social-icons__icon socicon-bg-tumblr" title="Tumblr" target="_blank" href="http://mobirise.tumblr.com/"><i class="socicon socicon-tumblr"></i></a> <a class="mbr-social-icons__icon socicon-bg-linkedin" title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/mobirise"><i class="socicon socicon-linkedin"></i></a> <a class="mbr-social-icons__icon socicon-bg-android" title="Google Play" target="_blank" href="https://play.google.com/store/apps/details?id=com.mobirise.mobirise"><i class="socicon socicon-android"></i></a></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="contacts3-r" data-rv-view="50" style="background-color: rgb(255, 255, 255);">
-
-        <div class="mbr-section__container container">
-            <div class="mbr-contacts mbr-contacts--wysiwyg row" style="padding-top: 30px; padding-bottom: 45px;">
-                <div class="col-sm-8">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p class="mbr-contacts__text"><strong>ALAMAT</strong><br>jl soekarno hatta,kecamatan lowok
-                                waru&nbsp;<br>no 310 kota Malang<br><br>
-                                <strong>CONTACTS</strong><br>
-                                Email: @apartaja.com<br>
-                                Phone: +62(51656846841)<br>
-                                Fax: +62(0)51765148486</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <ul class="mbr-contacts__list"></ul>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="mbr-contacts__column col-sm-4" data-form-type="formoid">
-                <div data-form-alert="true">
-                    <div class="hide" data-form-alert-success="true">Thanks for filling out form!</div>
-                </div>
-                <form action="https://mobirise.com/" method="post" data-form-title="MESSAGE">
-                    <input type="hidden" value="PqBozueBqlsMCqWqa7QzwcIGKk55ALiL4UqIHetlSQoCimXMmVUwKNlAHaOHmcCdMKL7Or+7QT/KKvo7eSgduydKM1rUCI0tObl/y5Adva+LCdoi8lfx47YlWOWUvmqw" data-form-email="true">
-                    
-                    
-                    
-                    <div class="form-group">
-                        <textarea class="form-control input-sm input-inverse" name="message" rows="4" placeholder="Message" data-form-field="Message"></textarea>
-                    </div>
-                    <div class="mbr-buttons mbr-buttons--right btn-inverse"><button type="submit" class="mbr-buttons__btn btn btn-danger">CONTACT US</button></div>
-                </form> -->
-            </div>
-        </div>
-        </div>
-    </section>
-
-
-    <script src="assets/web/assets/jquery/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <!--[if lte IE 9]>
-    <script src="assets/jquery-placeholder/jquery.placeholder.min.js"></script>
-  <![endif]-->
-    <script src="assets/smooth-scroll/smooth-scroll.js"></script>
-    <script src="assets/jarallax/jarallax.js"></script>
-    <script src="assets/masonry/masonry.pkgd.min.js"></script>
-    <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/bootstrap-carousel-swipe/bootstrap-carousel-swipe.js"></script>
-    <script src="assets/mobirise/js/script.js"></script>
-    <script src="assets/mobirise-gallery/script.js"></script>
-    <script src="assets/formoid/formoid.min.js"></script>
-
-
-</body>
-
-</html>
+    <br>
+    <?php
+    include 'footer.php';
+    ?>

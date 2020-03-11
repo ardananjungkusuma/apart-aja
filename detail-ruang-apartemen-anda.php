@@ -61,8 +61,8 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             }
                             ?>
                             <br><br>
+                            <a href="galeri-ruang-apartemen-anda.php?id_ruangan=<?= $id_ruangan ?>" class="btn btn-info">Galeri</a>
                             <a href="ruangan-apartemen-anda.php" class="btn btn-primary">Kembali</a>
-                            <a href="tambah-gambar-ruangan.php?id_ruangan=<?= $apartemen['id_ruangan'] ?>" class="btn btn-success">Tambah Gambar</a>
                         </div>
 
                     <?php

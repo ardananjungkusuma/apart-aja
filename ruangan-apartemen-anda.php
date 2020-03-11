@@ -24,8 +24,10 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
                             <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_sewa'], 0, ',', '.');; ?>/Bulan</p>
-                            <a href="edit-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-success">Edit</a>
                             <a href="detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
+                            <a href="edit-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-success">Edit</a>
+                            <a href="galeri-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-info">Galeri</a>
+                            <a href="hapus-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="margin-top: 10px" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Apartemen ini?')">Hapus</a>
                         </div>
                     </div>
                 <?php
