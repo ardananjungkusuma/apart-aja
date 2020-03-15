@@ -6,9 +6,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <link rel="shortcut icon" href="assets/img/logo/logo.png" type="image/x-icon">
     <meta name="description" content="">
 
-    <title>Home</title>
+    <title>Apart Aja</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&subset=cyrillic,latin,greek,vietnamese">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/animatecss/animate.min.css">
@@ -28,11 +29,6 @@
         <div class="mbr-navbar__section mbr-section">
             <div class="mbr-section__container container">
                 <div class="mbr-navbar__container">
-                    <div class="mbr-navbar__column mbr-navbar__column--s mbr-navbar__brand">
-                        <span class="mbr-navbar__brand-link mbr-brand mbr-brand--inline">
-                            <span class="mbr-brand__logo"><a href="index.php"><img src="assets/images/logoapartaja-350x105.jpg" class="mbr-navbar__brand-img mbr-brand__img"></a></span>
-                        </span>
-                    </div>
                     <div class="mbr-navbar__hamburger mbr-hamburger"><span class="mbr-hamburger__line"></span></div>
                     <div class="mbr-navbar__column mbr-navbar__menu">
                         <nav class="mbr-navbar__menu-box mbr-navbar__menu-box--inline-right">

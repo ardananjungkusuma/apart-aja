@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Dashboard - SB Admin</title>
+    <title>Pengelola Apartemen</title>
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
@@ -38,18 +38,6 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <a class="navbar-brand" href="pengelola-dashboard.php">Pengelola Dashboard</a>
-
-        <!-- Navbar-->
-        <!-- <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="profil-pengelola.php">Profil Anda</a><a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="logout.php">Logout</a>
-                </div>
-            </li>
-        </ul> -->
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
