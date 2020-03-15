@@ -58,20 +58,26 @@ include 'connection.php';
         $executeAuth = mysqli_query($connect, $queryAuthLoginUser);
         $checkAuth = mysqli_num_rows($executeAuth);
         if ($checkAuth > 0) {
-            session_start();
-            $_SESSION['usernameOrEmail'] = $usernameOrEmail;
-            $_SESSION['status_login'] = 'user_login';
+            while ($data_user = mysqli_fetch_array($executeAuth)) {
+                session_start();
+                $id_now = $data_user['id_user'];
+                $level_now = $data_user['level'];
+                $_SESSION['idUsername'] = $id_now;
+                $_SESSION['usernameOrEmail'] = $usernameOrEmail;
+                $_SESSION['level'] = $level_now;
     ?>
-            <script>
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Login Success',
-                    showConfirmButton: false,
-                    timer: 1000
-                })
-            </script>
-        <?php
-            header("Refresh:1; url=apartement-list.php");
+                }
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Login Success',
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                </script>
+            <?php
+            }
+            header("Refresh:1; url=index.php");
         } else { ?>
             <script>
                 Swal.fire({
