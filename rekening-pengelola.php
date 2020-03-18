@@ -42,7 +42,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                     <td><?= $rekening['no_rek'] ?></td>
                                     <td><?= $rekening['nama_pemilik'] ?></td>
                                     <td><?= $rekening['nama_bank'] ?></td>
-                                    <td><button type="hapus" class="btn btn-danger" name="hapus" id="hapus">Hapus</button></td>
+                                    <td><a href="rekening-pengelola.php?id_hapos=<?= $rekening['id_rekening'] ?>" type="hapus" onclick="return confirm('Apakah anda ingin menghapus rekening ini?');" class="btn btn-danger" name="hapus" id="hapus">Hapus</a></td>
                                 </tr>
                             <?php
                                 $no++;
@@ -62,26 +62,18 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 </div>
         </div>
         <?php
-                if (isset($_POST['hapus'])) {
-                    $nama = $_POST['nama'];
-                    $no_telpon = $_POST['no_telpon'];
-                    $queryEdit = "UPDATE pengelola_apartemen set nama = '$nama', no_telpon = '$no_telpon' WHERE id_pengelola = '$id_pengelola'";
-                    if (mysqli_query($connect, $queryEdit)) {
+                if (!empty($_GET['id_hapos'])) {
+                    $idhaposs = $_GET['id_hapos'];
+                    $queryHapus = "DELETE FROM rekening_bank where id_rekening = '$idhaposs'";
+                    if (mysqli_query($connect, $queryHapus)) {
         ?>
                 <script>
-                    alert('Success Edit Profile');
-                    window.location = 'profil-pengelola.php';
+                    alert('Success Hapus Rekening');
+                    window.location = 'rekening-pengelola.php';
                 </script>
             <?php
-                    } else {
-            ?>
-                <script>
-                    alert('Error Edit Profile');
-                    window.location = 'profil-pengelola.php';
-                </script>
-            <?php
-                    }
-            ?>
+                    } ?>
+
     </div>
     <script src="assets/js/jquery-3.4.1.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
