@@ -29,7 +29,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <input type="text" id="nama_bank" name="nama_bank" class="form-control mb-2" required>
                             <small>*Contoh : BCA, Mandiri, BRI dll.</small>
                         </div>
-                        <a href="profil-pengelola.php" class="btn btn-primary float-left">Kembali ke Profil</a>
+                        <a href="rekening-pengelola.php" class="btn btn-primary float-left">Kembali</a>
                         <button type="submit" name="submit" class="btn btn-success float-right" style="margin-bottom: 30px;">Tambah Rekening Anda</button>
                     </form>
                 </div>

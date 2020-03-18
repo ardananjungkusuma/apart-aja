@@ -49,8 +49,8 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                         <img style="width:350px;margin:0 auto;border-radius: 20px;border:1px solid black" src="<?= $profile['gambar_identitas'] ?>" alt="Desc">
 
                     </span><br>
-                    <a href="edit-profile-pengelola.php" class="btn btn-info" style="margin-top: 20px;">Edit Profile</a>
-                    <a href="tambah-rekening-pengelola.php" class="btn btn-success" style="margin-top: 20px;margin-left:10px">Tambah Rekening</a>
+                    <a href="edit-profil-pengelola.php" class="btn btn-info" style="margin-top: 20px;">Edit Profil</a>
+                    <a href="rekening-pengelola.php" class="btn btn-primary" style="margin-top: 20px;margin-left:10px">Rekening Anda</a>
                 </div>
         </div>
     </div>
