@@ -58,9 +58,12 @@ include 'connection.php';
         $executeAuth = mysqli_query($connect, $queryAuthLoginPengelola);
         $checkAuth = mysqli_num_rows($executeAuth);
         if ($checkAuth > 0) {
-            session_start();
-            $_SESSION['usernameOrEmail'] = $usernameOrEmail;
-            $_SESSION['status_login'] = 'pengelola_login';
+            while ($data_pengelola = mysqli_fetch_array($executeAuth)) {
+                session_start();
+                $_SESSION['id_pengelola'] = $data_pengelola['id_pengelola'];
+                $_SESSION['usernameOrEmail'] = $usernameOrEmail;
+                $_SESSION['status_login'] = 'pengelola_login';
+            }
     ?>
             <script>
                 Swal.fire({

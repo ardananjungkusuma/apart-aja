@@ -8,6 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Pengelola Apartemen</title>
+    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css"> -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
