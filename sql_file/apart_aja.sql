@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2020 at 04:17 PM
+-- Generation Time: Mar 19, 2020 at 07:01 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -255,7 +255,8 @@ CREATE TABLE `transaksi_pembelian` (
 --
 
 INSERT INTO `transaksi_pembelian` (`id_transaksi_pembelian`, `id_user`, `id_ruangan`, `kode_transaksi`, `total_harga`, `tanggal_transaksi`, `status_pemesanan`, `gambar_bukti_transfer`) VALUES
-(2, 1, 1, 9959, 325009959, '2020-03-19', 'Belum Terverifikasi', 'None');
+(2, 1, 1, 9959, 325009959, '2020-03-19', 'Belum Terverifikasi', 'assets/img/bukti_pembayaran/1903202018553001 transcontoh.jpg'),
+(3, 6, 3, 1479, 585001479, '2020-03-19', 'Belum Terverifikasi', 'assets/img/bukti_pembayaran/1903202018594101 transcontoh.jpg');
 
 -- --------------------------------------------------------
 
@@ -462,7 +463,7 @@ ALTER TABLE `transaksi_fasilitas`
 -- AUTO_INCREMENT for table `transaksi_pembelian`
 --
 ALTER TABLE `transaksi_pembelian`
-  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `transaksi_penyewaan`
