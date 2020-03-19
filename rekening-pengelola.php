@@ -25,7 +25,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                     if ($checkRekening) {
                         $no = 1;
                     ?>
-                        <table class="table table-striped table-bordered" id="listMahasiswa">
+                        <table class="table table-striped table-bordered">
                             <tr>
                                 <td>No</td>
                                 <td>No Rekening</td>

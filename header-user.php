@@ -26,6 +26,14 @@
             letter-spacing: 2px;
             word-spacing: 1px;
         }
+
+        .label-profil {
+            font-weight: bold;
+        }
+
+        #itemmenu:hover {
+            background-color: whitesmoke;
+        }
     </style>
 </head>
 
