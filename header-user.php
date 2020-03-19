@@ -10,7 +10,8 @@
 
     <title>Apart Aja</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&subset=cyrillic,latin,greek,vietnamese">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
     <link rel="stylesheet" href="assets/animatecss/animate.min.css">
     <link rel="stylesheet" href="assets/mobirise/css/style.css">
@@ -18,7 +19,14 @@
     <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
     <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
-
+    <style>
+        li.mbr-navbar__item {
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            word-spacing: 1px;
+        }
+    </style>
 </head>
 
 <body>
@@ -38,7 +46,7 @@
                                 <ul class="mbr-navbar__items mbr-navbar__items--right float-left mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active mbr-buttons--only-links">
                                     <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="index.php">HOME</a></li>
                                     <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="daftar-ruangan.php">BROWSE APARTEMENT</a></li>
-                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="profile.php">PROFILE</a></li>
+                                    <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="profil-user.php">PROFILE</a></li>
                                     <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="logout.php">LOGOUT</a></li>
                                 </ul>
                             </div>

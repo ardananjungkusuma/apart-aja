@@ -8,7 +8,7 @@ if (!empty($_SESSION['level']) == '1') {
     <div class="container" style="padding: 20px; margin: 0 auto ;margin-top:100px;">
         <div class="row">
             <?php
-            $queryDetailRuangan = "select * from ruangan_apartemen where id_ruangan = '$id_ruangan'";
+            $queryDetailRuangan = "select * from ruangan_apartemen ra JOIN apartemen a ON ra.id_apartemen = a.id_apartemen where ra.id_ruangan = '$id_ruangan'";
             $resultDetailRuangan = mysqli_query($connect, $queryDetailRuangan);
             while ($ruangan = mysqli_fetch_array($resultDetailRuangan)) {
             ?>
@@ -22,7 +22,7 @@ if (!empty($_SESSION['level']) == '1') {
                         <label for=""><b>Nama Ruangan : </b></label>
                         <?= $ruangan['nama']; ?><br>
                         <label for=""><b>Apartemen : </b></label>
-                        <?= $ruangan['jenis_ruangan']; ?><br>
+                        <?= $ruangan['nama_apartemen']; ?><br>
                         <label for=""><b>Jenis Ruangan : </b></label>
                         <?= $ruangan['jenis_ruangan']; ?><br>
                         <label for=""><b>Harga Beli :</b></label>
@@ -30,11 +30,11 @@ if (!empty($_SESSION['level']) == '1') {
                         <label for=""><b>Detail Ruangan :</b></label><br>
                         <span style="white-space: pre-line"><?= $ruangan['detail_ruangan']; ?></span><br>
                         <small>*Pastikan anda membaca ketentuan berikut sebelum membeli apartemen.</small><br>
-                        <a href="daftar-ruangan.php" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembelian</a>
+                        <a href="daftar-ruangan.php" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembayaran</a>
                         <form action="" method="POST">
                             <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">
                             <input type="hidden" name="harga" value="<?php $ruangan['harga_beli'] ?>">
-                            <button class="btn btn-success" type="submit" style="margin-top:10px;width:230px" name="submit">Lanjutkan Pembayaran</button>
+                            <a href="checkout-beli.php?id_ruangan=<?= $ruangan['id_ruangan'] ?>" class="btn btn-success" type="submit" style="margin-top:10px;width:230px" name="submit">Lanjutkan Pembayaran</a>
                         </form>
                     </div>
                 <?php
@@ -44,8 +44,13 @@ if (!empty($_SESSION['level']) == '1') {
         </div>
     </div>
 <?php
+    include 'footer.php';
+} else { ?>
+    <script>
+        window.location = 'login-user.php';
+    </script>
+<?php
 }
-include 'footer.php';
 ?>
 <script src="assets/js/jquery-3.4.1.min.js"></script>
 <script src="assets/js/bootstrap.bundle.min.js"></script>

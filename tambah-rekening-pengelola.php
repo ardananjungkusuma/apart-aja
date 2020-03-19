@@ -22,12 +22,12 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <label>Nomer Rekening</label>
                             <input type="hidden" id="id_pengelola" name="id_pengelola" class="form-control mb-2" value="<?= $id_pengelola ?>" required>
                             <input type="number" id="no_rek" name="no_rek" class="form-control mb-2" required>
+                            <label>Masukan Nama Bank : </label>
+                            <input type="text" id="nama_bank" name="nama_bank" class="form-control mb-2" required>
+                            <small>*Contoh : BCA, Mandiri, BRI dll.</small><br>
                             <label>Nama Pemilik Rekening</label>
                             <input type="text" id="nama_pemilik" name="nama_pemilik" class="form-control mb-2" required>
                             <small>*Nama Pemegang Rekening</small><br>
-                            <label>Masukan Nama Bank : </label>
-                            <input type="text" id="nama_bank" name="nama_bank" class="form-control mb-2" required>
-                            <small>*Contoh : BCA, Mandiri, BRI dll.</small>
                         </div>
                         <a href="rekening-pengelola.php" class="btn btn-primary float-left">Kembali</a>
                         <button type="submit" name="submit" class="btn btn-success float-right" style="margin-bottom: 30px;">Tambah Rekening Anda</button>
@@ -47,7 +47,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         if (mysqli_query($connect, $queryInsertRekening)) {
     ?>
             <script>
-                alert('Success Menambahkan Rekeneing');
+                alert('Success Menambahkan Rekening');
                 window.location = 'profil-pengelola.php';
             </script>
         <?php

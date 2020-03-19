@@ -8,18 +8,21 @@ if (!empty($_SESSION['level']) == '1') {
     <div class="container" style="padding: 20px; margin: 0 auto ;margin-top:100px;">
         <div class="row">
             <?php
-            $queryDetailRuangan = "select * from ruangan_apartemen where id_ruangan = '$id_ruangan'";
+            $queryDetailRuangan = "select * from ruangan_apartemen ra JOIN apartemen a ON ra.id_apartemen = a.id_apartemen where ra.id_ruangan = '$id_ruangan'";
             $resultDetailRuangan = mysqli_query($connect, $queryDetailRuangan);
             while ($ruangan = mysqli_fetch_array($resultDetailRuangan)) {
             ?>
                 <div class="col-md-12" style="margin-left:70px;margin-right:70px;">
                     <span style="margin-top:20px;margin-bottom: 20px;font-size: 30px"><?= $ruangan['nama'] ?> Room</span>
                     <div class="card-body" style="font-size: 18px">
+                        <hr>
                         <center>
                             <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= $ruangan['gambar_utama'] ?>" alt="Desc">
                         </center>
                         <label for=""><b>Apartemen : </b></label>
-                        <?= $ruangan['jenis_ruangan']; ?><br>
+                        <a href="#"><?= $ruangan['nama_apartemen']; ?></a><br>
+                        <label for=""><b>Lokasi : </b></label>
+                        <?= $ruangan['alamat_apartemen'] ?>, <?= $ruangan['kota_kabupaten'] ?><br>
                         <label for=""><b>Jenis Ruangan : </b></label>
                         <?= $ruangan['jenis_ruangan']; ?><br>
                         <div style="float: right;margin-right: 300px">
@@ -73,18 +76,21 @@ if (!empty($_SESSION['level']) == '1') {
         <div class="container" style="padding: 20px; margin: 0 auto ;margin-top:100px;">
             <div class="row">
                 <?php
-                $queryDetailRuangan = "select * from ruangan_apartemen where id_ruangan = '$id_ruangan'";
+                $queryDetailRuangan = "select * from ruangan_apartemen ra JOIN apartemen a ON ra.id_apartemen = a.id_apartemen where ra.id_ruangan = '$id_ruangan'";
                 $resultDetailRuangan = mysqli_query($connect, $queryDetailRuangan);
                 while ($ruangan = mysqli_fetch_array($resultDetailRuangan)) {
                 ?>
                     <div class="col-md-12" style="margin-left:70px;margin-right:70px;">
                         <span style="margin-top:20px;margin-bottom: 20px;font-size: 30px"><?= $ruangan['nama'] ?> Room</span>
                         <div class="card-body" style="font-size: 18px">
+                            <hr>
                             <center>
                                 <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= $ruangan['gambar_utama'] ?>" alt="Desc">
                             </center>
                             <label for=""><b>Apartemen : </b></label>
-                            <?= $ruangan['jenis_ruangan']; ?><br>
+                            <a href="#"><?= $ruangan['nama_apartemen']; ?></a><br>
+                            <label for=""><b>Lokasi : </b></label>
+                            <?= $ruangan['alamat_apartemen'] ?>, <?= $ruangan['kota_kabupaten'] ?><br>
                             <label for=""><b>Jenis Ruangan : </b></label>
                             <?= $ruangan['jenis_ruangan']; ?><br>
                             <div style="float: right;margin-right: 300px">

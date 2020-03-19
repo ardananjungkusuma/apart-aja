@@ -40,7 +40,7 @@
                                     <ul class="mbr-navbar__items mbr-navbar__items--right float-left mbr-buttons mbr-buttons--freeze mbr-buttons--right btn-decorator mbr-buttons--active mbr-buttons--only-links">
                                         <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="index.php">HOME</a></li>
                                         <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="daftar-ruangan.php">BROWSE APARTEMENT</a></li>
-                                        <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="profile.php">PROFILE</a></li>
+                                        <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="profil-user.php">PROFILE</a></li>
                                         <li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="logout.php">LOGOUT</a></li>
                                     </ul>
 
