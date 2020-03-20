@@ -30,8 +30,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                 <input type="text" id="nama" name="nama" class="form-control mb-2" placeholder="Nama" value="<?= $row['nama'] ?>" required>
                                 <label>Jenis Ruangan</label>
                                 <input type="text" id="jenis_ruangan" name="jenis_ruangan" class="form-control mb-2" placeholder="Jenis Ruangan" value="<?= $row['jenis_ruangan'] ?>" required>
-                                <label>Harga Sewa Perbulan</label>
-                                <input type=" number" id="harga_sewa" name="harga_sewa" class="form-control mb-2" placeholder="Harga Sewa" value="<?= $row['harga_sewa'] ?>" required>
                                 <label>Harga Beli</label>
                                 <input type=" number" id="harga_beli" name="harga_beli" class="form-control mb-2" placeholder="Harga Beli" value="<?= $row['harga_beli'] ?>" required>
                                 <label>Detail Ruangan</label>
@@ -51,7 +49,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                     }
                         ?>
                         <a href="ruangan-apartemen-anda.php" class="btn btn-primary float-left">Kembali</a>
-                        <button type="submit" name="submit" class="btn btn-success float-right">Edit Ruangan Apartemen</button><br><br>
+                        <button type="submit" name="submit" class="btn btn-info float-right">Edit Ruangan Apartemen</button><br><br>
                         </form>
                 </div>
             </div>
@@ -74,20 +72,18 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 move_uploaded_file($_FILES["gambar"]["tmp_name"], $nama_file);
                 $nama_ruang = $_POST['nama'];
                 $jenis_ruangan = $_POST['jenis_ruangan'];
-                $harga_sewa = $_POST['harga_sewa'];
                 $harga_beli = $_POST['harga_beli'];
                 $detail_ruangan = $_POST['detail_ruangan'];
                 $sisa_ruang_apartemen = $_POST['sisa_ruang_apartemen'];
-                $queryUpdateApartement = "UPDATE ruangan_apartemen SET nama = '$nama_ruang',jenis_ruangan = '$jenis_ruangan',harga_sewa = '$harga_sewa',harga_beli = '$harga_beli',detail_ruangan = '$detail_ruangan',sisa_ruang_apartemen = '$sisa_ruang_apartemen',gambar_utama = '$nama_file'
+                $queryUpdateApartement = "UPDATE ruangan_apartemen SET nama = '$nama_ruang',jenis_ruangan = '$jenis_ruangan',harga_beli = '$harga_beli',detail_ruangan = '$detail_ruangan',sisa_ruang_apartemen = '$sisa_ruang_apartemen',gambar_utama = '$nama_file'
                     WHERE id_ruangan = '$idRuangan'";
             } else {
                 $nama_ruang = $_POST['nama'];
                 $jenis_ruangan = $_POST['jenis_ruangan'];
-                $harga_sewa = $_POST['harga_sewa'];
                 $harga_beli = $_POST['harga_beli'];
                 $detail_ruangan = $_POST['detail_ruangan'];
                 $sisa_ruang_apartemen = $_POST['sisa_ruang_apartemen'];
-                $queryUpdateApartement = "UPDATE ruangan_apartemen SET nama = '$nama_ruang',jenis_ruangan = '$jenis_ruangan',harga_sewa = '$harga_sewa',harga_beli = '$harga_beli',detail_ruangan = '$detail_ruangan',sisa_ruang_apartemen = '$sisa_ruang_apartemen'
+                $queryUpdateApartement = "UPDATE ruangan_apartemen SET nama = '$nama_ruang',jenis_ruangan = '$jenis_ruangan',harga_beli = '$harga_beli',detail_ruangan = '$detail_ruangan',sisa_ruang_apartemen = '$sisa_ruang_apartemen'
                     WHERE id_ruangan = '$idRuangan'";
             }
             if (mysqli_query($connect, $queryUpdateApartement)) {

@@ -67,6 +67,9 @@
                                         <a class="nav-link" href="ruangan-apartemen-anda.php">Ruang Apartemen Anda</a>
                                     </nav>
                                 </div>
+                                <nav class="sb-sidenav-menu-nested nav" style="margin-left: 0px;">
+                                    <a class="nav-link" href="transaksi-pembelian-pengelola.php">Transaksi Pembelian</a>
+                                </nav>
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Kritik dan Saran
 
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>

@@ -3,7 +3,7 @@ include 'connection.php';
 session_start();
 if ($_SESSION['status_login'] == 'pengelola_login') {
     $usernameOrEmailNow = $_SESSION['usernameOrEmail'];
-    $id_apartemen = $_GET['id_apartemen'];
+    $id_pengelola = $_SESSION['id_pengelola'];
     include 'header-pengelola-dashboard.php';
     $queryGetInfoUser = "select * from pengelola_apartemen where username = '$usernameOrEmailNow'";
     $resultProfile = mysqli_query($connect, $queryGetInfoUser);
@@ -58,7 +58,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
                             while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
                             ?>
-                                <div class="card" onclick="location.href='detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
+                                <div class="card" style="width: 18rem;display:inline-block">
                                     <img style="width:286px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
                                     <div class="card-body">
                                         <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>

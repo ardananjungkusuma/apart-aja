@@ -20,7 +20,6 @@ if (!empty($_SESSION['level']) == '1') {
                         <a href="profil-user.php" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Profile</a>
                         <a href="profil-user.php?menu=apartemen" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Apartemen Anda</a>
                         <a href="profil-user.php?menu=transaksi_pembelian" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Pembelian</a>
-                        <a href="profil-user.php?menu=transaksi_penyewaan" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Penyewaan</a>
                     </ul>
                 </div>
             </div>
@@ -94,11 +93,9 @@ if (!empty($_SESSION['level']) == '1') {
                                 <tr>
                                     <td>No</td>
                                     <td>Ruangan</td>
-                                    <td>Kode</td>
                                     <td>Total Harga</td>
-                                    <td>Tanggal</td>
                                     <td>Status</td>
-                                    <td>Gambar Bukti Transfer</td>
+                                    <td>Detail Transaksi</td>
                                 </tr>
                                 <?php
                                 while ($transaksi = mysqli_fetch_array($executeTransaksi)) {
@@ -106,24 +103,9 @@ if (!empty($_SESSION['level']) == '1') {
                                     <tr>
                                         <td><?= $no ?></td>
                                         <td><?= $transaksi['nama'] ?></td>
-                                        <td><?= $transaksi['kode_transaksi'] ?></td>
                                         <td>Rp. <?= number_format($transaksi['total_harga'], 0, ',', '.');; ?></td>
-                                        <td><?= $transaksi['tanggal_transaksi'] ?></td>
                                         <td><?= $transaksi['status_pemesanan'] ?></td>
-                                        <td>
-                                            <?php
-                                            if ($transaksi['gambar_bukti_transfer'] == "None") {
-                                            ?>
-                                                <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;">Upload Gambar</a>
-                                            <?php
-                                            } else {
-                                            ?>
-                                                <img src="<?= $transaksi['gambar_bukti_transfer'] ?>" style="height: 100px"><br>
-                                                <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;">Reupload Gambar</a>
-                                            <?php
-                                            }
-                                            ?>
-                                        </td>
+                                        <td><a href="detail-transaksi-beli.php?id_transaksi_beli=<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
                                     </tr>
                                 <?php
                                 }

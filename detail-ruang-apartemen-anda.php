@@ -31,10 +31,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                 <?= $apartemen['jenis_ruangan']; ?>
                             </p>
                             <p class="card-text">
-                                <label for=""><b>Harga Sewa / Bulan :</b></label>
-                                Rp. <?= number_format($apartemen['harga_sewa'], 0, ',', '.');; ?>
-                            </p>
-                            <p class="card-text">
                                 <label for=""><b>Harga Beli :</b></label>
                                 Rp. <?= number_format($apartemen['harga_beli'], 0, ',', '.');; ?>
                             </p>

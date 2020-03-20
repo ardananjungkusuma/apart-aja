@@ -19,7 +19,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
                 while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
                 ?>
-                    <div class="card" style="width: 18rem;display:inline-block">
+                    <div class="card" onclick="location.href='detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>'" style="width: 18rem;display:inline-block">
                         <img style="width:286px;" src="<?= $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>

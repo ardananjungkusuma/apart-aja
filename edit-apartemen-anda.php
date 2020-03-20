@@ -49,7 +49,8 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                         <?php
                     }
                         ?>
-                        <button type="submit" name="submit" class="btn btn-primary float-right">Edit Ruangan Apartemen</button><br><br>
+                        <a href="apartemen-anda.php" class="btn btn-primary float-left">Kembali</a>
+                        <button type="submit" name="submit" class="btn btn-info float-right">Edit Ruangan Apartemen</button><br><br>
                         </form>
                 </div>
             </div>

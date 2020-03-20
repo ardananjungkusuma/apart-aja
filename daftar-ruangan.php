@@ -17,7 +17,7 @@ if (!empty($_SESSION['level']) == '1') {
                             <div class="card-body">
                                 <h5 class="card-title" style="font-size: 20px;"><?= $ruanganApartemen['nama'] ?> Room</h5>
                         </a>
-                        <p class="card-text" style="font-size: 15px">&diams; <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none;color:black"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a> &diams;<br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_sewa'], 0, ',', '.');; ?>/Bulan</p>
+                        <p class="card-text" style="font-size: 15px">&diams; <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none;color:black"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a> &diams;<br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
                         <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
                     </div>
 
@@ -46,7 +46,7 @@ if (!empty($_SESSION['level']) == '1') {
                             <div class="card-body">
                                 <h5 class="card-title" style="font-size: 20px;"><?= $ruanganApartemen['nama'] ?> Room</h5>
                         </a>
-                        <p class="card-text" style="font-size: 15px">&diams; <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none;color:black"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a> &diams;<br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_sewa'], 0, ',', '.');; ?>/Bulan</p>
+                        <p class="card-text" style="font-size: 15px">&diams; <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none;color:black"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a> &diams;<br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
                         <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
                     </div>
 

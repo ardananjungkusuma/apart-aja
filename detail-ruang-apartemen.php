@@ -28,18 +28,10 @@ if (!empty($_SESSION['level']) == '1') {
                         <div style="float: right;margin-right: 300px">
                             <div class="form-row">
                                 <div class="col">
-                                    <a href="preview-beli.php?id_ruangan=<?= $id_ruangan ?>" class="btn btn-success" style="float: right;width:200px;">Buy This Room</a><br><br>
-                                    <form action="preview-sewa.php" method="POST">
-                                        <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">
-                                        <input type="number" placeholder="12" name="durasi_sewa" style="width: 50px;border: 2px solid #555;"> Bulan
-                                        <button style="float:right;width:200px;margin-left:5px" name="submit" class="btn btn-warning">Rent This Room</button>
-                                    </form>
+                                    <a href="preview-beli.php?id_ruangan=<?= $id_ruangan ?>" class="btn btn-success" style="float: right;width:200px;font-weight: bold">Buy This Room</a><br><br>
                                 </div>
                             </div>
                         </div>
-                        <label for=""><b>Harga Sewa per-bulan :</b></label>
-                        Rp. <?= number_format($ruangan['harga_sewa'], 0, ',', '.');; ?><br>
-
                         <label for=""><b>Harga Beli :</b></label>
                         Rp. <?= number_format($ruangan['harga_beli'], 0, ',', '.');; ?><br>
 
@@ -97,16 +89,10 @@ if (!empty($_SESSION['level']) == '1') {
                                 <div class="form-row">
                                     <div class="col">
                                         <a href="login-user.php" class="btn btn-success" style="float: right;width:200px;">Buy This Room</a><br><br>
-                                        <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">
-                                        <input type="number" placeholder="4" name="durasi_sewa" style="width: 50px;border: 2px solid #555;"> Bulan
-                                        <a style="float:right;width:200px;margin-left:5px" href="login-user.php" class="btn btn-warning">Rent This Room</a>
                                     </div>
                                 </div>
                                 </form>
                             </div>
-                            <label for=""><b>Harga Sewa per-bulan :</b></label>
-                            Rp. <?= number_format($ruangan['harga_sewa'], 0, ',', '.');; ?><br>
-
                             <label for=""><b>Harga Beli :</b></label>
                             Rp. <?= number_format($ruangan['harga_beli'], 0, ',', '.');; ?><br>
 

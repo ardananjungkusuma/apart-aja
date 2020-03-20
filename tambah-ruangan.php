@@ -49,9 +49,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <label>Upload Foto Utama Ruangan Apartemen</label>
                             <input required type="file" class="form-control-file" name="gambar_utama">
                             <small class="text-muted">Informasi Tentang Jenis Ruangan Baca <a href="">Disini</a></small><br>
-                            <label for="harga_sewa">Harga Sewa Perbulan</label>
-                            <input type="number" class="form-control" name="harga_sewa" placeholder="Masukan Harga Sewa">
-                            <small class="text-muted">Untuk Harga Menggunakan Satuan Rupiah</small><br>
                             <label for="harga_beli">Harga Beli</label>
                             <input type="number" class="form-control" name="harga_beli" placeholder="Masukan Harga Beli">
                             <small class="text-muted">Untuk Harga Menggunakan Satuan Rupiah</small><br>
@@ -79,12 +76,11 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         $nama = $_POST['nama'];
         $id_pengelola = $_POST['id_pengelola'];
         $jenis_ruangan = $_POST['jenis_ruangan'];
-        $harga_sewa = $_POST['harga_sewa'];
         $harga_beli = $_POST['harga_beli'];
         $detail_ruangan = $_POST['detail_ruangan'];
         $sisa_ruang_apartemen = $_POST['sisa_ruang_apartemen'];
-        $queryInsertApartement = "INSERT INTO ruangan_apartemen(id_apartemen,id_pengelola,nama,jenis_ruangan,harga_sewa,harga_beli,detail_ruangan,sisa_ruang_apartemen,gambar_utama) 
-        VALUES ('$id_apartemen','$id_pengelola','$nama','$jenis_ruangan','$harga_sewa','$harga_beli','$detail_ruangan','$sisa_ruang_apartemen','$nama_file')";
+        $queryInsertApartement = "INSERT INTO ruangan_apartemen(id_apartemen,id_pengelola,nama,jenis_ruangan,harga_beli,detail_ruangan,sisa_ruang_apartemen,gambar_utama) 
+        VALUES ('$id_apartemen','$id_pengelola','$nama','$jenis_ruangan','$harga_beli','$detail_ruangan','$sisa_ruang_apartemen','$nama_file')";
         if (mysqli_query($connect, $queryInsertApartement)) {
     ?>
             <script>

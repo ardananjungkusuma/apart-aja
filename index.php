@@ -61,7 +61,7 @@
                                 <div class=" col-sm-8 col-sm-offset-2">
                                     <div class="mbr-hero animated fadeInUp">
                                         <h1 class="mbr-hero__text" style="text-shadow: 3px 2px black;">APART AJA</h1>
-                                        <p class="mbr-hero__subtext"><strong style="text-shadow: 2px 2px black;">Buy, Rent
+                                        <p class="mbr-hero__subtext"><strong style="text-shadow: 2px 2px black;">Buy
                                                 or Sell
                                                 Apartment Online</strong></p>
                                     </div>
