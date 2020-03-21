@@ -47,9 +47,9 @@ include 'connection.php';
 				</div>
 				<div class="form-wrapper">
 					<select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
-						<option value="" disabled selected>----Choose Gender----</option>
-						<option value="Male">Male</option>
-						<option value="Female">Female</option>
+						<option value="" disabled selected>----Pilih Jenis Kelamin----</option>
+						<option value="Male">Laki Laki</option>
+						<option value="Female">Perempuan</option>
 					</select>
 					<i class="zmdi zmdi-male-female" style="font-size: 17px"></i>
 				</div>
@@ -88,8 +88,8 @@ include 'connection.php';
 			<?php
 			header("Refresh:1; url=login-user.php");
 		} else {
-			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identitas,gambar_verif_identitas,status_user,level)
-			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','assets/img/etc/ava_default.jpg','Belum Terverifikasi','1')";
+			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identita,status_user,level)
+			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','Belum Terverifikasi','1')";
 			if (mysqli_query($connect, $registerUser)) { ?>
 				<script>
 					Swal.fire({
