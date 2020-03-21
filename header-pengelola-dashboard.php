@@ -12,6 +12,18 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .zoom {
+            transition: transform .2s;
+            /* Animation */
+            margin: 0 auto;
+        }
+
+        .zoom:hover {
+            transform: scale(2);
+            /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+        }
+    </style>
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");

@@ -65,10 +65,23 @@ if (!empty($_SESSION['level']) == '1') {
                                             alert('Success Mengupload Bukti Transaksi');
                                             window.location = 'profil-user.php?menu=transaksi_pembelian';
                                         </script>
-                            <?php
+                                    <?php
                                     }
                                 } else {
-                                    // Hapus gambar lama upload gambar baru.
+                                    unlink($gambar);
+                                    $namafolder = "assets/img/bukti_pembayaran/";
+                                    $image = $_FILES['foto_transaksi']['name'];
+                                    $nama_file = $namafolder . date('dmYHis') . $image;
+                                    move_uploaded_file($_FILES["foto_transaksi"]["tmp_name"], $nama_file);
+                                    $gambarTransaksiBeli = "UPDATE transaksi_pembelian SET gambar_bukti_transfer = '$nama_file' WHERE id_transaksi_pembelian = '$idPembelian'";
+                                    if (mysqli_query($connect, $gambarTransaksiBeli)) {
+                                    ?>
+                                        <script>
+                                            alert('Success Mengupload Bukti Transaksi');
+                                            window.location = 'profil-user.php?menu=transaksi_pembelian';
+                                        </script>
+                            <?php
+                                    }
                                 }
                             }
                             ?>

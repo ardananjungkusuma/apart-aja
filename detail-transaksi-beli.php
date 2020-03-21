@@ -61,11 +61,13 @@ if (!empty($_SESSION['level']) == '1') {
                             $no++;
                         }
                         ?>
+                        <label for=""><b>Pesan dari Pengelola Apartemen :</b></label><br>
+                        <span style="white-space: pre-line;background-color: red;color:white"><?= $transaksi_pembelian['pesan_pengelola']; ?></span><br>
                         <label for=""><b>Foto Bukti Transfer : </b></label><br>
                         <?php
                         if ($transaksi_pembelian['gambar_bukti_transfer'] == "None") {
                         ?>
-                            <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi_pembelian['id_transaksi_pembelian'] ?>" style="text-decoration: none;">Upload Gambar</a>
+                            <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi_pembelian['id_transaksi_pembelian'] ?>" style="text-decoration: none;font-weight:bold">Klik Disini untuk Upload Gambar Bukti Transfer</a>
                         <?php
                         } elseif ($transaksi_pembelian['status_pemesanan'] == "Verifikasi Ditolak") {
                         ?>
