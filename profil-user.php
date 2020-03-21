@@ -27,25 +27,40 @@ if (!empty($_SESSION['level']) == '1') {
                 <?php
                 $id_user = $_SESSION['idUsername'];
                 if ($menu == "apartemen") {
-                    $queryGetApartemen = "SELECT * FROM pemilik_apartemen where id_user = $id_user";
-                    $executeGetApartemen = mysqli_query($connect, $queryGetApartemen);
-                    $checkGetApartemen = mysqli_num_rows($executeGetApartemen);
-                    if ($checkGetApartemen > 0) {
-                    } else {
+                    $queryGetApartemen2 = "SELECT * FROM pemilik_apartemen pa JOIN ruangan_apartemen r ON pa.id_ruangan = r.id_ruangan  where id_user = $id_user";
+                    $executeGetApartemen2 = mysqli_query($connect, $queryGetApartemen2);
                 ?>
-                        <div class="card">
-                            <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
-                                Ruangan Apartemen Anda
-                            </div>
-                            <div class="card-body">
-                                Anda Belum Melakukan Pembelian Apartemen Sama Sekali.
-                            </div>
+                    <div class="card">
+                        <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
+                            Ruangan Apartemen Anda
                         </div>
-                    <?php
-                    }
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <tr>
+                                    <td>Ruangan</td>
+                                    <td>Nama & Nomer Ruangan</td>
+                                    <td>Lantai</td>
+                                    <td>Detail Ruangan</td>
+                                </tr>
+                                <?php
+                                while ($apartemen = mysqli_fetch_array($executeGetApartemen2)) {
+                                ?>
+                                    <tr>
+                                        <td><?= $apartemen['nama'] ?></td>
+                                        <td><?= $apartemen['nama_nomer_ruangan'] ?></td>
+                                        <td><?= $apartemen['lantai'] ?></td>
+                                        <td><a href="detail-transaksi-beli.php?id_transaksi_beli=<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+                            </table>
+                        </div>
+                    </div>
+                <?php
                 } elseif ($menu == "upload_bukti_transfer") {
                     $idPembelian = $_GET['id_transaksi_pembelian'];
-                    ?>
+                ?>
                     <div class="card">
                         <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
                             Upload Bukti Transfer
@@ -115,31 +130,29 @@ if (!empty($_SESSION['level']) == '1') {
                         </div>
                         <?php
                         if ($jumlahTransaksi > 0) {
-                            $no = 1;
                         ?>
-                            <h5 style="margin-top: 20px;margin-bottom: 20px;text-align: center">Data Transaksi Pembelian</h5>
-                            <table class="table table-striped">
-                                <tr>
-                                    <td>No</td>
-                                    <td>Ruangan</td>
-                                    <td>Total Harga</td>
-                                    <td>Status</td>
-                                    <td>Detail Transaksi</td>
-                                </tr>
-                                <?php
-                                while ($transaksi = mysqli_fetch_array($executeTransaksi)) {
-                                ?>
+                            <div class="card-body">
+                                <table class="table table-striped">
                                     <tr>
-                                        <td><?= $no ?></td>
-                                        <td><?= $transaksi['nama'] ?></td>
-                                        <td>Rp. <?= number_format($transaksi['total_harga'], 0, ',', '.');; ?></td>
-                                        <td><?= $transaksi['status_pemesanan'] ?></td>
-                                        <td><a href="detail-transaksi-beli.php?id_transaksi_beli=<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
+                                        <td>Ruangan</td>
+                                        <td>Total Harga</td>
+                                        <td>Status</td>
+                                        <td>Detail Transaksi</td>
                                     </tr>
-                                <?php
-                                }
-                                ?>
-                            </table>
+                                    <?php
+                                    while ($transaksi = mysqli_fetch_array($executeTransaksi)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $transaksi['nama'] ?></td>
+                                            <td>Rp. <?= number_format($transaksi['total_harga'], 0, ',', '.');; ?></td>
+                                            <td><?= $transaksi['status_pemesanan'] ?></td>
+                                            <td><a href="detail-transaksi-beli.php?id_transaksi_beli=<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                    ?>
+                                </table>
+                            </div>
                         <?php
                         } else {
                         ?>

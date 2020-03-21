@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2020 at 09:34 AM
+-- Generation Time: Mar 21, 2020 at 07:07 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -135,6 +135,13 @@ CREATE TABLE `pemilik_apartemen` (
   `lantai` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pemilik_apartemen`
+--
+
+INSERT INTO `pemilik_apartemen` (`id_pemilik_apartemen`, `id_user`, `id_ruangan`, `nama_nomer_ruangan`, `lantai`) VALUES
+(1, 1, 1, 'Fluffy 01', 2);
+
 -- --------------------------------------------------------
 
 --
@@ -255,9 +262,10 @@ CREATE TABLE `transaksi_pembelian` (
 --
 
 INSERT INTO `transaksi_pembelian` (`id_transaksi_pembelian`, `id_user`, `id_ruangan`, `kode_transaksi`, `total_harga`, `tanggal_transaksi`, `status_pemesanan`, `pesan_pengelola`, `gambar_bukti_transfer`) VALUES
-(2, 1, 1, 9959, 325009959, '2020-03-19', 'Belum Terverifikasi', 'Belum ada pesan dari Pihak Pengelola Apartemen.', 'assets/img/bukti_pembayaran/1903202018553001 transcontoh.jpg'),
-(3, 6, 3, 1479, 585001479, '2020-03-19', 'Belum Terverifikasi', 'Belum ada pesan dari Pihak Pengelola Apartemen.', 'assets/img/bukti_pembayaran/1903202018594101 transcontoh.jpg'),
-(4, 4, 8, 8546, 145008546, '2020-03-21', 'Verifikasi Ditolak', 'Gambarnya blur. Tolong upload kembali.', 'assets/img/bukti_pembayaran/21032020093316contohstruk.jpg');
+(2, 1, 1, 9959, 325009959, '2020-03-19', 'Berhasil Verifikasi', 'Terimakasih, pembayaran sudah berhasil terverifikasi. Anda akan segera mendapatkan akses ke Ruang Apartemen Anda.', 'assets/img/bukti_pembayaran/1903202018553001 transcontoh.jpg'),
+(3, 6, 3, 1479, 585001479, '2020-03-19', 'Belum Terverifikasi', 'Mohon segera upload bukti pembayaran', 'None'),
+(4, 4, 8, 8546, 145008546, '2020-03-21', 'Berhasil Verifikasi', 'Terimakasih, pembayaran sudah berhasil terverifikasi. Anda akan segera mendapatkan akses ke Ruang Apartemen Anda.', 'assets/img/bukti_pembayaran/21032020093316contohstruk.jpg'),
+(5, 7, 3, 3792, 585003792, '2020-03-21', 'Belum Terverifikasi', 'Belum ada pesan dari Pihak Pengelola Apartemen.', 'None');
 
 -- --------------------------------------------------------
 
@@ -275,7 +283,6 @@ CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `gambar_kartu_identitas` text NOT NULL,
-  `gambar_verif_identitas` text NOT NULL,
   `status_user` varchar(255) NOT NULL DEFAULT 'Belum Terverifikasi',
   `level` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -284,16 +291,13 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_telpon`, `jenis_kelamin`, `email`, `username`, `password`, `gambar_kartu_identitas`, `gambar_verif_identitas`, `status_user`, `level`) VALUES
-(1, 'Martin Amanu Khusna', 'None', 'None', 'Male', 'martinamanu17@gmail.com', 'martin', '34f74c049edea51851c6924f4a386762', 'assets/img/etc/ava_default.jpg', '', 'Belum Terverifikasi', 1),
-(2, 'Ardan Anjung Kusuma', 'None', 'None', 'None', 'admin_ardan@gmail.com', 'admin_ardan', 'd2219d75098abd01493908d2f7f4d13d', 'None', 'None', 'Sudah Terverifikasi', 2),
-(3, 'Agit Ari Irawan', 'None', 'None', 'Male', 'agitari@gmail.com', 'agit', 'a505c964caa2a7a9f158378df55462f9', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(4, 'Hunayn Risatayn', 'None', 'None', 'Male', 'hunaynr@gmail.com', 'hunayn', '01e340317b4ea5bf03eae0912a2d4546', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(5, 'Nur Hanifah', 'None', 'None', 'Female', 'hanifah@gmail.com', 'hanifah', 'ac83ce3d55576ec2d15feaeca6715d01', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(6, 'Osa Mahanani', 'None', 'None', 'Female', 'osamahanani@gmail.com', 'osa', '374762714ec840404a3c2c4afc32cc22', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(7, 'Denny Nur', 'None', 'None', 'Male', 'dennynur@gmail.com', 'denny', '34814f45c5b89ee4ea7e77662747a0e6', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(8, 'Ivan Abdurrafie', 'None', 'None', 'Male', 'ivan123@gmail.com', 'ivan1', 'b7727d252be76bc6d142e19315cfc8fd', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1),
-(9, 'Sultan Achmad', 'None', 'None', 'Male', 'sultan123@gmail.com', 'sultan', 'f310bbc6d56f2b8a45b8c40973e3d48a', 'assets/img/etc/ava_default.jpg', 'assets/img/etc/ava_default.jpg', 'Belum Terverifikasi', 1);
+INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_telpon`, `jenis_kelamin`, `email`, `username`, `password`, `gambar_kartu_identitas`, `status_user`, `level`) VALUES
+(1, 'Martin Amanu Khusna', 'Jl. Melati 15 Surabaya', 'None', 'Male', 'martinamanu17@gmail.com', 'martin', '34f74c049edea51851c6924f4a386762', 'None', 'Belum Terverifikasi', 1),
+(2, 'Ardan Anjung', 'None', 'None', 'None', 'admin_ardan@gmail.com', 'admin_ardan', 'd2219d75098abd01493908d2f7f4d13d', 'None', 'Sudah Terverifikasi', 2),
+(3, 'Agit Ari Irawan', 'None', 'None', 'Male', 'agitari@gmail.com', 'agit', 'a505c964caa2a7a9f158378df55462f9', 'None', 'Belum Terverifikasi', 1),
+(4, 'Hunayn Risatayn', 'Jl. Dieng 95 Sidoarjo, Jawa Timur', '628574827364', 'Male', 'hunaynr@gmail.com', 'hunayn', '01e340317b4ea5bf03eae0912a2d4546', 'assets/img/identitas/21032020162122blangko-kosong-e-ktp.jpg', 'Belum Terverifikasi', 1),
+(6, 'Osa Mahanani', 'None', 'None', 'Female', 'osamahanani@gmail.com', 'osa', '374762714ec840404a3c2c4afc32cc22', 'None', 'Belum Terverifikasi', 1),
+(7, 'Denny Nur', 'None', 'None', 'Male', 'dennynur@gmail.com', 'denny', '34814f45c5b89ee4ea7e77662747a0e6', 'None', 'Belum Terverifikasi', 1);
 
 --
 -- Indexes for dumped tables
@@ -408,7 +412,7 @@ ALTER TABLE `kritik_saran`
 -- AUTO_INCREMENT for table `pemilik_apartemen`
 --
 ALTER TABLE `pemilik_apartemen`
-  MODIFY `id_pemilik_apartemen` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pemilik_apartemen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pengelola_apartemen`
@@ -438,7 +442,7 @@ ALTER TABLE `transaksi_fasilitas`
 -- AUTO_INCREMENT for table `transaksi_pembelian`
 --
 ALTER TABLE `transaksi_pembelian`
-  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
