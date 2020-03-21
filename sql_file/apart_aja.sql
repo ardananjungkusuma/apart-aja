@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 19, 2020 at 07:01 PM
+-- Generation Time: Mar 21, 2020 at 09:34 AM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -132,7 +132,7 @@ CREATE TABLE `pemilik_apartemen` (
   `id_user` int(11) NOT NULL,
   `id_ruangan` int(11) NOT NULL,
   `nama_nomer_ruangan` varchar(255) NOT NULL,
-  `status_kepemilikan` varchar(255) NOT NULL
+  `lantai` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -198,7 +198,6 @@ CREATE TABLE `ruangan_apartemen` (
   `id_pengelola` int(11) NOT NULL,
   `nama` varchar(255) NOT NULL,
   `jenis_ruangan` varchar(250) NOT NULL,
-  `harga_sewa` int(80) NOT NULL,
   `harga_beli` bigint(20) NOT NULL,
   `detail_ruangan` text NOT NULL,
   `sisa_ruang_apartemen` int(10) NOT NULL,
@@ -209,12 +208,12 @@ CREATE TABLE `ruangan_apartemen` (
 -- Dumping data for table `ruangan_apartemen`
 --
 
-INSERT INTO `ruangan_apartemen` (`id_ruangan`, `id_apartemen`, `id_pengelola`, `nama`, `jenis_ruangan`, `harga_sewa`, `harga_beli`, `detail_ruangan`, `sisa_ruang_apartemen`, `gambar_utama`) VALUES
-(1, 1, 1, 'Fluffy', 'Mini Suite', 2500000, 325000000, 'Fasilitas :\r\n1. Kasur 2 Orang\r\n2. Ruang Tamu\r\n3. Kamar Mandi Dalam(Tidak Termasuk Air Panas)\r\n4. Televisi\r\n5. Dapur Kecil', 50, 'assets/img/gambar_apartemen/04032020091144Screenshot_5.jpg'),
-(3, 2, 1, 'Seville Eksklusif', 'Luxury Suite', 5500000, 585000000, 'Fasilitas :\r\n1. Televisi\r\n2. Dapur\r\n3. 2 Toilet\r\n4. 2 Kasur (1 Double, 1 Single)\r\n5. Wifi 50Mbps', 10, 'assets/img/gambar_apartemen/04032020100157Screenshot_2.jpg'),
-(6, 9, 3, 'Flamboyan', 'Luxury Suite', 4000000, 650000000, 'Fasilitas\r\n1. Air Panas\r\n2. Wifi 50Mbp/s\r\n3. Dapur (inc : Microwave, Kulkas, MiniBar', 25, 'assets/img/gambar_apartemen/110320200928282.jpg'),
-(7, 9, 3, 'Anggrek', 'Mini Suite', 2500000, 200000000, 'Fasilitas :\r\n1. Air Panas\r\n2. Wifi 20Mbp/s', 25, 'assets/img/gambar_apartemen/11032020094411Screenshot_1.jpg'),
-(8, 10, 2, 'Kilobyte', 'Single Suite', 1500000, 145000000, 'Fasilitas :\r\n1. Parkir Gratis Area Apartemen\r\n2. Wifi 20Mbp/s\r\n3. Air Panas\r\n4. Kulkas\r\n5. Kompor', 50, 'assets/img/gambar_apartemen/11032020125139Screenshot_3.jpg');
+INSERT INTO `ruangan_apartemen` (`id_ruangan`, `id_apartemen`, `id_pengelola`, `nama`, `jenis_ruangan`, `harga_beli`, `detail_ruangan`, `sisa_ruang_apartemen`, `gambar_utama`) VALUES
+(1, 1, 1, 'Fluffy', 'Mini Suite', 325000000, 'Fasilitas :\r\n1. Kasur 2 Orang\r\n2. Ruang Tamu\r\n3. Kamar Mandi Dalam(Tidak Termasuk Air Panas)\r\n4. Televisi\r\n5. Dapur Kecil', 50, 'assets/img/gambar_apartemen/04032020091144Screenshot_5.jpg'),
+(3, 2, 1, 'Seville Eksklusif', 'Luxury Suite', 585000000, 'Fasilitas :\r\n1. Televisi\r\n2. Dapur\r\n3. 2 Toilet\r\n4. 2 Kasur (1 Double, 1 Single)\r\n5. Wifi 50Mbps', 10, 'assets/img/gambar_apartemen/04032020100157Screenshot_2.jpg'),
+(6, 9, 3, 'Flamboyan', 'Luxury Suite', 650000000, 'Fasilitas\r\n1. Air Panas\r\n2. Wifi 50Mbp/s\r\n3. Dapur (inc : Microwave, Kulkas, MiniBar', 25, 'assets/img/gambar_apartemen/110320200928282.jpg'),
+(7, 9, 3, 'Anggrek', 'Mini Suite', 200000000, 'Fasilitas :\r\n1. Air Panas\r\n2. Wifi 20Mbp/s', 25, 'assets/img/gambar_apartemen/11032020094411Screenshot_1.jpg'),
+(8, 10, 2, 'Kilobyte', 'Single Suite', 145000000, 'Fasilitas :\r\n1. Parkir Gratis Area Apartemen\r\n2. Wifi 20Mbp/s\r\n3. Air Panas\r\n4. Kulkas\r\n5. Kompor', 50, 'assets/img/gambar_apartemen/11032020125139Screenshot_3.jpg');
 
 -- --------------------------------------------------------
 
@@ -247,6 +246,7 @@ CREATE TABLE `transaksi_pembelian` (
   `total_harga` int(100) NOT NULL,
   `tanggal_transaksi` date NOT NULL,
   `status_pemesanan` varchar(255) NOT NULL DEFAULT 'Belum Terverifikasi',
+  `pesan_pengelola` text NOT NULL DEFAULT 'Belum ada pesan dari Pihak Pengelola Apartemen.',
   `gambar_bukti_transfer` text NOT NULL DEFAULT 'None'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -254,27 +254,10 @@ CREATE TABLE `transaksi_pembelian` (
 -- Dumping data for table `transaksi_pembelian`
 --
 
-INSERT INTO `transaksi_pembelian` (`id_transaksi_pembelian`, `id_user`, `id_ruangan`, `kode_transaksi`, `total_harga`, `tanggal_transaksi`, `status_pemesanan`, `gambar_bukti_transfer`) VALUES
-(2, 1, 1, 9959, 325009959, '2020-03-19', 'Belum Terverifikasi', 'assets/img/bukti_pembayaran/1903202018553001 transcontoh.jpg'),
-(3, 6, 3, 1479, 585001479, '2020-03-19', 'Belum Terverifikasi', 'assets/img/bukti_pembayaran/1903202018594101 transcontoh.jpg');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `transaksi_penyewaan`
---
-
-CREATE TABLE `transaksi_penyewaan` (
-  `id_transaksi_penyewaan` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_ruangan` int(11) NOT NULL,
-  `durasi_sewa` varchar(255) NOT NULL,
-  `awal_sewa` date NOT NULL,
-  `kode_transaksi` int(10) NOT NULL,
-  `total_harga` int(100) NOT NULL,
-  `status_pemesanan` varchar(255) NOT NULL DEFAULT 'Belum Terverif',
-  `gambar_bukti_transfer` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `transaksi_pembelian` (`id_transaksi_pembelian`, `id_user`, `id_ruangan`, `kode_transaksi`, `total_harga`, `tanggal_transaksi`, `status_pemesanan`, `pesan_pengelola`, `gambar_bukti_transfer`) VALUES
+(2, 1, 1, 9959, 325009959, '2020-03-19', 'Belum Terverifikasi', 'Belum ada pesan dari Pihak Pengelola Apartemen.', 'assets/img/bukti_pembayaran/1903202018553001 transcontoh.jpg'),
+(3, 6, 3, 1479, 585001479, '2020-03-19', 'Belum Terverifikasi', 'Belum ada pesan dari Pihak Pengelola Apartemen.', 'assets/img/bukti_pembayaran/1903202018594101 transcontoh.jpg'),
+(4, 4, 8, 8546, 145008546, '2020-03-21', 'Verifikasi Ditolak', 'Gambarnya blur. Tolong upload kembali.', 'assets/img/bukti_pembayaran/21032020093316contohstruk.jpg');
 
 -- --------------------------------------------------------
 
@@ -388,14 +371,6 @@ ALTER TABLE `transaksi_pembelian`
   ADD PRIMARY KEY (`id_transaksi_pembelian`);
 
 --
--- Indexes for table `transaksi_penyewaan`
---
-ALTER TABLE `transaksi_penyewaan`
-  ADD PRIMARY KEY (`id_transaksi_penyewaan`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_ruangan` (`id_ruangan`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -463,13 +438,7 @@ ALTER TABLE `transaksi_fasilitas`
 -- AUTO_INCREMENT for table `transaksi_pembelian`
 --
 ALTER TABLE `transaksi_pembelian`
-  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `transaksi_penyewaan`
---
-ALTER TABLE `transaksi_penyewaan`
-  MODIFY `id_transaksi_penyewaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_transaksi_pembelian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -526,13 +495,6 @@ ALTER TABLE `ruangan_apartemen`
 ALTER TABLE `transaksi_fasilitas`
   ADD CONSTRAINT `transaksi_fasilitas_ibfk_1` FOREIGN KEY (`id_pemilik_apartemen`) REFERENCES `pemilik_apartemen` (`id_pemilik_apartemen`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `transaksi_fasilitas_ibfk_2` FOREIGN KEY (`id_fasilitas`) REFERENCES `fasilitas_tambahan` (`id_fasilitas`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `transaksi_penyewaan`
---
-ALTER TABLE `transaksi_penyewaan`
-  ADD CONSTRAINT `transaksi_penyewaan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `transaksi_penyewaan_ibfk_2` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan_apartemen` (`id_ruangan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
