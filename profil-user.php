@@ -201,16 +201,16 @@ if (!empty($_SESSION['level']) == '1') {
                                 $namafolder = "assets/img/identitas/";
                                 $image = $_FILES['gambar_kartu_identitas']['name'];
                                 if ($image == "") {
-                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon'";
+                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon' where id_user = '$id_user'";
                                 } elseif ($image != "" and $gambarIdentitas == "None") {
                                     $nama_file = $namafolder . date('dmYHis') . $image;
                                     move_uploaded_file($_FILES["gambar_kartu_identitas"]["tmp_name"], $nama_file);
-                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon',gambar_kartu_identitas = '$nama_file'";
+                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon',gambar_kartu_identitas = '$nama_file' where id_user = '$id_user'";
                                 } elseif ($image != "" and $gambarIdentitas != "None") {
                                     unlink($gambarIdentitas);
                                     $nama_file = $namafolder . date('dmYHis') . $image;
                                     move_uploaded_file($_FILES["gambar_kartu_identitas"]["tmp_name"], $nama_file);
-                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon',gambar_kartu_identitas = '$nama_file'";
+                                    $queryUpdate = "UPDATE user SET nama = '$nama',alamat = '$alamat',no_telpon = '$no_telpon',gambar_kartu_identitas = '$nama_file' where id_user = '$id_user'";
                                 }
                                 if (mysqli_query($connect, $queryUpdate)) {
                             ?>

@@ -8,10 +8,13 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Pengelola Apartemen</title>
-    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" type="text/css"> -->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/jquery.dataTables.min.css">
     <link href="assets/css/styles.css" rel="stylesheet" />
     <script src="assets/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+    <script src="assets/js/jquery.dataTables.min.js"></script>
     <style>
         .zoom {
             transition: transform .2s;
@@ -58,9 +61,9 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Dashboard Menu</div>
-                        <a class="nav-link" href="pengelola-dashboard.php">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                        <a class="nav-link" href="transaksi-pembelian-pengelola.php">
+                            <div class="sb-nav-link-icon"><i class="fas fa-business-time"></i></div>
+                            Transaksi Pembelian
                         </a>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
@@ -79,19 +82,6 @@
                                         <a class="nav-link" href="ruangan-apartemen-anda.php">Ruang Apartemen Anda</a>
                                     </nav>
                                 </div>
-                                <nav class="sb-sidenav-menu-nested nav" style="margin-left: 0px;">
-                                    <a class="nav-link" href="transaksi-pembelian-pengelola.php">Transaksi Pembelian</a>
-                                </nav>
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Kritik dan Saran
-
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">Kritik Penghuni</a>
-                                        <a class="nav-link" href="404.html">Saran Penghuni</a>
-                                    </nav>
-                                </div>
                             </nav>
                         </div>
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
@@ -100,9 +90,20 @@
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav"><a class="nav-link" href="layout-static.html">Static
-                                    Navigation</a><a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="daftar-penghuni.php">Daftar Penghuni</a>
+                                <a class="nav-link" href="tambah-daftar-penghuni.php">Tambah Penghuni</a>
                             </nav>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Kritik dan Saran
+
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="401.html">Kritik Penghuni</a>
+                                    <a class="nav-link" href="404.html">Saran Penghuni</a>
+                                </nav>
+                            </div>
                         </div>
                         <div class="sb-sidenav-menu-heading">Profile</div>
                         <a class="nav-link" href="profil-pengelola.php">

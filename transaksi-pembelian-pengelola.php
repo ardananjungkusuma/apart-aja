@@ -15,15 +15,14 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
         <div class="row">
             <div class="col-lg-12" style="margin: 0 auto;">
                 <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Transaksi Pembelian Apartemen</h3>
-                <table class="table table-hover">
-                    <thead style="background-color: darkslateblue;color:white">
+                <table class="table table-hover" id="listTransaksiPembelian">
+                    <thead style="background-color: #343a40;color:white">
                         <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Nama Pembeli</th>
-                            <th scope="col">Tanggal Transaksi</th>
-                            <th scope="col">Tanggal Jatuh Tempo</th>
-                            <th scope="col">Status Pembayaran</th>
-                            <th scope="col">Aksi</th>
+                            <td>Nama Pembeli</td>
+                            <td>Tanggal Transaksi</td>
+                            <td>Tanggal Jatuh Tempo</td>
+                            <td>Status Pembayaran</td>
+                            <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +34,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             $queryGetBeli = "SELECT * FROM transaksi_pembelian tp JOIN user u on tp.id_user = u.id_user where id_ruangan = '$idruang'";
                             $executeQueryGetBeli = mysqli_query($connect, $queryGetBeli);
                             while ($tampil = mysqli_fetch_array($executeQueryGetBeli)) {
-                                $no = 1;
                                 $tanggal_transaksi = $tampil['tanggal_transaksi'];
                                 $formatTanggalTransaksi = date("d-m-Y", strtotime($tanggal_transaksi));
                                 $JatuhTempo = date('Y-m-d', strtotime($tanggal_transaksi . "+3 days"));
@@ -43,7 +41,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                 $status_pemesananan = $tampil['status_pemesanan'];
                         ?>
                                 <tr>
-                                    <td><?= $no ?></td>
                                     <td><?= $tampil['nama'] ?></td>
                                     <td><?= $formatTanggalTransaksi ?></td>
                                     <td><?= $formatJatuhTempo ?></td>
@@ -64,7 +61,6 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                     </td>
                                 </tr>
                         <?php
-                                $no++;
                             }
                         }
                         ?>
@@ -73,7 +69,13 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
             </div>
         </div>
     </div>
-    <script src="assets/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#listTransaksiPembelian').DataTable();
+
+        });
+    </script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     </body>
 <?php
