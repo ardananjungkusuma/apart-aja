@@ -88,7 +88,7 @@ include 'connection.php';
 			<?php
 			header("Refresh:1; url=login-user.php");
 		} else {
-			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identita,status_user,level)
+			$registerUser = "INSERT INTO user(nama,alamat,no_telpon,jenis_kelamin,email,username,password,gambar_kartu_identitas,status_user,level)
 			VALUES ('$nama','None','None','$jenisKelamin','$email','$username',MD5('$password'),'assets/img/etc/ava_default.jpg','Belum Terverifikasi','1')";
 			if (mysqli_query($connect, $registerUser)) { ?>
 				<script>
