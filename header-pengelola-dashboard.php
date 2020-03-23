@@ -94,17 +94,20 @@
                                 <a class="nav-link" href="daftar-penghuni.php">Daftar Penghuni</a>
                                 <a class="nav-link" href="tambah-daftar-penghuni.php">Tambah Penghuni</a>
                             </nav>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Kritik dan Saran
 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="401.html">Kritik Penghuni</a>
-                                    <a class="nav-link" href="404.html">Saran Penghuni</a>
-                                </nav>
-                            </div>
                         </div>
+                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
+                            Kritik Saran
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="kritik-saran.php?kategori=kritik">Kritik Penghuni</a>
+                                <a class="nav-link" href="kritik-saran.php?kategori=saran">Saran Penghuni</a>
+                            </nav>
+                        </div>
+
                         <div class="sb-sidenav-menu-heading">Profile</div>
                         <a class="nav-link" href="profil-pengelola.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>

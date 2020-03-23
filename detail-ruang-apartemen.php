@@ -20,7 +20,7 @@ if (!empty($_SESSION['level']) == '1') {
                             <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= $ruangan['gambar_utama'] ?>" alt="Desc">
                         </center>
                         <label for=""><b>Apartemen : </b></label>
-                        <a href="#"><?= $ruangan['nama_apartemen']; ?></a><br>
+                        <a href="detail-apartemen.php?id_apartemen=<?= $ruangan['id_apartemen'] ?>" style="text-decoration: none;"><?= $ruangan['nama_apartemen']; ?> Apartement</a><br>
                         <label for=""><b>Lokasi : </b></label>
                         <?= $ruangan['alamat_apartemen'] ?>, <?= $ruangan['kota_kabupaten'] ?><br>
                         <label for=""><b>Jenis Ruangan : </b></label>
@@ -80,7 +80,7 @@ if (!empty($_SESSION['level']) == '1') {
                                 <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= $ruangan['gambar_utama'] ?>" alt="Desc">
                             </center>
                             <label for=""><b>Apartemen : </b></label>
-                            <a href="#"><?= $ruangan['nama_apartemen']; ?></a><br>
+                            <a href="detail-apartemen.php?id_apartemen=<?= $ruangan['id_apartemen'] ?>" style="text-decoration: none;"><?= $ruangan['nama_apartemen']; ?> Apartement</a><br>
                             <label for=""><b>Lokasi : </b></label>
                             <?= $ruangan['alamat_apartemen'] ?>, <?= $ruangan['kota_kabupaten'] ?><br>
                             <label for=""><b>Jenis Ruangan : </b></label>

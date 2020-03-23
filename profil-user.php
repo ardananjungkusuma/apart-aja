@@ -20,6 +20,7 @@ if (!empty($_SESSION['level']) == '1') {
                         <a href="profil-user.php" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Profile</a>
                         <a href="profil-user.php?menu=apartemen" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Apartemen Anda</a>
                         <a href="profil-user.php?menu=transaksi_pembelian" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Pembelian</a>
+                        <a href="profil-user.php?menu=kritik_saran" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Kritik & Saran</a>
                     </ul>
                 </div>
             </div>
@@ -242,49 +243,125 @@ if (!empty($_SESSION['level']) == '1') {
                                 }
                             }
                         }
-                    } else {
-                        $queryGetProfile = "SELECT * FROM user where id_user = $id_user";
-                        $executeProfile = mysqli_query($connect, $queryGetProfile);
-                        while ($profile = mysqli_fetch_array($executeProfile)) {
+                    } elseif ($menu == "kritik_saran") {
+                        $queryGetUser = "SELECT * FROM user where id_user=$id_user";
+                        $exeGetUser = mysqli_query($connect, $queryGetUser);
+                        while ($user = mysqli_fetch_array($exeGetUser)) {
+                            $status = $user['status_user']
                             ?>
                             <div class="card">
                                 <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
-                                    Profile
+                                    Kirim Kritik Saran
                                 </div>
-                                <div class="card-body">
-                                    <label class="label-profil">Nama : </label>
-                                    <?= $profile['nama'] ?><br>
-                                    <label class="label-profil">Email : </label>
-                                    <?= $profile['email'] ?><br>
-                                    <label class="label-profil">Username : </label>
-                                    <?= $profile['username'] ?><br>
-                                    <label class="label-profil">Alamat : </label>
-                                    <?= $profile['alamat'] ?><br>
-                                    <label class="label-profil">Nomer Telfon : </label>
-                                    <?= $profile['no_telpon'] ?><br>
-                                    <label class="label-profil">Jenis Kelamin : </label>
-                                    <?= $profile['jenis_kelamin'] ?><br>
-                                    <label class="label-profil">Status User : </label>
-                                    <b><?= $profile['status_user'] ?></b><br>
-                                    <label class="label-profil">Gambar Kartu Identitas : </label><br>
-                                    <?php
-                                    if ($profile['gambar_kartu_identitas'] == "None") {
-                                    ?>
-                                        Anda Belum Mengupload Gambar Identitas, silahkan Klik Edit Profile. <br>
-                                    <?php
-                                    } else {
-                                    ?>
-                                        <a href="<?= $profile['gambar_kartu_identitas'] ?>">Klik Disini Untuk Melihat Gambar Identitas Anda</a><br><br>
-                                    <?php
-                                    }
-                                    ?>
-                                    <a href="profil-user.php?menu=edit_profil" class="btn btn-success">Edit Profile</a>
-                                </div>
-                        <?php
-                        }
-                    }
-                        ?>
+                                <?php
+                                $queryGetPemilik = "SELECT * FROM pemilik_apartemen WHERE id_user = $id_user";
+                                $exeQueryPemilik = mysqli_query($connect, $queryGetPemilik);
+                                $apakahPunya = mysqli_num_rows($exeQueryPemilik);
+                                if ($apakahPunya > 0) {
+                                ?>
+                                    <div class="card-body">
+                                        <form action="" method="POST" enctype="multipart/form-data">
+                                            <label>Pilih Kategori</label><br>
+                                            <select name="kategori" class="form-control">
+                                                <option value="kritik">Kritik</option>
+                                                <option value="saran">Saran</option>
+                                            </select><br>
+                                            <label>Pilih Apartemen yang Ingin Diberi Kritik / Saran</label><br>
+                                            <select name="id_apartemen" class="form-control">
+                                                <?php
+                                                while ($pemilik = mysqli_fetch_array($exeQueryPemilik)) {
+                                                    $ruanganPemilik = $pemilik['id_ruangan'];
+                                                    $queryGetRuangApartemen = "SELECT * FROM ruangan_apartemen ra join apartemen a on ra.id_apartemen = a.id_apartemen WHERE id_ruangan = $ruanganPemilik";
+                                                    $executeGetRuangApartemen = mysqli_query($connect, $queryGetRuangApartemen);
+                                                    while ($ruanganApart = mysqli_fetch_array($executeGetRuangApartemen)) {
+                                                ?>
+                                                        <option value="<?= $ruanganApart['id_apartemen'] ?>"><?= $ruanganApart['nama'] ?></option>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </select><br>
+                                            <label for="deskripsi">Isi Pesan</label>
+                                            <textarea id="txtArea" class="form-control" name="isi_kritik_saran" rows="3" placeholder="Untuk AC Ruangan .. mohon dibersihkan"></textarea><br>
+                                            <button type="submit" class="btn btn-success" name="submit">Kirim</button>
+                                        </form>
+                                    </div>
                             </div>
+                            <?php
+                                    if (isset($_POST['submit'])) {
+                                        $id_apartemen = $_POST['id_apartemen'];
+                                        $isi_kritik_saran = $_POST['isi_kritik_saran'];
+                                        $kategori = $_POST['kategori'];
+                                        $tanggalmasuk = date("d-m-Y");
+                                        $queryKirim = "INSERT INTO kritik_saran (id_apartemen,id_user,isi_kritik_saran,tanggal_masuk,kategori)
+                                        VALUES ('$id_apartemen','$id_user','$isi_kritik_saran','$tanggalmasuk','$kategori') ";
+                                        if (mysqli_query($connect, $queryKirim)) {
+                            ?>
+                                    <script>
+                                        alert('Terimakasih Kritik dan Sarannya');
+                                        window.location = 'profil-user.php';
+                                    </script>
+                                <?php
+                                        } else {
+                                ?>
+                                    <script>
+                                        alert('Error mengirim Kritik dan Saran');
+                                        window.location = 'profil-user.php';
+                                    </script>
+                            <?php
+                                        }
+                                    }
+                                } else {
+                            ?>
+                            <div class="card-body">
+                                Maaf Anda Belum Memiliki Ruangan Apartemen, silahkan beli salah satu.
+                            </div>
+                        <?php
+                                }
+                            }
+                        } else {
+                            $queryGetProfile = "SELECT * FROM user where id_user = $id_user";
+                            $executeProfile = mysqli_query($connect, $queryGetProfile);
+                            while ($profile = mysqli_fetch_array($executeProfile)) {
+                        ?>
+                        <div class="card">
+                            <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
+                                Profile
+                            </div>
+                            <div class="card-body">
+                                <label class="label-profil">Nama : </label>
+                                <?= $profile['nama'] ?><br>
+                                <label class="label-profil">Email : </label>
+                                <?= $profile['email'] ?><br>
+                                <label class="label-profil">Username : </label>
+                                <?= $profile['username'] ?><br>
+                                <label class="label-profil">Alamat : </label>
+                                <?= $profile['alamat'] ?><br>
+                                <label class="label-profil">Nomer Telfon : </label>
+                                <?= $profile['no_telpon'] ?><br>
+                                <label class="label-profil">Jenis Kelamin : </label>
+                                <?= $profile['jenis_kelamin'] ?><br>
+                                <label class="label-profil">Status User : </label>
+                                <b><?= $profile['status_user'] ?></b><br>
+                                <label class="label-profil">Gambar Kartu Identitas : </label><br>
+                                <?php
+                                if ($profile['gambar_kartu_identitas'] == "None") {
+                                ?>
+                                    Anda Belum Mengupload Gambar Identitas, silahkan Klik Edit Profile. <br>
+                                <?php
+                                } else {
+                                ?>
+                                    <a href="<?= $profile['gambar_kartu_identitas'] ?>">Klik Disini Untuk Melihat Gambar Identitas Anda</a><br><br>
+                                <?php
+                                }
+                                ?>
+                                <a href="profil-user.php?menu=edit_profil" class="btn btn-success">Edit Profile</a>
+                            </div>
+                    <?php
+                            }
+                        }
+                    ?>
+                        </div>
                     </div>
             </div>
         </div>
