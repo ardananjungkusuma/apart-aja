@@ -10,7 +10,7 @@
 
     <title>Apart Aja</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:700,400&subset=cyrillic,latin,greek,vietnamese">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" href="assets/socicon/css/socicon.min.css">
     <link rel="stylesheet" href="assets/animatecss/animate.min.css">
     <link rel="stylesheet" href="assets/mobirise/css/style.css">
