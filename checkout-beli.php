@@ -16,9 +16,14 @@ if (!empty($_SESSION['level']) == '1') {
                 $queryGetRekening = "SELECT * FROM rekening_bank where id_pengelola = '$id_pengelola'";
             ?>
                 <div class="col-md-12" style="margin-left:70px;margin-right:70px;">
+                    <div class="alert alert-primary" role="alert">
+                        <span style="font-size: 20px;font-weight:bold;margin-bottom: 10px">Persyaratan dan Ketentuan : </span><br>
+                        <b>1. Transfer sesuai nominal yang ada. Contoh : 500.008.912 (8912 adalah kode unik).<br>2. Pilih salah satu rekening yang tersedia untuk mentransfer Uang.<br>3. Pembayaran akan diverifikasi pengelola. <br>4. Lebih dari Jatuh Tempo tidak transfer dianggap hangus.</b></<b><br>
+                    </div>
                     <span style="margin-top:20px;margin-bottom: 20px;font-size: 30px">Rincian Pembayaran Apartemen</span>
                     <hr>
                     <div class="card-body" style="font-size: 18px">
+
                         <?php
                         $randomNum = rand(1000, 9999);
                         $harga = $pembayaran['harga_beli'];
@@ -37,8 +42,7 @@ if (!empty($_SESSION['level']) == '1') {
                             $no++;
                         }
                         ?>
-                        <label for="">Syarat dan Ketentuan : </label><br>
-                        <small><b>1. Transfer sesuai nominal yang ada. Contoh : 500.008.912 (8912 adalah kode unik).<br>2. Pilih salah satu rekening yang tersedia untuk mentransfer Uang.<br>3. Pembayaran akan diverifikasi pengelola. <br>4. Lebih dari 3 hari tidak transfer dianggap hangus.</b></small><br>
+                        <br>
                         <a href="daftar-ruangan.php" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembayaran</a>
                         <form action="" method="POST">
                             <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">

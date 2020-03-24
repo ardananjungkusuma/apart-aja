@@ -35,28 +35,39 @@ if (!empty($_SESSION['level']) == '1') {
                         <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
                             Ruangan Apartemen Anda
                         </div>
-                        <div class="card-body">
-                            <table class="table table-striped">
-                                <tr>
-                                    <td>Ruangan</td>
-                                    <td>Nama & Nomer Ruangan</td>
-                                    <td>Lantai</td>
-                                    <td>Detail Ruangan</td>
-                                </tr>
-                                <?php
-                                while ($apartemen = mysqli_fetch_array($executeGetApartemen2)) {
-                                ?>
-                                    <tr>
-                                        <td><?= $apartemen['nama'] ?></td>
-                                        <td><?= $apartemen['nama_nomer_ruangan'] ?></td>
-                                        <td><?= $apartemen['lantai'] ?></td>
-                                        <td><a href="detail-transaksi-beli.php?id_transaksi_beli=<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </table>
-                        </div>
+                        <?php
+                        if (mysqli_num_rows($executeGetApartemen2) > 0) {
+                        ?>
+                            <div class="card-body">
+                                <table class="table table-hover">
+                                    <thead style="background-color: #343a40;color:white">
+                                        <tr>
+                                            <td>Ruangan</td>
+                                            <td>Nama & Nomer Ruangan</td>
+                                            <td>Lantai</td>
+                                        </tr>
+                                    </thead>
+                                    <?php
+                                    while ($apartemen = mysqli_fetch_array($executeGetApartemen2)) {
+                                    ?>
+                                        <tr>
+                                            <td><?= $apartemen['nama'] ?></td>
+                                            <td><?= $apartemen['nama_nomer_ruangan'] ?></td>
+                                            <td><?= $apartemen['lantai'] ?></td>
+                                        </tr>
+                                    <?php
+                                    } ?>
+                                </table>
+                            </div>
+                        <?php
+                        } else {
+                        ?>
+                            <div class="card-body">
+                                Maaf Anda Tidak Memiliki Apartemen, silahkan beli.
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 <?php
                 } elseif ($menu == "upload_bukti_transfer") {
@@ -133,13 +144,15 @@ if (!empty($_SESSION['level']) == '1') {
                         if ($jumlahTransaksi > 0) {
                         ?>
                             <div class="card-body">
-                                <table class="table table-striped">
-                                    <tr>
-                                        <td>Ruangan</td>
-                                        <td>Total Harga</td>
-                                        <td>Status</td>
-                                        <td>Detail Transaksi</td>
-                                    </tr>
+                                <table class="table table-hover">
+                                    <thead style="background-color: #343a40;color:white">
+                                        <tr>
+                                            <td>Ruangan</td>
+                                            <td>Total Harga</td>
+                                            <td>Status</td>
+                                            <td>Detail Transaksi</td>
+                                        </tr>
+                                    </thead>
                                     <?php
                                     while ($transaksi = mysqli_fetch_array($executeTransaksi)) {
                                     ?>
@@ -239,16 +252,59 @@ if (!empty($_SESSION['level']) == '1') {
                                         alert('Error Edit');
                                         window.location = 'profil-user.php';
                                     </script>
-                            <?php
+                        <?php
                                 }
                             }
                         }
+                    } elseif ($menu == "kritiksarananda") {
+                        ?>
+                        <div class="card">
+                            <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
+                                Kritik & Saran yang Anda Kirim
+                            </div>
+                            <div class="card-body">
+
+                                <?php
+                                $queryGetKS = "SELECT * FROM kritik_saran ks JOIN apartemen a on ks.id_apartemen = a.id_apartemen WHERE ks.id_user = $id_user";
+                                $executeGetKS = mysqli_query($connect, $queryGetKS);
+                                if (mysqli_num_rows($executeGetKS) > 0) {
+                                ?>
+                                    <table class="table table-hover">
+                                        <thead style="background-color: #343a40;color:white">
+                                            <tr>
+                                                <td>Apartemen</td>
+                                                <td>Isi Pesan</td>
+                                                <td>Respon Pengelola</td>
+                                            </tr>
+                                        </thead>
+                                        <?php
+                                        while ($ks = mysqli_fetch_array($executeGetKS)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $ks['nama_apartemen'] ?></td>
+                                                <td><?= $ks['isi_kritik_saran'] ?></td>
+                                                <td><?= $ks['respon_pengelola'] ?></td>
+                                            </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                    </table>
+                                <?php
+                                } else {
+                                ?>
+                                    Maaf Anda Belum Mengirimkan Kritik & Saran.
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        </div>
+                        <?php
                     } elseif ($menu == "kritik_saran") {
                         $queryGetUser = "SELECT * FROM user where id_user=$id_user";
                         $exeGetUser = mysqli_query($connect, $queryGetUser);
                         while ($user = mysqli_fetch_array($exeGetUser)) {
                             $status = $user['status_user']
-                            ?>
+                        ?>
                             <div class="card">
                                 <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
                                     Kirim Kritik Saran
@@ -283,6 +339,7 @@ if (!empty($_SESSION['level']) == '1') {
                                             </select><br>
                                             <label for="deskripsi">Isi Pesan</label>
                                             <textarea id="txtArea" class="form-control" name="isi_kritik_saran" rows="3" placeholder="Untuk AC Ruangan .. mohon dibersihkan"></textarea><br>
+                                            <a href="profil-user.php?menu=kritiksarananda" style="text-decoration: none">Lihat Kritik dan Saran Anda (Klik Disini)</a><br><br>
                                             <button type="submit" class="btn btn-success" name="submit">Kirim</button>
                                         </form>
                                     </div>

@@ -29,7 +29,6 @@ if (!empty($_SESSION['level']) == '1') {
                         Rp. <?= number_format($ruangan['harga_beli'], 0, ',', '.');; ?><br>
                         <label for=""><b>Detail Ruangan :</b></label><br>
                         <span style="white-space: pre-line"><?= $ruangan['detail_ruangan']; ?></span><br>
-                        <small>*Pastikan anda membaca ketentuan berikut sebelum membeli apartemen.</small><br>
                         <a href="daftar-ruangan.php" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembayaran</a>
                         <form action="" method="POST">
                             <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">

@@ -19,22 +19,34 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                             <td>Isi Kritik Saran</td>
                             <td>Tanggal Kritik / Saran</td>
                             <td>Kategori</td>
+                            <td>Aksi</td>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $queryGetKritikSaran = "SELECT * FROM kritik_saran ks JOIN user u on ks.id_user = u.id_user JOIN apartemen a on ks.id_apartemen = a.id_apartemen where kategori = '$kategori'";
-                        $executeGetKritikSaran = mysqli_query($connect, $queryGetKritikSaran);
-                        while ($tampil = mysqli_fetch_array($executeGetKritikSaran)) {
+                        $queryGetApartemen = "SELECT * FROM apartemen where id_pengelola = $id_pengelola";
+                        $executeGetApartemen = mysqli_query($connect, $queryGetApartemen);
+                        while ($apartemen = mysqli_fetch_array($executeGetApartemen)) {
+                            $apartemenID = $apartemen['id_apartemen'];
+                            $queryGetKritikSaran = "SELECT * FROM kritik_saran ks JOIN user u on ks.id_user = u.id_user JOIN apartemen a on ks.id_apartemen = a.id_apartemen where ks.kategori = '$kategori' AND ks.id_apartemen = $apartemenID";
+                            $executeGetKritikSaran = mysqli_query($connect, $queryGetKritikSaran);
+                            while ($tampil = mysqli_fetch_array($executeGetKritikSaran)) {
                         ?>
-                            <tr>
-                                <td><?= $tampil['nama_apartemen'] ?></td>
-                                <td><?= $tampil['nama'] ?></td>
-                                <td><?= $tampil['isi_kritik_saran'] ?></td>
-                                <td><?= $tampil['tanggal_masuk'] ?></td>
-                                <td><?= $tampil['kategori'] ?></td>
-                            </tr>
+                                <tr>
+                                    <td><?= $tampil['nama_apartemen'] ?></td>
+                                    <td><?= $tampil['nama'] ?></td>
+                                    <td><?= $tampil['isi_kritik_saran'] ?></td>
+                                    <td><?= $tampil['tanggal_masuk'] ?></td>
+                                    <td><?= $tampil['kategori'] ?></td>
+                                    <td>
+                                        <form action="respon-pengelola.php" method="POST">
+                                            <input type="hidden" name="idKS" value="<?= $tampil['id_kritik_saran'] ?>">
+                                            <button class="btn btn-warning">Beri Pesan Respon</button>
+                                        </form>
+                                    </td>
+                                </tr>
                         <?php
+                            }
                         }
                         ?>
                     </tbody>
