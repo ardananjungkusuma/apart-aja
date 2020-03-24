@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2020 at 11:41 AM
+-- Generation Time: Mar 24, 2020 at 06:38 PM
 -- Server version: 10.3.15-MariaDB
 -- PHP Version: 7.3.6
 
@@ -46,8 +46,8 @@ CREATE TABLE `apartemen` (
 INSERT INTO `apartemen` (`id_apartemen`, `id_pengelola`, `nama_apartemen`, `alamat_apartemen`, `kota_kabupaten`, `provinsi`, `gambar_apartemen`, `maps_link`) VALUES
 (1, 1, 'Lullaby', 'Jl. Panglima Sudirman 21', 'Malang', 'Jawa Timur', 'assets/img/gambar_apartemen/11032020085558a.jpg', 'https://goo.gl/maps/oY8TDJzL5JcQvgu17'),
 (2, 1, 'Playa', 'Jl. Panglima Sudirman 22', 'Tangerang', 'Banten', 'assets/img/gambar_apartemen/110320200704591.jpg', 'https://goo.gl/maps/DDSjthwMd8h8KD3X6'),
-(9, 3, 'Flower Park', 'Jl. Imam Bonjol 21', 'Malang', 'Jawa Tengah', 'assets/img/gambar_apartemen/11032020092532playadeseville.jpg', ''),
-(10, 2, 'Batu Raya', 'Jl. Panglima Sudirman 21', 'Batu', 'Jawa Timur', 'assets/img/gambar_apartemen/11032020124946Screenshot_4.jpg', '');
+(9, 3, 'Flower Park', 'Jl. Imam Bonjol 21', 'Malang', 'Jawa Tengah', 'assets/img/gambar_apartemen/11032020092532playadeseville.jpg', 'https://goo.gl/maps/oY8TDJzL5JcQvgu17'),
+(10, 2, 'Batu Raya', 'Jl. Panglima Sudirman 21', 'Batu', 'Jawa Timur', 'assets/img/gambar_apartemen/11032020124946Screenshot_4.jpg', 'https://goo.gl/maps/oY8TDJzL5JcQvgu17');
 
 -- --------------------------------------------------------
 
@@ -444,7 +444,7 @@ ALTER TABLE `pengelola_apartemen`
 -- AUTO_INCREMENT for table `rekening_bank`
 --
 ALTER TABLE `rekening_bank`
-  MODIFY `id_rekening` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_rekening` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `ruangan_apartemen`
