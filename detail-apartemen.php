@@ -57,8 +57,8 @@ $executeQuery = mysqli_query($connect, $query);
                             <div class="card" onclick="location.href='detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
                                 <img style="width:286px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Room</h5>
-                                    <p class="card-text"><a style="text-decoration: none;" href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
+                                    <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
+                                    <p class="card-text"><a style="text-decoration: none;" href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>"><?= $ruanganApartemen['nama'] ?> Room</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
                                     <a href="detail-ruang-apartemen.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
                                 </div>
                             </div>
