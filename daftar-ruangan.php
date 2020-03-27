@@ -20,7 +20,18 @@ if (!empty($_SESSION['level']) == '1') {
                     $search = $_POST['keyword'];
                     $queryGetAllRuangan = "select * from ruangan_apartemen ra left join apartemen a on a.id_apartemen = ra.id_apartemen where ra.nama like '%$search%' or a.kota_kabupaten like '%$search%'";
                 } else {
-                    $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen";
+                    if (!empty($_GET["kategori"])) {
+                        $kategorinya = $_GET["kategori"];
+                        if ($kategorinya == 1) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Single Suite'";
+                        } elseif ($kategorinya == 2) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Mini Suite'";
+                        } elseif ($kategorinya == 3) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Luxury Suite'";
+                        }
+                    } else {
+                        $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen";
+                    }
                 }
                 $resultRuangan = mysqli_query($connect, $queryGetAllRuangan);
                 while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
@@ -61,7 +72,18 @@ if (!empty($_SESSION['level']) == '1') {
                     $search = $_POST['keyword'];
                     $queryGetAllRuangan = "select * from ruangan_apartemen ra left join apartemen a on a.id_apartemen = ra.id_apartemen where ra.nama like '%$search%' or a.kota_kabupaten like '%$search%'";
                 } else {
-                    $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen";
+                    if (!empty($_GET["kategori"])) {
+                        $kategorinya = $_GET["kategori"];
+                        if ($kategorinya == 1) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Single Suite'";
+                        } elseif ($kategorinya == 2) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Mini Suite'";
+                        } elseif ($kategorinya == 3) {
+                            $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.jenis_ruangan = 'Luxury Suite'";
+                        }
+                    } else {
+                        $queryGetAllRuangan = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen";
+                    }
                 }
                 $resultRuangan = mysqli_query($connect, $queryGetAllRuangan);
                 while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {

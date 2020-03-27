@@ -86,18 +86,18 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">ORDINARY CLASS</h3>
+                                <h3 class="mbr-header__text">Single Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>Apartemen dengan fasilitas basic dengan harga yang murah,cocok untuk anda yang sedang
+                                <p>Single Suite adalah apartemen dengan harga yang murah,cocok untuk anda yang sedang
                                     mencari pekerjaan atau bagi anda para mahasiswa yang sedang belajar di suatu universitas
                                     dengan haarga yang murah anda sudah bisa mendapat apartemen</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page5.html#slider-16" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail</a></div>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=1" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail</a></div>
                         </div>
                     </div>
                     <div class="mbr-section__col col-xs-12 col-sm-4">
@@ -106,17 +106,16 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">VIP CLASS</h3>
+                                <h3 class="mbr-header__text">Mini Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>VIP CLASS merupakan sebuah apartemen yang memiliki fasilitas yang lengkap,desain yang
-                                    mewah,pemandangan yang indah,dan kenyamanan yang terjamin,</p>
+                                <p>Mini Suite merupakan sebuah apartemen yang memiliki fasilitas yang lengkap, yang ditujukan untuk kalangan muda yang memiliki keluarga kecil dan pastinya kenyamanan yang terjamin,</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page4.html#slider-w" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Clik For Detail</a> </div>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=2" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Clik For Detail</a> </div>
                         </div>
                     </div>
 
@@ -126,26 +125,21 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">PREMIUM CLASS</h3>
+                                <h3 class="mbr-header__text">Luxury Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>PREMIUM CLASS ini adalah apartemen kami yang paling bagus dan kami design untuk anda para
-                                    pengusaha sukses yang bingung mengabiskan uang anda,di PREMIUM CLASS anda akan mendapat
-                                    sebuah ruangan yang lebih bessar dari pada class lainya</p>
+                                <p>Luxury Suite ini adalah apartemen kami yang paling bagus dan kami design untuk anda para
+                                    pengusaha sukses yang bingung mengabiskan uang anda,di Luxury Suite anda akan mendapat
+                                    sebuah ruangan yang lebih besar dari pada class lainya</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page2.html#slider-f" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail<br></a>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=3" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail<br></a>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </section>
@@ -155,74 +149,49 @@
             <div class=" mbr-gallery-layout-default">
                 <div>
                     <div class="row mbr-gallery-row no-gutter">
-
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="0" data-toggle="modal">
                                 <img src="assets/images/bintaro-plaza-residence-mkpl-overall-view.original-min-2000x1512-800x605.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="1" data-toggle="modal">
                                 <img src="assets/images/vip-apartemen-2-1280x800-800x500.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="2" data-toggle="modal">
                                 <img src="assets/images/kolam-625x417-625x417.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="3" data-toggle="modal">
                                 <img src="assets/images/fasilitas-olahraga-di-apartemen-800x450-800x450.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="4" data-toggle="modal">
                                 <img src="assets/images/6-barsa-fasilitas-gym-1200x700-800x467.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="5" data-toggle="modal">
                                 <img src="assets/images/apart-mewah-1440x960-800x533.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="6" data-toggle="modal">
                                 <img src="assets/images/56280838-1024x683-800x534.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
                             </a>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mbr-gallery-item">
-
-
-
                             <a href="#lb-gallery1-4" data-slide-to="7" data-toggle="modal">
                                 <img src="assets/images/vip-apartemen-3-2000x1333-800x533.jpg" alt="" title="">
                                 <span class="icon glyphicon glyphicon-zoom-in"></span>
@@ -305,7 +274,7 @@
                         <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 content-size mbr-section__right">
                             <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                    <h3 class="mbr-header__text">PENAWARAN KHUSUS</h3>
+                                    <h3 class="mbr-header__text">DAFTAR APARTEMEN</h3>
 
                                 </div>
                             </div>
@@ -375,8 +344,6 @@
         </section>
 
         <section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="features1-a" data-rv-view="5" style="background-color: rgb(255, 255, 255);">
-
-
             <div class="mbr-section__container container mbr-section__container--std-top-padding" style="padding-top: 93px;">
                 <div class="mbr-section__row row">
                     <div class="mbr-section__col col-xs-12 col-sm-4">
@@ -385,18 +352,18 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">ORDINARY CLASS</h3>
+                                <h3 class="mbr-header__text">Single Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>Apartemen dengan fasilitas basic dengan harga yang murah,cocok untuk anda yang sedang
+                                <p>Single Suite adalah apartemen dengan harga yang murah,cocok untuk anda yang sedang
                                     mencari pekerjaan atau bagi anda para mahasiswa yang sedang belajar di suatu universitas
                                     dengan haarga yang murah anda sudah bisa mendapat apartemen</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page5.html#slider-16" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail</a></div>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=1" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail</a></div>
                         </div>
                     </div>
                     <div class="mbr-section__col col-xs-12 col-sm-4">
@@ -405,17 +372,16 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">VIP CLASS</h3>
+                                <h3 class="mbr-header__text">Mini Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>VIP CLASS merupakan sebuah apartemen yang memiliki fasilitas yang lengkap,desain yang
-                                    mewah,pemandangan yang indah,dan kenyamanan yang terjamin,</p>
+                                <p>Mini Suite merupakan sebuah apartemen yang memiliki fasilitas yang lengkap, yang ditujukan untuk kalangan muda yang memiliki keluarga kecil dan pastinya kenyamanan yang terjamin,</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page4.html#slider-w" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Clik For Detail</a> </div>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=2" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Clik For Detail</a> </div>
                         </div>
                     </div>
 
@@ -425,26 +391,21 @@
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
-                                <h3 class="mbr-header__text">PREMIUM CLASS</h3>
+                                <h3 class="mbr-header__text">Luxury Suite</h3>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--middle">
                             <div class="mbr-article mbr-article--wysiwyg">
-                                <p>PREMIUM CLASS ini adalah apartemen kami yang paling bagus dan kami design untuk anda para
-                                    pengusaha sukses yang bingung mengabiskan uang anda,di PREMIUM CLASS anda akan mendapat
-                                    sebuah ruangan yang lebih bessar dari pada class lainya</p>
+                                <p>Luxury Suite ini adalah apartemen kami yang paling bagus dan kami design untuk anda para
+                                    pengusaha sukses yang bingung mengabiskan uang anda,di Luxury Suite anda akan mendapat
+                                    sebuah ruangan yang lebih besar dari pada class lainya</p>
                             </div>
                         </div>
                         <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
-                            <div class="mbr-buttons mbr-buttons--center"><a href="page2.html#slider-f" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail<br></a>
+                            <div class="mbr-buttons mbr-buttons--center"><a href="http://localhost/apart-aja/daftar-ruangan.php?kategori=3" class="mbr-buttons__btn btn btn-wrap btn-xs-lg btn-success">Click For Detail<br></a>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
             </div>
         </section>
@@ -604,7 +565,7 @@
                         <div class="mbr-box__magnet mbr-class-mbr-box__magnet--center-left col-sm-6 content-size mbr-section__right">
                             <div class="mbr-section__container mbr-section__container--middle">
                                 <div class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
-                                    <h3 class="mbr-header__text">PENAWARAN KHUSUS</h3>
+                                    <h3 class="mbr-header__text">DAFTAR APARTEMEN</h3>
 
                                 </div>
                             </div>

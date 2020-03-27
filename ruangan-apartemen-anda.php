@@ -17,19 +17,25 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                 <?php
                 $queryGetAllRuanganById = "select * from ruangan_apartemen left join apartemen on apartemen.id_apartemen = ruangan_apartemen.id_apartemen where ruangan_apartemen.id_pengelola = '$id_username'";
                 $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
-                while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
+                if ($resultRuangan->num_rows > 0) {
+                    while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
                 ?>
-                    <div class="card" onclick="location.href='detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
-                        <img style="width:287px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
-                            <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
-                            <a href="detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
-                            <a href="edit-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-success">Edit</a>
-                            <a href="galeri-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-info">Galeri</a>
-                            <a href="hapus-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="margin-top: 10px" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Apartemen ini?')">Hapus</a>
+                        <div class="card" onclick="location.href='detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
+                            <img style="width:287px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
+                                <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
+                                <a href="detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
+                                <a href="edit-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-success">Edit</a>
+                                <a href="galeri-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-info">Galeri</a>
+                                <a href="hapus-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" style="margin-top: 10px" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Apartemen ini?')">Hapus</a>
+                            </div>
                         </div>
-                    </div>
+                    <?php
+                    }
+                } else {
+                    ?>
+                    <h4 style="margin-top:20px;margin-bottom: 20px">Maaf Anda belum memiliki ruangan apartemen, silahkan tambah ruangan</h4>
                 <?php
                 }
                 ?>

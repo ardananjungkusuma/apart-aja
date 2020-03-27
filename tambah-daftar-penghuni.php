@@ -22,7 +22,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                     <form method="POST" enctype="multipart/form-data">
                         <div class="form-group">
                             <label><b>Nama Pemilik Apartemen: </b></label><br>
-                            <select name="id_user" class="form-control">
+                            <select name="id_user" class="form-control" required>
                                 <?php
                                 while ($ruangan = mysqli_fetch_array($executeGetRuangan)) {
                                     $idruangan = $ruangan['id_ruangan'];
@@ -37,7 +37,7 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                                 ?>
                             </select>
                             <label><b>Ruangan Apartemen: </b></label><br>
-                            <select name="id_ruangan" class="form-control">
+                            <select name="id_ruangan" class="form-control" required>
                                 <?php
                                 $queryGetRuangan = "SELECT * FROM ruangan_apartemen WHERE id_pengelola = $id_pengelola";
                                 $executeQueryRuangan = mysqli_query($connect, $queryGetRuangan);

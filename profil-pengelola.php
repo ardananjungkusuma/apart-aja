@@ -45,8 +45,8 @@ if ($_SESSION['status_login'] == 'pengelola_login') {
                         }
 
                         ?>
-                        <b> Gambar Identitas Anda</b> :<br>
-                        <img style="width:350px;margin:0 auto;border-radius: 20px;border:1px solid black" src="<?= $profile['gambar_identitas'] ?>" alt="Desc">
+                        <!-- <b> Gambar Identitas Anda</b> :<br>
+                        <img style="width:350px;margin:0 auto;border-radius: 20px;border:1px solid black" src="<?= $profile['gambar_identitas'] ?>" alt="Desc"> -->
 
                     </span><br>
                     <a href="edit-profil-pengelola.php" class="btn btn-info" style="margin-top: 20px;">Edit Profil</a>
