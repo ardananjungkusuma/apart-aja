@@ -32,6 +32,7 @@
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url(); ?>">HOME</a></li>
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url(); ?>ruangan">BROWSE APARTEMENT</a></li>
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="profil-user.php">PROFILE</a></li>
+									<!-- TODO Terakhir sampe search apartemen dan munculkan apartemen by id -->
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="logout.php">LOGOUT</a></li>
 								</ul>
 

@@ -12,7 +12,7 @@
 							Phone: +62(852571235)<br>
 					</div>
 					<div class="col-sm-6">
-						<p class="mbr-contacts__text"><strong>Payment Support</strong><br><img src="assets/images/logo-bca.png" style="width:50px"> <img src="assets/images/BNI_logo.svg" style="width:50px">&nbsp;
+						<p class="mbr-contacts__text"><strong>Payment Support</strong><br><img src="<?= base_url(); ?>assets/images/logo-bca.png" style="width:50px"> <img src="<?= base_url(); ?>assets/images/BNI_logo.svg" style="width:50px">&nbsp;
 					</div>
 					<div class="col-sm-6">
 						<ul class="mbr-contacts__list"></ul>
@@ -24,9 +24,7 @@
 	</div>
 </section>
 <hr>
-<span>
-	<center>&copy;<?= date('Y') ?>.Apart Aja, Inc. All Rights Reserved.</center>
-</span>
+<center>&copy;<?= date('Y') ?>.Apart Aja, Inc. All Rights Reserved.</center>
 
 
 <script src="<?= base_url(); ?>assets/web/assets/jquery/jquery.min.js"></script>

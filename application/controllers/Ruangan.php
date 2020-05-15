@@ -30,4 +30,19 @@ class Ruangan extends CI_Controller
 		$this->load->view('ruangan/index', $data);
 		$this->load->view('templates/footer');
 	}
+
+	public function detailRuangan($id)
+	{
+		$data['title'] = 'Apart Aja';
+		$data['ruangan'] = $this->ruangan_model->getDetailRuangan($id);
+		$data['gambar'] = $this->ruangan_model->getDetailGambarRuangan($id);
+		$level = $this->session->userdata('level');
+		if ($level == '1') {
+			$this->load->view('templates/header-user', $data);
+		} else {
+			$this->load->view('templates/header-guest', $data);
+		}
+		$this->load->view('ruangan/detail', $data);
+		$this->load->view('templates/footer');
+	}
 }

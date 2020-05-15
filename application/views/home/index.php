@@ -246,7 +246,7 @@
 						</div>
 					</div>
 					<div class="mbr-section__container">
-						<div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="daftar-ruangan.php">CHECK</a></div>
+						<div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="<?= base_url(); ?>ruangan">CHECK</a></div>
 					</div>
 				</div>
 
