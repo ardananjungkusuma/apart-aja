@@ -323,7 +323,7 @@ if (!empty($_SESSION['level']) == '1') {
                                                 <option value="saran">Saran</option>
                                             </select><br>
                                             <label>Pilih Apartemen yang Ingin Diberi Kritik / Saran</label><br>
-                                            <select name="id_apartemen" class="form-control">
+                                            <select name="id_apartemen" class="form-control" required>
                                                 <?php
                                                 while ($pemilik = mysqli_fetch_array($exeQueryPemilik)) {
                                                     $ruanganPemilik = $pemilik['id_ruangan'];
