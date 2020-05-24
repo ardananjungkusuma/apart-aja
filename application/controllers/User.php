@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Auth extends CI_Controller
+class User extends CI_Controller
 {
 	public function __construct()
 	{
@@ -12,77 +12,70 @@ class Auth extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata('level') == "user") {
-			redirect('user', 'refresh');
-		} elseif ($this->session->userdata('level') == "admin") {
-			redirect('admin', 'refresh');
+			redirect('home', 'refresh');
+		} else {
+			redirect('user/login', 'refresh');
 		}
-		$data['title'] = 'Login Page';
-		$this->load->view('auth/header', $data);
-		$this->load->view('auth/login');
 	}
 
 	public function login()
 	{
 		if ($this->session->userdata('level') == "user") {
-			redirect('user', 'refresh');
+			redirect('home', 'refresh');
 		} elseif ($this->session->userdata('level') == "admin") {
 			redirect('admin', 'refresh');
 		}
-		$data['title'] = 'Login Page';
-		$this->load->view('auth/header', $data);
-		$this->load->view('auth/login');
+		$data['title'] = 'Login';
+		$this->load->view('auth/user/header', $data);
+		$this->load->view('auth/user/login');
 	}
 
 	public function register()
 	{
 		if ($this->session->userdata('level') == "user") {
-			redirect('user', 'refresh');
+			redirect('home', 'refresh');
 		} elseif ($this->session->userdata('level') == "admin") {
 			redirect('admin', 'refresh');
 		}
-		$data['title'] = 'User Register';
-		$this->load->view('auth/header', $data);
-		$this->load->view('auth/register');
+		$data['title'] = 'Register';
+		$this->load->view('auth/user/header', $data);
+		$this->load->view('auth/user/register');
 	}
 
 	public function prosesLogin()
 	{
-		if ($this->session->userdata('level') == "user") {
-			redirect('user', 'refresh');
-		} elseif ($this->session->userdata('level') == "admin") {
-			redirect('admin', 'refresh');
-		}
 		$username = htmlspecialchars($this->input->post('username'));
 		$password = htmlspecialchars(MD5($this->input->post('password')));
 
-		$cekLogin = $this->auth_model->login($username, $password);
+		$cekLogin = $this->user_model->login($username, $password);
 
 		if ($cekLogin) {
 			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('level', $row->level);
-			$this->session->set_userdata('status', $row->status);
+			$this->session->set_userdata('status_user', $row->status_user);
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');
-			} elseif ($this->session->userdata('level') == "user" and $this->session->userdata('status') == "Tidak Aktif") {
+				// TODO FITUR VERIFIKASI (FIX !=)
+			} elseif ($this->session->userdata('level') != "user" and $this->session->userdata('status') == "Tidak Aktif") {
 				$this->session->sess_destroy();
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Sorry, your account isn"t activated. Please Contact Admin.
           </div>');
-				$data['title'] = 'Login Page';
+				$data['title'] = 'Login';
 				$this->load->view('auth/header', $data);
 				$this->load->view('auth/login');
-			} elseif ($this->session->userdata('level') == "user" and $this->session->userdata('status') == "Aktif") {
-				redirect('user/index');
+			} elseif ($this->session->userdata('level') == "user" and $this->session->userdata('status') != "Aktif") {
+				redirect('home');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
             Wrong Username or Password!
           </div>');
-			$data['title'] = 'Login Page';
-			$this->load->view('auth/header', $data);
-			$this->load->view('auth/login');
+			$data['title'] = 'Login';
+			$this->load->view('auth/user/header', $data);
+			$this->load->view('auth/user/login');
 		}
 	}
 
