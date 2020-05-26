@@ -3,6 +3,9 @@
 		<div class="image-holder">
 			<img src="<?= base_url() ?>assets/img/etc/registration-form-1-user.jpg" alt="">
 		</div>
+		<?=
+			form_open('user/prosesLogin');
+		?>
 		<form action="" method="POST">
 			<i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="<?= base_url() ?>" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
 			<h3>User Login</h3>
@@ -21,6 +24,9 @@
 				<i class="zmdi zmdi-arrow-right"></i>
 			</button>
 		</form>
+		<?=
+			form_close();
+		?>
 	</div>
 </div>
 </body>

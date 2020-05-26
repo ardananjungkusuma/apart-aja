@@ -19,7 +19,7 @@ class user_model extends CI_Model
 			return false;
 		}
 	}
-	// TODO FIX AUTH USER (REGISTER/LOGIN)
+	// TODO FIX AUTH USER (REGISTER)
 	function register()
 	{
 		$data = [

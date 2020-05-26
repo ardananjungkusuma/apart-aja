@@ -22,7 +22,7 @@ class Ruangan extends CI_Controller
 		}
 		$data['title'] = 'Apart Aja';
 		$level = $this->session->userdata('level');
-		if ($level == '1') {
+		if ($level == 'user' or $level == 'admin') {
 			$this->load->view('templates/header-user', $data);
 		} else {
 			$this->load->view('templates/header-guest', $data);
@@ -37,7 +37,7 @@ class Ruangan extends CI_Controller
 		$data['ruangan'] = $this->ruangan_model->getDetailRuangan($id);
 		$data['gambar'] = $this->ruangan_model->getDetailGambarRuangan($id);
 		$level = $this->session->userdata('level');
-		if ($level == '1') {
+		if ($level == 'user' or $level == 'admin') {
 			$this->load->view('templates/header-user', $data);
 		} else {
 			$this->load->view('templates/header-guest', $data);

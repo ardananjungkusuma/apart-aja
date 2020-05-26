@@ -7,9 +7,9 @@ class Home extends CI_Controller
 	{
 		$data['title'] = 'Apart Aja';
 		$level = $this->session->userdata('level');
-		if ($level == '1') {
+		if ($level == 'user') {
 			$this->load->view('templates/header-user', $data);
-		} else if ($level == '2') {
+		} else if ($level == 'admin') {
 			redirect('admin');
 		} else {
 			$this->load->view('templates/header-guest', $data);

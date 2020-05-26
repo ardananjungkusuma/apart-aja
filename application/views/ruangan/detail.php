@@ -1,5 +1,5 @@
 <div class="container" style="padding: 20px; margin: 0 auto ;margin-top:100px;">
-	<div class="row">=
+	<div class="row">
 		<div class="col-md-12" style="margin-left:70px;margin-right:70px;">
 			<?php
 			foreach ($ruangan as $ruangan) {

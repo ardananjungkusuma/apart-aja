@@ -44,7 +44,7 @@ class User extends CI_Controller
 
 	public function prosesLogin()
 	{
-		$username = htmlspecialchars($this->input->post('username'));
+		$username = htmlspecialchars($this->input->post('usernameOrEmail'));
 		$password = htmlspecialchars(MD5($this->input->post('password')));
 
 		$cekLogin = $this->user_model->login($username, $password);
@@ -54,7 +54,7 @@ class User extends CI_Controller
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('level', $row->level);
-			$this->session->set_userdata('status_user', $row->status_user);
+			// $this->session->set_userdata('status_user', $row->status_user);
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');
 				// TODO FITUR VERIFIKASI (FIX !=)
@@ -66,7 +66,7 @@ class User extends CI_Controller
 				$data['title'] = 'Login';
 				$this->load->view('auth/header', $data);
 				$this->load->view('auth/login');
-			} elseif ($this->session->userdata('level') == "user" and $this->session->userdata('status') != "Aktif") {
+			} elseif ($this->session->userdata('level') == "user") {
 				redirect('home');
 			}
 		} else {
@@ -111,6 +111,6 @@ class User extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy();
-		redirect('auth', 'refresh');
+		redirect('user/login', 'refresh');
 	}
 }
