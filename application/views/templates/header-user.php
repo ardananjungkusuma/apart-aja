@@ -32,7 +32,7 @@
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url(); ?>">HOME</a></li>
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url(); ?>ruangan">BROWSE APARTEMENT</a></li>
 									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url() ?>user/profile">PROFILE</a></li>
-									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url() ?>user/logout">LOGOUT</a></li>
+									<li class="mbr-navbar__item"><a class="mbr-buttons__link btn text-danger" href="<?= base_url() ?>auth/logout">LOGOUT</a></li>
 								</ul>
 
 							</div>
