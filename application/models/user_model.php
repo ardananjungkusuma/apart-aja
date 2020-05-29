@@ -32,4 +32,10 @@ class user_model extends CI_Model
 		];
 		$this->db->insert('user', $data);
 	}
+
+	public function getUserById($id)
+	{
+		$query = $this->db->query("SELECT * FROM user WHERE id_user = $id");
+		return $query->result_array();
+	}
 }

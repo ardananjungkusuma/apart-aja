@@ -17,13 +17,12 @@ class User extends CI_Controller
 		redirect('user/profile');
 	}
 
-	public function profile($menu)
+	public function profile()
 	{
-		$data['title'] = 'Apart Aja';
-		if ($menu == "transaksi") {
-		} elseif ($menu == "apartemen") {
-		} else {
-			$this->load->view('templates/header-user', $data);
-		}
+		$data['profile'] = $this->user_model->getUserById($this->session->userdata('id_user'));
+		$this->load->view('templates/header-user', $data);
+		$this->load->view('templates/sidebar-menu');
+		$this->load->view('user/profile', $data);
+		$this->load->view('templates/footer');
 	}
 }
