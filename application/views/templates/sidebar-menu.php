@@ -6,10 +6,10 @@
                     User Menu
                 </div>
                 <ul class="list-group list-group-flush">
-                    <a href="profil-user.php" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Profile</a>
-                    <a href="profil-user.php?menu=apartemen" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Apartemen Anda</a>
-                    <a href="profil-user.php?menu=transaksi_pembelian" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Pembelian</a>
-                    <a href="profil-user.php?menu=kritik_saran" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Kritik & Saran</a>
+                    <a href="<?= base_url() ?>user/profile" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Profile</a>
+                    <a href="<?= base_url() ?>user/apartemenAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Apartemen Anda</a>
+                    <a href="<?= base_url() ?>user/transaksiAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Pembelian</a>
+                    <a href="<?= base_url() ?>user/kritikSaranAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Kritik & Saran</a>
                 </ul>
             </div>
         </div>
