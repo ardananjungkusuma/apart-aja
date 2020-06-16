@@ -3,6 +3,7 @@
 		<div class="image-holder">
 			<img src="<?= base_url() ?>assets/img/etc/registration2-form-1-user.jpg" alt="">
 		</div>
+		<?= form_open_multipart('auth/prosesRegisterUser') ?>
 		<form role="form" enctype="multipart/form-data" method="POST">
 			<i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="<?= base_url() ?>" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
 			<h3>User Registration</h3>
@@ -31,11 +32,12 @@
 				<i class="zmdi zmdi-lock"></i>
 			</div>
 			<input type="checkbox" onclick="passwordShowUnshow()">Show/Unshow Password
-			<h4 style="margin-top: 5px;">Already have an account? <a href="login-user.php" style="text-decoration: none;color:#333">Login Here!</a></h4>
+			<h4 style="margin-top: 5px;">Already have an account? <a href="<?= base_url() ?>auth/loginUser" style="text-decoration: none;color:#333">Login Here!</a></h4>
 			<button type="register" value="register" name="register">Register
 				<i class="zmdi zmdi-arrow-right"></i>
 			</button>
 		</form>
+		<?= form_close() ?>
 	</div>
 </div>
 </body>

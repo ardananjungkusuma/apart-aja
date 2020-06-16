@@ -6,13 +6,13 @@ class Auth extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
+		$this->load->model('auth_model');
 		// $this->load->model('admin_model'); TODO Implement this soon!
 	}
 
 	public function index()
 	{
-		redirect('auth/login', 'refresh');
+		redirect('auth/loginUser', 'refresh');
 	}
 
 	public function loginUser()
@@ -44,7 +44,7 @@ class Auth extends CI_Controller
 		$username = htmlspecialchars($this->input->post('usernameOrEmail'));
 		$password = htmlspecialchars(MD5($this->input->post('password')));
 
-		$cekLogin = $this->user_model->login($username, $password);
+		$cekLogin = $this->auth_model->login($username, $password);
 
 		if ($cekLogin) {
 			foreach ($cekLogin as $row);
@@ -80,17 +80,16 @@ class Auth extends CI_Controller
 	public function prosesRegisterUser()
 	{
 		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_Kelamin', 'trim|required');
 		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[user.email]', [
 			'is_unique' => 'This email already taken'
 		]);
 		$this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[user.username]', [
 			'is_unique' => 'This username already taken'
 		]);
-		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]|matches[passwordConf]', [
-			'matches' => 'Password Doesnt Match',
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]', [
 			'min_length' => 'Password minimum 6 character'
 		]);
-		$this->form_validation->set_rules('passwordConf', 'Password', 'required|trim|min_length[6]|matches[password]');
 
 
 		if ($this->form_validation->run() == FALSE) {
