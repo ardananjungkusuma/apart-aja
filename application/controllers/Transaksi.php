@@ -11,6 +11,7 @@ class Transaksi extends CI_Controller
         }
         $this->load->model('ruangan_model');
         $this->load->model('pengelola_model');
+        $this->load->model('transaksi_model');
     }
 
     public function preview($id_ruangan)
@@ -26,9 +27,7 @@ class Transaksi extends CI_Controller
         $this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
         $this->form_validation->set_rules('id_pengelola', 'id_pengelola', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
-            $this->load->view('templates/header-user');
-            $this->load->view('ruangan/index');
-            $this->load->view('templates/footer');
+            redirect('home');
         } else {
             $data['randomNum'] = rand(1000, 9999);
             $data['detailPembayaran'] = $this->ruangan_model->getDetailRuangan($this->input->post('id_ruangan'));
@@ -36,6 +35,22 @@ class Transaksi extends CI_Controller
             $this->load->view('templates/header-user');
             $this->load->view('transaksi/checkout', $data);
             $this->load->view('templates/footer');
+        }
+    }
+
+    public function checkoutProses()
+    {
+        $this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
+        $this->form_validation->set_rules('randomNum', 'randomNum', 'trim|required');
+        $this->form_validation->set_rules('priceCode', 'priceCode', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            redirect('home');
+        } else {
+            $this->transaksi_model->tambahTransaksi();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Apartemen berhasil dibooking, silahkan bayar sebelum batas waktu
+          </div>');
+            redirect('user/transaksiAnda');
         }
     }
 }

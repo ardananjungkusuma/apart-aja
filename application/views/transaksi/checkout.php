@@ -30,11 +30,14 @@
                     }
                     ?>
                     <br>
-                    <form action="" method="">
-                        <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">
-                        <input type="hidden" name="harga" value="<?php $priceCode ?>">
+                    <?= form_open_multipart('transaksi/checkoutProses') ?>
+                    <form action="" method="POST">
+                        <input type="hidden" name="id_ruangan" value="<?= $pembayaran['id_ruangan'] ?>">
+                        <input type="hidden" name="randomNum" value="<?= $randomNum ?>">
+                        <input type="hidden" name="priceCode" value="<?= $priceCode ?>">
                         <button class="btn btn-success" type="submit" style="margin-top:10px;width:230px" name="submit">Lanjutkan Pembayaran</button>
                     </form>
+                    <?= form_close() ?>
                     <a href="<?= base_url() ?>ruangan" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembayaran</a>
                 </div>
             </div>

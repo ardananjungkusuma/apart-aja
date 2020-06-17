@@ -1,5 +1,8 @@
 <div class="card">
     <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
+        <?php if ($this->session->flashdata('message')) {
+            $this->session->flashdata('message');
+        } ?>
         Transaksi Pembelian
     </div>
     <?php
