@@ -22,11 +22,13 @@
                     Rp. <?= number_format($ruangan['harga_beli'], 0, ',', '.');; ?><br>
                     <label for=""><b>Detail Ruangan :</b></label><br>
                     <span style="white-space: pre-line"><?= $ruangan['detail_ruangan']; ?></span><br>
+                    <?= form_open_multipart('transaksi/checkout') ?>
                     <form action="" method="POST">
-                        <input type="hidden" name="id_ruangan" value="<?php $id_ruangan ?>">
-                        <input type="hidden" name="harga" value="<?php $ruangan['harga_beli'] ?>">
-                        <a href="checkout-beli.php?id_ruangan=<?= $ruangan['id_ruangan'] ?>" class="btn btn-success" type="submit" style="margin-top:10px;width:230px" name="submit">Lanjutkan Pembayaran</a>
+                        <input type="hidden" name="id_ruangan" value="<?= $ruangan['id_ruangan'] ?>">
+                        <input type="hidden" name="id_pengelola" value="<?= $ruangan['id_pengelola'] ?>">
+                        <button class="btn btn-success" type="submit" style="margin-top:10px;width:230px" name="submit">Lanjutkan Pembayaran</button>
                     </form>
+                    <?= form_close() ?>
                     <a href="<?= base_url() ?>ruangan" class="btn btn-danger" style="width: 230px;margin-top:20px">Batalkan Pembayaran</a>
                 </div>
             <?php
