@@ -14,6 +14,9 @@ class Transaksi extends CI_Controller
 
     public function preview($id_apart)
     {
-        //TODO LANJUTKAN PREVIEW
+        $data['previewapart'] = $this->ruangan_model->getDetailRuangan($id_apart);
+        $this->load->view('templates/header-user', $data);
+        $this->load->view('transaksi/preview', $data);
+        $this->load->view('templates/footer');
     }
 }
