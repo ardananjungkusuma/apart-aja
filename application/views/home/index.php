@@ -96,9 +96,9 @@
 					</div>
 					<div class="mbr-section__container mbr-section__container--middle">
 						<div class="mbr-article mbr-article--wysiwyg">
-							<p>Single Suite adalah apartemen dengan harga yang murah,cocok untuk anda yang sedang
-								mencari pekerjaan atau bagi anda para mahasiswa yang sedang belajar di suatu universitas
-								dengan haarga yang murah anda sudah bisa mendapat apartemen</p>
+							<p>Single Suite adalah apartemen dengan harga yang murah,cocok untuk anda yang single
+								atau bagi anda para mahasiswa yang sedang belajar di suatu universitas
+								dengan harga yang murah anda sudah bisa mendapat apartemen.</p>
 						</div>
 					</div>
 					<div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
@@ -121,7 +121,7 @@
 					</div>
 					<div class="mbr-section__container mbr-section__container--middle">
 						<div class="mbr-article mbr-article--wysiwyg">
-							<p>Mini Suite merupakan sebuah apartemen yang memiliki fasilitas yang lengkap, yang ditujukan untuk kalangan muda yang memiliki keluarga kecil dan pastinya kenyamanan yang terjamin,</p>
+							<p>Mini Suite merupakan sebuah apartemen yang memiliki fasilitas yang lengkap, yang ditujukan untuk kalangan muda yang memiliki keluarga kecil dan pastinya kenyamanan yang terjamin.</p>
 						</div>
 					</div>
 					<div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
@@ -144,9 +144,9 @@
 					</div>
 					<div class="mbr-section__container mbr-section__container--middle">
 						<div class="mbr-article mbr-article--wysiwyg">
-							<p>Luxury Suite ini adalah apartemen kami yang paling bagus dan kami design untuk anda para
-								pengusaha sukses yang bingung mengabiskan uang anda,di Luxury Suite anda akan mendapat
-								sebuah ruangan yang lebih besar dari pada class lainya</p>
+							<p>Luxury Suite ini adalah apartemen dengan tipe paling mewah kami design untuk anda
+								yang bingung mengabiskan uang, di Luxury Suite anda akan mendapat
+								sebuah ruangan yang lebih besar dari pada class lainya dan fasilitas yang lebih.</p>
 						</div>
 					</div>
 					<div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
@@ -304,7 +304,7 @@
 							</div>
 						</div>
 						<div class="mbr-section__container">
-							<div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="<?= base_url(); ?>ruangan">CHECK</a></div>
+							<div class="mbr-buttons mbr-buttons--auto-align btn-inverse"><a class="mbr-buttons__btn btn btn-lg btn-success" href="<?= base_url(); ?>ruangan">CHECK DAFTAR APARTEMEN</a></div>
 						</div>
 					</div>
 
