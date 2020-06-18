@@ -27,6 +27,18 @@ class Auth extends CI_Controller
 		$this->load->view('auth/user/login');
 	}
 
+	public function loginPengelola()
+	{
+		if ($this->session->userdata('level') == "pengelola") {
+			redirect('pengelola', 'refresh');
+		} elseif ($this->session->userdata('level') == "admin") {
+			redirect('admin', 'refresh');
+		}
+		$data['title'] = 'Login';
+		$this->load->view('auth/pengelola/header', $data);
+		$this->load->view('auth/pengelola/login');
+	}
+
 	public function registerUser()
 	{
 		if ($this->session->userdata('level') == "user") {
@@ -44,14 +56,13 @@ class Auth extends CI_Controller
 		$username = htmlspecialchars($this->input->post('usernameOrEmail'));
 		$password = htmlspecialchars(MD5($this->input->post('password')));
 
-		$cekLogin = $this->auth_model->login($username, $password);
+		$cekLogin = $this->auth_model->loginUser($username, $password);
 
 		if ($cekLogin) {
 			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('level', $row->level);
-			// $this->session->set_userdata('status_user', $row->status_user);
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');
 				// TODO FITUR VERIFIKASI (FIX !=)
@@ -66,6 +77,42 @@ class Auth extends CI_Controller
 			} elseif ($this->session->userdata('level') == "user") {
 
 				redirect('home');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Wrong Username or Password!
+          </div>');
+			$data['title'] = 'Login';
+			$this->load->view('auth/user/header', $data);
+			$this->load->view('auth/user/login');
+		}
+	}
+
+	public function prosesLoginPengelola()
+	{
+		$username = htmlspecialchars($this->input->post('usernameOrEmail'));
+		$password = htmlspecialchars(MD5($this->input->post('password')));
+
+		$cekLogin = $this->auth_model->loginPengelola($username, $password);
+
+		if ($cekLogin) {
+			foreach ($cekLogin as $row);
+			$this->session->set_userdata('id_pengelola', $row->id_user);
+			$this->session->set_userdata('username', $row->username);
+			$this->session->set_userdata('level', "pengelola");
+			if ($this->session->userdata('level') == "admin") {
+				redirect('admin');
+				// TODO FITUR VERIFIKASI (FIX !=)
+			} elseif ($this->session->userdata('level') != "pengelola" and $this->session->userdata('status') == "Tidak Aktif") {
+				$this->session->sess_destroy();
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Sorry, your account isn"t activated. Please Contact Admin.
+          </div>');
+				$data['title'] = 'Login';
+				$this->load->view('auth/header', $data);
+				$this->load->view('auth/login');
+			} elseif ($this->session->userdata('level') == "pengelola") {
+				redirect('pengelola');
 			}
 		} else {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
@@ -97,7 +144,7 @@ class Auth extends CI_Controller
 			$this->load->view('auth/header', $data);
 			$this->load->view('auth/register');
 		} else {
-			$this->auth_model->register();
+			$this->auth_model->registerUser();
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulations, your account has been created.
           </div>');

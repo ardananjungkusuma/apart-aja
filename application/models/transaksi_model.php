@@ -14,4 +14,10 @@ class transaksi_model extends CI_Model
 
         $this->db->query("INSERT INTO transaksi_pembelian(id_user,id_ruangan,kode_transaksi,total_harga,tanggal_transaksi) VALUES ('$id_user','$id_ruangan','$randomNum','$priceCode','$getDateNOw')");
     }
+
+    public function getTransaksiBeliApartemen($id_ruangan)
+    {
+        $query = $this->db->query("SELECT * FROM transaksi_pembelian tp JOIN user u on tp.id_user = u.id_user where id_ruangan = $id_ruangan");
+        return $query->result_array();
+    }
 }
