@@ -105,7 +105,7 @@
                         <a class="nav-link" href="profil-pengelola.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                             Profile Anda
-                        </a><a class="nav-link" href="logout.php">
+                        </a><a class="nav-link" href="<?= base_url() ?>auth/logout">
                             <div class="sb-nav-link-icon"><i class="fas fa-share-square"></i></div>
                             Logout
                         </a>
@@ -113,7 +113,7 @@
                 </div>
                 <div class="sb-sidenav-footer">
                     <div class="small">Logged in as:</div>
-                    <h6 style="color:white"><?= $_SESSION['usernameOrEmail']; ?></h6>
+                    <h6 style="color:white"><?= $this->session->userdata('username') ?></h6>
                 </div>
             </nav>
         </div>

@@ -1,7 +1,7 @@
-<div class="wrapper" style="background-image: url('assets/img/etc/bg-registration-form-1.jpg');">
+<div class="wrapper" style="background-image: url('<?= base_url() ?>assets/img/etc/bg-registration-form-1.jpg');">
     <div class="inner">
         <div class="image-holder">
-            <img src="assets/img/etc/registration-form-1-manager.jpg" alt="">
+            <img src="<?= base_url() ?>assets/img/etc/registration-form-1-manager.jpg" alt="">
         </div>
         <?= form_open('auth/prosesLoginPengelola') ?>
         <form action="" method="POST">
@@ -16,8 +16,8 @@
                 <i class="zmdi zmdi-lock"></i>
             </div>
             <input type="checkbox" onclick="passwordShowUnshow()">Show/Unshow Password
-            <h4 style="margin-top: 5px;">Don't have an account? <a href="register-pengelola.php" style="text-decoration: none;color:#333">Register Here!</a></h4>
-            <h4>Login as User? <a href="login-user.php" style="text-decoration: none;color:#333">Click Here!</a></h4>
+            <h4 style="margin-top: 5px;">Don't have an account? <a href="<?= base_url() ?>auth/registerPengelola" style="text-decoration: none;color:#333">Register Here!</a></h4>
+            <h4>Login as User? <a href="<?= base_url() ?>auth/loginUser" style="text-decoration: none;color:#333">Click Here!</a></h4>
             <button type="login" value="login" name="login">Login
                 <i class="zmdi zmdi-arrow-right"></i>
             </button>

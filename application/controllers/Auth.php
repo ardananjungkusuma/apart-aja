@@ -97,7 +97,7 @@ class Auth extends CI_Controller
 
 		if ($cekLogin) {
 			foreach ($cekLogin as $row);
-			$this->session->set_userdata('id_pengelola', $row->id_user);
+			$this->session->set_userdata('id_pengelola', $row->id_pengelola);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('level', "pengelola");
 			if ($this->session->userdata('level') == "admin") {
@@ -119,8 +119,8 @@ class Auth extends CI_Controller
             Wrong Username or Password!
           </div>');
 			$data['title'] = 'Login';
-			$this->load->view('auth/user/header', $data);
-			$this->load->view('auth/user/login');
+			$this->load->view('auth/pengelola/header', $data);
+			$this->load->view('auth/pengelola/login');
 		}
 	}
 
@@ -153,7 +153,12 @@ class Auth extends CI_Controller
 	}
 	public function logout()
 	{
-		$this->session->sess_destroy();
-		redirect('auth/loginUser', 'refresh');
+		if ($this->session->userdata('id_pengelola')) {
+			$this->session->sess_destroy();
+			redirect('auth/loginPengelola', 'refresh');
+		} else {
+			$this->session->sess_destroy();
+			redirect('auth/loginUser', 'refresh');
+		}
 	}
 }

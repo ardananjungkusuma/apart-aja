@@ -26,24 +26,6 @@ class User extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
-	public function apartemenAnda()
-	{
-		$data['apartemen'] =  $this->user_model->getApartemenById($this->session->userdata('id_user'));
-		$this->load->view('templates/header-user', $data);
-		$this->load->view('templates/sidebar-menu');
-		$this->load->view('user/apartemen-anda', $data);
-		$this->load->view('templates/footer');
-	}
-
-	public function transaksiAnda()
-	{
-		$data['transaksi'] = $this->user_model->getTransaksiById($this->session->userdata('id_user'));
-		$this->load->view('templates/header-user', $data);
-		$this->load->view('templates/sidebar-menu');
-		$this->load->view('user/transaksi-anda', $data);
-		$this->load->view('templates/footer');
-	}
-
 	public function kritikSaranAnda()
 	{
 		$data['kritiksaran'] = $this->user_model->getKritikSaranById($this->session->userdata('id_user'));
@@ -51,10 +33,5 @@ class User extends CI_Controller
 		$this->load->view('templates/sidebar-menu');
 		$this->load->view('user/kritiksaran-anda', $data);
 		$this->load->view('templates/footer');
-	}
-
-	public function detailTransaksi($id)
-	{
-		# code...
 	}
 }
