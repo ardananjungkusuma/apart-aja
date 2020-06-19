@@ -45,4 +45,16 @@ class Ruangan extends CI_Controller
 		$this->load->view('ruangan/detail', $data);
 		$this->load->view('templates/footer');
 	}
+
+	//Fitur Pengelola
+	public function listRuangan()
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$data['ruanganApartemen'] =  $this->ruangan_model->getRuanganByIdPengelola($this->session->userdata('id_pengelola'));
+		$this->load->view('templates/header-pengelola');
+		$this->load->view('pengelola/list-ruangan', $data);
+		$this->load->view('templates/footer-pengelola');
+	}
 }

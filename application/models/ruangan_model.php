@@ -46,4 +46,10 @@ class ruangan_model extends CI_Model
 		$query = $this->db->query("SELECT * FROM gambar_apartemen WHERE id_ruangan = $id");
 		return $query->result_array();
 	}
+
+	public function getRuanganByIdPengelola($id_pengelola)
+	{
+		$query = $this->db->query("SELECT * FROM ruangan_apartemen ra LEFT JOIN apartemen a ON ra.id_apartemen = a.id_apartemen WHERE ra.id_pengelola = $id_pengelola");
+		return $query->result_array();
+	}
 }

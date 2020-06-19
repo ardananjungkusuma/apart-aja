@@ -54,7 +54,7 @@
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Dashboard Menu</div>
-                        <a class="nav-link" href="transaksi-pembelian-pengelola.php">
+                        <a class="nav-link" href="<?= base_url() ?>transaksi/transaksiPembelianUser">
                             <div class="sb-nav-link-icon"><i class="fas fa-business-time"></i></div>
                             Transaksi Pembelian
                         </a>
@@ -71,8 +71,8 @@
                                     <nav class="sb-sidenav-menu-nested nav">
                                         <a class="nav-link" href="tambah-apartemen.php">Tambah Apartemen</a>
                                         <a class="nav-link" href="tambah-ruangan.php">Tambah Ruangan</a>
-                                        <a class="nav-link" href="apartemen-anda.php">Apartemen Anda</a>
-                                        <a class="nav-link" href="ruangan-apartemen-anda.php">Ruang Apartemen Anda</a>
+                                        <a class="nav-link" href="<?= base_url() ?>apartemen/listApartemen">Apartemen Anda</a>
+                                        <a class="nav-link" href="<?= base_url() ?>ruangan/listRuangan">Ruang Apartemen Anda</a>
                                     </nav>
                                 </div>
                             </nav>

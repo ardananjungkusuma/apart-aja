@@ -3,13 +3,11 @@
         <div class="col-lg-11" style="margin: 0 auto;">
             <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Apartemen Anda</h3>
             <?php
-            $queryGetAllRuanganById = "select * from apartemen where id_pengelola = '$id_username'";
-            $resultRuangan = mysqli_query($connect, $queryGetAllRuanganById);
-            if ($resultRuangan->num_rows > 0) {
-                while ($ruanganApartemen = mysqli_fetch_array($resultRuangan)) {
+            if (!empty($apartemen)) {
+                foreach ($apartemen as $ruanganApartemen) {
             ?>
                     <div class="card" onclick="location.href='detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>'" style="width: 18rem;display:inline-block">
-                        <img style="width:286px;" src="<?= $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
+                        <img style="width:286px;" src="<?= base_url() . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
                             <p class="card-text"><?= $ruanganApartemen['kota_kabupaten'] ?>-<?= $ruanganApartemen['provinsi'] ?><br>
@@ -27,7 +25,6 @@
                 <h4 style="margin-top:20px;margin-bottom: 20px">Maaf Anda belum memiliki apartemen, silahkan tambah apartemen</h4>
             <?php
             }
-
             ?>
         </div>
     </div>

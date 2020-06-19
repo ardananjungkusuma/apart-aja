@@ -39,10 +39,12 @@ class Apartemen extends CI_Controller
     // Fitur Pengelola
     public function listApartemen()
     {
-        if ($this->session->userdata('level') == "pengelola") {
-            $data['apartemen'] =  $this->apartemen_model->getApartemenByIdPengelola($this->session->userdata('id_pengelola'));
-        } else {
-            redirect('home');
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
         }
+        $data['apartemen'] =  $this->apartemen_model->getApartemenByIdPengelola($this->session->userdata('id_pengelola'));
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/list-apartemen', $data);
+        $this->load->view('templates/footer-pengelola');
     }
 }

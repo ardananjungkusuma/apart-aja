@@ -102,7 +102,6 @@ class Auth extends CI_Controller
 			$this->session->set_userdata('level', "pengelola");
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');
-				// TODO FITUR VERIFIKASI (FIX !=)
 			} elseif ($this->session->userdata('level') != "pengelola" and $this->session->userdata('status') == "Tidak Aktif") {
 				$this->session->sess_destroy();
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
