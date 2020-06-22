@@ -69,7 +69,7 @@
                                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div></a>
                                 <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-parent="#sidenavAccordionPages">
                                     <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="tambah-apartemen.php">Tambah Apartemen</a>
+                                        <a class="nav-link" href="<?= base_url() ?>apartemen/tambahApartemen">Tambah Apartemen</a>
                                         <a class="nav-link" href="tambah-ruangan.php">Tambah Ruangan</a>
                                         <a class="nav-link" href="<?= base_url() ?>apartemen/listApartemen">Apartemen Anda</a>
                                         <a class="nav-link" href="<?= base_url() ?>ruangan/listRuangan">Ruang Apartemen Anda</a>

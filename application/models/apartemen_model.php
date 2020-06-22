@@ -22,4 +22,45 @@ class apartemen_model extends CI_Model
         $query = $this->db->query("SELECT * FROM apartemen WHERE id_pengelola = $id_pengelola");
         return $query->result_array();
     }
+
+    public function tambahApartemen()
+    {
+        $uploaded_image = $_FILES['gambar']['name'];
+
+        if ($uploaded_image) {
+            $config['upload_path']          = './assets/img/gambar_apartemen/';
+            $config['allowed_types']        = 'jpg|png';
+            $newName = date('dmYHis') . $_FILES['gambar']['name'];
+            $config['file_name']         = $newName;
+            $config['max_size']             = 1024;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload('gambar')) {
+                $this->upload->data('file_name');
+            } else {
+                echo $this->upload->display_errors();
+            }
+            $data = [
+                "id_pengelola" => $this->session->userdata('id_pengelola'),
+                "nama_apartemen" => $this->input->post('nama_apartemen', true),
+                "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
+                "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
+                "provinsi" => $this->input->post('provinsi', true),
+                "gambar_apartemen" => $newName,
+                "maps_link" => $this->input->post('maps_link', true)
+            ];
+        } else {
+            $data = [
+                "id_pengelola" => $this->session->userdata('id_pengelola'),
+                "nama_apartemen" => $this->input->post('nama_apartemen', true),
+                "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
+                "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
+                "provinsi" => $this->input->post('provinsi', true),
+                "gambar_apartemen" => "test.jpg",
+                "maps_link" => $this->input->post('maps_link', true)
+            ];
+        }
+        $this->db->insert('apartemen', $data);
+    }
 }

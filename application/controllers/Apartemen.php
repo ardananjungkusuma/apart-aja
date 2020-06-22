@@ -47,4 +47,35 @@ class Apartemen extends CI_Controller
         $this->load->view('pengelola/list-apartemen', $data);
         $this->load->view('templates/footer-pengelola');
     }
+
+    public function tambahApartemen()
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
+        }
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/tambah-apartemen');
+        $this->load->view('templates/footer-pengelola');
+    }
+
+    public function prosesTambahApartemen()
+    {
+        $this->form_validation->set_rules('nama_apartemen', 'nama_apartemen', 'trim|required');
+        $this->form_validation->set_rules('alamat_apartemen', 'alamat_apartemen', 'trim|required');
+        $this->form_validation->set_rules('kota_kabupaten', 'kota_kabupaten', 'trim|required');
+        $this->form_validation->set_rules('provinsi', 'provinsi', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            if ($this->session->userdata('level') != "pengelola") {
+                redirect('auth/loginPengelola');
+            }
+            $this->load->view('templates/header-pengelola');
+            $this->load->view('pengelola/tambah-apartemen');
+            $this->load->view('templates/footer-pengelola');
+        } else {
+            $this->apartemen_model->tambahApartemen();
+            $this->session->set_flashdata('message', 'Ditambahkan');
+            redirect('apartemen/listApartemen');
+        }
+    }
 }

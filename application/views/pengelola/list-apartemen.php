@@ -7,7 +7,7 @@
                 foreach ($apartemen as $ruanganApartemen) {
             ?>
                     <div class="card" onclick="location.href='detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>'" style="width: 18rem;display:inline-block">
-                        <img style="width:286px;" src="<?= base_url() . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
+                        <img style="width:286px;" src="<?= base_url() . "assets/img/gambar_apartemen/" . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
                             <p class="card-text"><?= $ruanganApartemen['kota_kabupaten'] ?>-<?= $ruanganApartemen['provinsi'] ?><br>
