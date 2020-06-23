@@ -6,19 +6,19 @@
             if (!empty($apartemen)) {
                 foreach ($apartemen as $ruanganApartemen) {
             ?>
-                    <div class="card" onclick="location.href='detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>'" style="width: 18rem;display:inline-block">
+                    <div class="card" onclick=" location.href='<?= base_url() ?>apartemen/detailApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>'" style=" width: 18rem;display:inline-block;cursor: pointer;">
+                        <!-- TODO IMAGE OBJECT FIT CROPPED -->
                         <img style="width:286px;" src="<?= base_url() . "assets/img/gambar_apartemen/" . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
                             <p class="card-text"><?= $ruanganApartemen['kota_kabupaten'] ?>-<?= $ruanganApartemen['provinsi'] ?><br>
-                                <a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-primary">Detail</a>
-                                <a href="edit-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-success">Edit</a>
-                                <a href="hapus-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Apartemen ini?')">Hapus</a>
+                                <a href="<?= base_url() ?>apartemen/detailApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-primary">Detail</a>
+                                <a href="<?= base_url() ?>apartemen/editApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-success">Edit</a>
+                                <a href="<?= base_url() ?>apartemen/hapusApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>" style="margin-top: 10px" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Apartemen ini?')">Hapus</a>
                             </p>
                         </div>
                     </div>
                 <?php
-
                 }
             } else {
                 ?>

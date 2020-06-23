@@ -11,7 +11,6 @@ class Apartemen extends CI_Controller
         $this->load->model('ruangan_model');
     }
 
-
     public function detailApartemen($id)
     {
         $data['apart'] = $this->apartemen_model->getAllApartemenById($id);
@@ -37,6 +36,59 @@ class Apartemen extends CI_Controller
     }
 
     // Fitur Pengelola
+    public function detailApartemenAnda($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
+        }
+        $data['apartemendetail'] = $this->apartemen_model->getAllApartemenPengelolaById($id);
+        $data['ruanganapartemen'] = $this->ruangan_model->getAllRuanganByIdApartemen($id);
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/detail-apartemen', $data);
+        $this->load->view('templates/footer-pengelola');
+    }
+
+    public function editApartemenAnda($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
+        }
+        $data['apartemenDetail'] = $this->apartemen_model->getAllApartemenPengelolaById($id);
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/edit-apartemen', $data);
+        $this->load->view('templates/footer-pengelola');
+    }
+
+    public function prosesEditApartemenAnda()
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
+        }
+        $this->form_validation->set_rules('nama_apartemen', 'nama_apartemen', 'trim|required');
+        $this->form_validation->set_rules('alamat_apartemen', 'alamat_apartemen', 'trim|required');
+        $this->form_validation->set_rules('kota_kabupaten', 'kota_kabupaten', 'trim|required');
+        $this->form_validation->set_rules('provinsi', 'provinsi', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/header-pengelola');
+            $this->load->view('pengelola/list-apartemen');
+            $this->load->view('templates/footer-pengelola');
+        } else {
+            $this->apartemen_model->editApartemen();
+            $this->session->set_flashdata('message', 'Ditambahkan');
+            redirect('apartemen/listApartemen');
+        }
+    }
+
+    public function hapusApartemenAnda($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola');
+        }
+        $this->apartemen_model->hapusApartemen($id);
+        redirect('apartemen/listApartemen');
+    }
+
     public function listApartemen()
     {
         if ($this->session->userdata('level') != "pengelola") {

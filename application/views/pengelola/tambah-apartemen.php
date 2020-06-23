@@ -31,7 +31,7 @@
                         <input type="text" id="maps_link" name="maps_link" class="form-control mb-2" placeholder="https://goo.gl/maps/oY8TDJzL5JcQvgu17">
                         <small>*Tidak Wajib Diisi</small>
                     </div>
-                    <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Ruangan Apartemen</button><br><br>
+                    <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Apartemen</button><br><br>
                 </form>
                 <?= form_close() ?>
             </div>
