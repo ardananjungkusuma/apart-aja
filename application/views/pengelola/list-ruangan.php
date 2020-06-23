@@ -7,9 +7,9 @@
                 foreach ($ruanganApartemen as $ruanganApartemen) {
             ?>
                     <div class="card" onclick="location.href='detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
-                        <img style="width:287px;height:180px" src="<?= base_url() . $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
+                        <img style="width:287px;height:180px" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
                         <div class="card-body">
-                            <h5 class="card-title"><?= $ruanganApartemen['nama'] ?> Room</h5>
+                            <h5 class="card-title"><?= $ruanganApartemen['nama_ruangan'] ?> Room</h5>
                             <p class="card-text"><a href="detail-apartemen-anda.php?id_apartemen=<?= $ruanganApartemen['id_apartemen'] ?>"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a><br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
                             <a href="detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
                             <a href="edit-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-success">Edit</a>

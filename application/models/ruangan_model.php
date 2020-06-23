@@ -52,4 +52,46 @@ class ruangan_model extends CI_Model
 		$query = $this->db->query("SELECT * FROM ruangan_apartemen ra LEFT JOIN apartemen a ON ra.id_apartemen = a.id_apartemen WHERE ra.id_pengelola = $id_pengelola");
 		return $query->result_array();
 	}
+
+	public function tambahRuangan()
+	{
+		$uploaded_image = $_FILES['gambar_utama']['name'];
+
+		if ($uploaded_image) {
+			$config['upload_path']          = './assets/img/gambar_ruangan/';
+			$config['allowed_types']        = 'jpg|png';
+			$newName = date('dmYHis') . $_FILES['gambar_utama']['name'];
+			$config['file_name']         = $newName;
+			$config['max_size']             = 1024;
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('gambar_utama')) {
+				$this->upload->data('file_name');
+			} else {
+				echo $this->upload->display_errors();
+			}
+			$data = [
+				"id_pengelola" => $this->session->userdata('id_pengelola'),
+				"id_apartemen" => $this->input->post('id_apartemen', true),
+				"nama_ruangan" => $this->input->post('nama_ruangan', true),
+				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+				"harga_beli" => $this->input->post('harga_beli', true),
+				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
+				"detail_ruangan" => $this->input->post('detail_ruangan', true),
+				"gambar_utama" => $newName
+			];
+		} else {
+			$data = [
+				"id_pengelola" => $this->session->userdata('id_pengelola'),
+				"id_apartemen" => $this->input->post('id_apartemen', true),
+				"nama_ruangan" => $this->input->post('nama_ruangan', true),
+				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+				"harga_beli" => $this->input->post('harga_beli', true),
+				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
+				"detail_ruangan" => $this->input->post('detail_ruangan', true)
+			];
+		}
+		$this->db->insert('ruangan_apartemen', $data);
+	}
 }
