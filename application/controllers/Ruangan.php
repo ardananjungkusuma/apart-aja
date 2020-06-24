@@ -8,6 +8,7 @@ class Ruangan extends CI_Controller
 		parent::__construct();
 		$this->load->model('ruangan_model');
 		$this->load->model('apartemen_model');
+		$this->load->model('gambarruangan_model');
 	}
 
 	public function index()
@@ -89,5 +90,65 @@ class Ruangan extends CI_Controller
 			$this->session->set_flashdata('message', 'Ditambahkan');
 			redirect('ruangan/listRuangan');
 		}
+	}
+
+	public function detailRuanganAnda($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$data['ruanganApartemen'] =  $this->ruangan_model->getDetailRuangan($id);
+		$data['gambarRuangan'] =  $this->gambarruangan_model->getGambarByRuangan($id);
+		$this->load->view('templates/header-pengelola');
+		$this->load->view('pengelola/detail-ruangan', $data);
+		$this->load->view('templates/footer-pengelola');
+	}
+
+	public function tambahGambarRuangan($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$data['ruanganApartemen'] =  $this->ruangan_model->getDetailRuangan($id);
+		$this->load->view('templates/header-pengelola');
+		$this->load->view('pengelola/tambah-gambar-interior', $data);
+		$this->load->view('templates/footer-pengelola');
+	}
+
+	public function prosesTambahGambarRuangan()
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola');
+		}
+		$this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
+		$this->form_validation->set_rules('deskripsi', 'deskripsi', 'trim|required');
+		if ($this->form_validation->run() == FALSE) {
+			redirect('ruangan/listRuangan');
+		} else {
+			$this->gambarruangan_model->tambahGambarRuangan();
+			$this->session->set_flashdata('message', 'Ditambahkan');
+			redirect('ruangan/galeriGambarRuangan/' . $this->input->post('id_ruangan'));
+		}
+	}
+
+	public function galeriGambarRuangan($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$data['ruanganApartemen'] =  $this->ruangan_model->getDetailRuangan($id);
+		$data['gambarInterior'] =  $this->gambarruangan_model->getGambarByRuangan($id);
+		$this->load->view('templates/header-pengelola');
+		$this->load->view('pengelola/gambar-interior', $data);
+		$this->load->view('templates/footer-pengelola');
+	}
+
+	public function hapusGambarRuangan($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$this->gambarruangan_model->hapusGambarRuangan($id);
+		redirect('ruangan/listRuangan');
 	}
 }

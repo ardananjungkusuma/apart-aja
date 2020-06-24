@@ -6,7 +6,7 @@
             if (!empty($ruanganApartemen)) {
                 foreach ($ruanganApartemen as $ruanganApartemen) {
             ?>
-                    <div class="card" onclick="location.href='detail-ruang-apartemen-anda.php?id_ruangan=<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block">
+                    <div class="card" onclick="location.href='<?= base_url() ?>ruangan/detailRuanganAnda/<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 18rem;display:inline-block;cursor: pointer">
                         <img style="width:287px;height:180px" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_ruangan'] ?> Room</h5>
