@@ -4,11 +4,11 @@
 			<?php
 			foreach ($ruangan as $ruangan) {
 			?>
-				<span style="margin-top:20px;margin-bottom: 20px;font-size: 30px"><?= $ruangan['nama'] ?> Room</span>
+				<span style="margin-top:20px;margin-bottom: 20px;font-size: 30px"><?= $ruangan['nama_ruangan'] ?> Room</span>
 				<div class="card-body" style="font-size: 18px">
 					<hr>
 					<center>
-						<img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= base_url(); ?><?= $ruangan['gambar_utama'] ?>" alt="Desc">
+						<img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= base_url(); ?>assets/img/gambar_ruangan/<?= $ruangan['gambar_utama'] ?>" alt="Desc">
 					</center>
 					<label for=""><b>Apartemen : </b></label>
 					<a href="<?= base_url() ?>apartemen/detailApartemen/<?= $ruangan['id_apartemen'] ?>" style="text-decoration: none;"><?= $ruangan['nama_apartemen']; ?> Apartement</a><br>
@@ -38,7 +38,7 @@
 			<div class="col-md-8" style="margin-left:150px">
 				<?php foreach ($gambar as $gambarApartemen) { ?>
 					<figure style="display: inline-block;margin-top:10px;margin-left:3px;margin-right:3px;">
-						<img class="card-img-top" style="width: 300px;border-radius: 10px" src="<?= base_url(); ?><?= $gambarApartemen['gambar'] ?>" alt="<?= $gambarApartemen['deskripsi_singkat'] ?>">
+						<img class="card-img-top" style="width: 300px;border-radius: 10px" src="<?= base_url(); ?>assets/img/gambar_ruangan/<?= $gambarApartemen['gambar'] ?>" alt="<?= $gambarApartemen['deskripsi_singkat'] ?>">
 						<figcaption style="text-align: center">Gambar <?= $gambarApartemen['deskripsi_singkat'] ?></figcaption>
 					</figure>
 				<?php } ?>

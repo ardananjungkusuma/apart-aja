@@ -12,11 +12,11 @@
 			<?php
 			foreach ($ruangan as $ruanganApartemen) {
 			?>
-				<div class="card" onclick="location.href='<?= base_url() ?>ruangan/detailRuangan/<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 287px;display:inline-block;margin-left:5px;margin-right: 5px;margin-top: 15px;">
+				<div class="card" onclick="location.href='<?= base_url() ?>ruangan/detailRuangan/<?= $ruanganApartemen['id_ruangan'] ?>'" style="width: 287px;display:inline-block;margin-left:5px;margin-right: 5px;margin-top: 15px;cursor:pointer">
 					<a href="<?= base_url() ?>ruangan/detailRuangan/<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none; color:black">
-						<img style="width:287px;height:180px" src="<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
+						<img style="width:287px;height:180px" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $ruanganApartemen['gambar_utama'] ?>" alt="Card image cap">
 						<div class="card-body">
-							<h5 class="card-title" style="font-size: 20px;"><?= $ruanganApartemen['nama'] ?> Room</h5>
+							<h5 class="card-title" style="font-size: 20px;"><?= $ruanganApartemen['nama_ruangan'] ?> Room</h5>
 					</a>
 					<p class="card-text" style="font-size: 15px">&diams; <a href="<?= base_url() ?>ruangan/detailRuangan/<?= $ruanganApartemen['id_ruangan'] ?>" style="text-decoration: none;color:black"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</a> &diams;<br>Tipe <?= $ruanganApartemen['jenis_ruangan'] ?><br>Rp. <?= number_format($ruanganApartemen['harga_beli'], 0, ',', '.');; ?></p>
 					<a href="<?= base_url() ?>ruangan/detailRuangan/<?= $ruanganApartemen['id_ruangan'] ?>" class="btn btn-primary">Detail</a>
