@@ -94,4 +94,22 @@ class ruangan_model extends CI_Model
 		}
 		$this->db->insert('ruangan_apartemen', $data);
 	}
+
+	public function hapusRuangan($id)
+	{
+		$path = "assets/img/gambar_ruangan/";
+		$getDataGambarUtama = $this->db->query("SELECT * FROM ruangan_apartemen WHERE id_ruangan = $id");
+		$getDataGambar = $this->db->query("SELECT * FROM gambar_apartemen WHERE id_ruangan = $id");
+		foreach ($getDataGambar->result_array() as $gambar) {
+			$namaFile = $gambar['gambar'];
+			unlink($path . $namaFile);
+		}
+		foreach ($getDataGambarUtama->result_array() as $gambarUtama) {
+			$fileGambar = $gambarUtama['gambar_utama'];
+			unlink($path . $fileGambar);
+		}
+		//hapus gambar
+		$this->db->where('id_ruangan', $id);
+		$this->db->delete('ruangan_apartemen');
+	}
 }

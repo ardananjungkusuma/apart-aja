@@ -8,6 +8,18 @@
                 <h3 style="margin-top:20px;margin-bottom: 20px">Galeri <?= $apartemen['nama_ruangan'] ?> Room</h3>
                 <a href="<?= base_url() ?>ruangan/tambahGambarRuangan/<?= $apartemen['id_ruangan'] ?>" class="btn btn-success">Tambah Gambar</a>
                 <a href="<?= base_url() ?>ruangan/listRuangan" class="btn btn-primary">Kembali</a>
+            <?php
+            }
+            if ($this->session->flashdata('message')) { ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    Data telah <strong><?= $this->session->flashdata('message') ?></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php }
+            if (!empty($gambarInterior)) {
+            ?>
                 <table class="table table-striped" style="margin-top: 10px">
                     <thead>
                         <tr>
@@ -17,21 +29,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <?php
-                }
-                foreach ($gambarInterior as $gambar) {
-                    ?>
-                        <tr>
-                            <td><?= $gambar['deskripsi_singkat'] ?></td>
-                            <td><img style="width: 300px" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $gambar['gambar'] ?>"></td>
-                            <td><a href="<?= base_url() ?>ruangan/hapusGambarRuangan/<?= $gambar['id_gambar'] ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Gambar ini?')">Hapus Gambar</a></td>
-                        </tr>
-                    <?php
-                }
-                    ?>
+                        <?php
+                        foreach ($gambarInterior as $gambar) {
+                        ?>
+                            <tr>
+                                <td><?= $gambar['deskripsi_singkat'] ?></td>
+                                <td><img style="width: 300px" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $gambar['gambar'] ?>"></td>
+                                <td><a href="<?= base_url() ?>ruangan/hapusGambarRuangan/<?= $gambar['id_gambar'] ?>" class="btn btn-danger" onclick="return confirm('Apakah anda yakin menghapus Gambar ini?')">Hapus Gambar</a></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </tbody>
                 </table>
-                <br><br>
+            <?php
+            } else {
+            ?>
+                <br>
+                <br>
+                <h3>Silahkan tambahkan gambar interior ruangan.</h3>
+            <?php
+            }
+            ?>
+
+            <br><br>
         </div>
     </div>
 </div>

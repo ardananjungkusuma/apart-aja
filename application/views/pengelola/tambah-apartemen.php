@@ -24,7 +24,7 @@
                         <div class="file-field">
                             <div class="btn btn-primary btn-sm float-left">
                                 <span>Choose Image</span>
-                                <input type="file" name="gambar" id="gambar">
+                                <input type="file" name="gambar" id="gambar" required>
                             </div>
                         </div>
                         <label style="margin-top: 15px">Link Google Maps</label><br>

@@ -52,8 +52,7 @@
                             <?php
                             }
                             ?>
-                            <br><br>
-                            <a href="ruangan-apartemen-anda.php" class="btn btn-primary">Kembali</a>
+                            <a href="<?= base_url() ?>ruangan/listRuangan" class="btn btn-primary">Kembali</a>
                         </div>
 
                     <?php

@@ -104,6 +104,15 @@ class Ruangan extends CI_Controller
 		$this->load->view('templates/footer-pengelola');
 	}
 
+	public function hapusRuanganAnda($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$this->ruangan_model->hapusRuangan($id);
+		redirect('ruangan/listRuangan');
+	}
+
 	public function tambahGambarRuangan($id)
 	{
 		if ($this->session->userdata('level') != "pengelola") {

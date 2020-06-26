@@ -10,12 +10,12 @@
             }
                 ?>
                 <label for="nama">Deskripsi Singkat Gambar :</label>
-                <input type="text" class="form-control" name="deskripsi" placeholder="Gambar Toilet"><br>
+                <input type="text" class="form-control" name="deskripsi" placeholder="Kamar Mandi"><br>
                 <label for="nama">Gambar</label><br>
                 <div class="file-field">
                     <div class="btn btn-primary btn-sm float-left">
                         <span>Choose Image</span>
-                        <input type="file" name="gambar" id="gambar">
+                        <input type="file" name="gambar" id="gambar" required>
                     </div>
                 </div><br><br>
                 <button class="btn btn-success" type="submit" name="submit">Tambah Gambar Interior</button>

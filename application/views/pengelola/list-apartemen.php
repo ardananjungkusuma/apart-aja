@@ -8,7 +8,7 @@
             ?>
                     <div class="card" onclick=" location.href='<?= base_url() ?>apartemen/detailApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>'" style=" width: 18rem;display:inline-block;cursor: pointer;">
                         <!-- TODO IMAGE OBJECT FIT CROPPED -->
-                        <img style="width:286px;" src="<?= base_url() . "assets/img/gambar_apartemen/" . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
+                        <img style="width:285px;height: 270px;object-fit: cover;" src="<?= base_url() . "assets/img/gambar_apartemen/" . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">
                             <h5 class="card-title"><?= $ruanganApartemen['nama_apartemen'] ?> Apartement</h5>
                             <p class="card-text"><?= $ruanganApartemen['kota_kabupaten'] ?>-<?= $ruanganApartemen['provinsi'] ?><br>

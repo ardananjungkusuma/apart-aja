@@ -129,14 +129,23 @@ class apartemen_model extends CI_Model
         // Pengecekan Pengelola Sebelum Menghapus
         $getCheckPengelola = $this->db->query("SELECT * FROM apartemen WHERE id_apartemen = $id AND id_pengelola = $id_pengelola");
         if (!empty($getCheckPengelola->result_array())) {
-            $path = "assets/img/gambar_apartemen/";
+            $pathRuangan = "assets/img/gambar_ruangan/";
             $getDataGambar = $this->db->query("SELECT * FROM apartemen WHERE id_apartemen = $id");
+            $getDataRuangan = $this->db->query("SELECT * FROM ruangan_apartemen WHERE id_apartemen = $id");
+            $path = "assets/img/gambar_apartemen/";
             foreach ($getDataGambar->result_array() as $gambar) {
-                $namaFile = $gambar['gambar_apartemen'];
+                $namaFileApart = $gambar['gambar_apartemen'];
+                unlink($path . $namaFileApart);
             }
-            if ($namaFile != "no_img.jpg") {
-                //hapus gambar
-                unlink($path . $namaFile);
+            foreach ($getDataRuangan->result_array() as $ruangan) {
+                $namaFile = $ruangan['gambar_utama'];
+                unlink($pathRuangan . $namaFile);
+                $id_ruangan = $ruangan['id_ruangan'];
+                $getDataGambar = $this->db->query("SELECT * FROM gambar_apartemen WHERE id_ruangan = $id_ruangan");
+                foreach ($getDataGambar->result_array() as $gambar) {
+                    $namaFileRuangan = $gambar['gambar'];
+                    unlink($pathRuangan . $namaFileRuangan);
+                }
             }
 
             $this->db->where('id_apartemen', $id);
