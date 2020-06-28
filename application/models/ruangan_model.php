@@ -95,6 +95,58 @@ class ruangan_model extends CI_Model
 		$this->db->insert('ruangan_apartemen', $data);
 	}
 
+	public function editRuangan()
+	{
+		$id = $this->input->post('id_ruangan');
+		$uploaded_image = $_FILES['gambar']['name'];
+
+		if ($uploaded_image) {
+			$path = "assets/img/gambar_ruangan/";
+			$getDataGambar = $this->db->query("SELECT * FROM ruangan_apartemen WHERE id_ruangan = $id");
+			foreach ($getDataGambar->result_array() as $gambar) {
+				$namaFile = $gambar['gambar_utama'];
+			}
+			if ($namaFile != "no_img.jpg") {
+				//hapus gambar
+				unlink($path . $namaFile);
+			}
+
+			$config['upload_path']          = './assets/img/gambar_ruangan/';
+			$config['allowed_types']        = 'jpg|png';
+			$newName = date('dmYHis') . $_FILES['gambar']['name'];
+			$config['file_name']         = $newName;
+			$config['max_size']             = 1024;
+
+			$this->load->library('upload', $config);
+
+			if ($this->upload->do_upload('gambar')) {
+				$this->upload->data('file_name');
+			} else {
+				echo $this->upload->display_errors();
+			}
+			$data = [
+				"id_pengelola" => $this->session->userdata('id_pengelola'),
+				"nama_ruangan" => $this->input->post('nama_ruangan', true),
+				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+				"harga_beli" => $this->input->post('harga_beli', true),
+				"detail_ruangan" => $this->input->post('detail_ruangan', true),
+				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
+				"gambar_utama" => $newName
+			];
+		} else {
+			$data = [
+				"id_pengelola" => $this->session->userdata('id_pengelola'),
+				"nama_ruangan" => $this->input->post('nama_ruangan', true),
+				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+				"harga_beli" => $this->input->post('harga_beli', true),
+				"detail_ruangan" => $this->input->post('detail_ruangan', true),
+				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true)
+			];
+		}
+		$this->db->where('id_ruangan', $id);
+		$this->db->update('ruangan_apartemen', $data);
+	}
+
 	public function hapusRuangan($id)
 	{
 		$path = "assets/img/gambar_ruangan/";

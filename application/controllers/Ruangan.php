@@ -140,6 +140,38 @@ class Ruangan extends CI_Controller
 		}
 	}
 
+	public function editRuangan($id)
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola', 'refresh');
+		}
+		$data['ruanganApartemen'] =  $this->ruangan_model->getDetailRuangan($id);
+		$this->load->view('templates/header-pengelola');
+		$this->load->view('pengelola/edit-ruangan', $data);
+		$this->load->view('templates/footer-pengelola');
+	}
+
+	public function prosesEditRuangan()
+	{
+		if ($this->session->userdata('level') != "pengelola") {
+			redirect('auth/loginPengelola');
+		}
+		$this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
+		$this->form_validation->set_rules('nama_ruangan', 'nama_ruangan', 'trim|required');
+		$this->form_validation->set_rules('jenis_ruangan', 'jenis_ruangan', 'trim|required');
+		$this->form_validation->set_rules('harga_beli', 'harga_beli', 'trim|required');
+		$this->form_validation->set_rules('sisa_ruang_apartemen', 'sisa_ruang_apartemen', 'trim|required');
+		$this->form_validation->set_rules('detail_ruangan', 'detail_ruangan', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			redirect('ruangan/listRuangan');
+		} else {
+			$this->ruangan_model->editRuangan();
+			$this->session->set_flashdata('message', 'Diedit');
+			redirect('ruangan/listRuangan');
+		}
+	}
+
 	public function galeriGambarRuangan($id)
 	{
 		if ($this->session->userdata('level') != "pengelola") {
