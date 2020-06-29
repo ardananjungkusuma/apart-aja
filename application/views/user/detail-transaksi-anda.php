@@ -43,21 +43,21 @@
                 <?php
                 if ($transaksi['gambar_bukti_transfer'] == "None") {
                 ?>
-                    <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;font-weight:bold">Klik Disini untuk Upload Gambar Bukti Transfer</a>
+                    <a href="<?= base_url() ?>transaksi/uploadBuktiTransfer/<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;font-weight:bold">Klik Disini untuk Upload Gambar Bukti Transfer</a>
                 <?php
                 } elseif ($transaksi['status_pemesanan'] == "Verifikasi Ditolak") {
                 ?>
-                    <img src="<?= $transaksi['gambar_bukti_transfer'] ?>" style="height: 300px"><br>
-                    <a href="profil-user.php?menu=upload_bukti_transfer&id_transaksi_pembelian=<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;">Reupload Gambar</a>
+                    <img src="<?= base_url() ?>assets/img/bukti_pembayaran/<?= $transaksi['gambar_bukti_transfer'] ?>" style="height: 300px"><br>
+                    <a href="<?= base_url() ?>transaksi/uploadBuktiTransfer/<?= $transaksi['id_transaksi_pembelian'] ?>" style="text-decoration: none;">Reupload Gambar</a>
                 <?php
                 } else {
                 ?>
-                    <img src="<?= $transaksi['gambar_bukti_transfer'] ?>" style="height: 300px"><br>
+                    <img src="<?= base_url() ?>assets/img/bukti_pembayaran/<?= $transaksi['gambar_bukti_transfer'] ?>" style="height: 300px"><br>
                 <?php
                 }
                 ?>
             </div>
-            <a href="profil-user.php?menu=transaksi_pembelian" class="btn btn-primary" style="height:40px;margin-top:20px;margin-right:30px;">Back to Profile</a>
+            <a href="<?= base_url() ?>transaksi/transaksiAnda" class="btn btn-primary" style="height:40px;margin-top:20px;margin-right:30px;">Back to Profile</a>
             <input type="button" style="margin-top:20px" class="btn btn-info" onclick="printDiv('cetakLaporan')" value="Cetak Laporan" />
             <script>
                 function printDiv(divName) {

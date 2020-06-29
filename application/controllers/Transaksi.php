@@ -89,6 +89,32 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    public function uploadBuktiTransfer($id)
+    {
+        if ($this->session->userdata('level') != "user") {
+            redirect('auth/loginUser', 'refresh');
+        }
+        $data['transaksi'] = $this->transaksi_model->getDetailTransaksiById($id);
+        $this->load->view('templates/header-user');
+        $this->load->view('templates/sidebar-menu');
+        $this->load->view('user/upload-bukti-bayar', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function prosesUploadBuktiTransfer()
+    {
+        if ($this->session->userdata('level') != "user") {
+            redirect('auth/loginUser', 'refresh');
+        }
+        $this->form_validation->set_rules('id_transaksi', 'id_transaksi', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            redirect('transaksi/transaksiAnda');
+        } else {
+            $this->transaksi_model->tambahBuktiTransfer();
+            $this->session->set_flashdata('message', 'Ditambahkan');
+            redirect('transaksi/transaksiAnda');
+        }
+    }
     // FITUR Pengelola
     public function transaksiPembelianUser()
     {

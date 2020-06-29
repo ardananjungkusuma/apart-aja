@@ -1,10 +1,16 @@
 <div class="card">
     <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
-        <?php if ($this->session->flashdata('message')) {
-            $this->session->flashdata('message');
-        } ?>
         Transaksi Pembelian
     </div>
+    <?php if ($this->session->flashdata('message')) { ?>
+        <div class="alert alert-info alert-dismissible fade show" role="alert">
+            Data telah <strong><?= $this->session->flashdata('message') ?></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php
+    } ?>
     <?php
     if (!empty($transaksi)) {
     ?>
