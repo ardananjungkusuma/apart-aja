@@ -8,10 +8,10 @@
                 <hr>
                 <div class="card-body" style="font-size: 18px">
                     <center>
-                        <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= base_url() . $ruangan['gambar_utama'] ?>" alt="Desc">
+                        <img style="width:450px;margin-bottom: 15px;border-radius: 20px;border:1px solid black" src="<?= base_url() ?>assets/img/gambar_ruangan/<?= $ruangan['gambar_utama'] ?>" alt="Desc">
                     </center>
                     <label for=""><b>Nama Ruangan : </b></label>
-                    <?= $ruangan['nama']; ?><br>
+                    <?= $ruangan['nama_ruangan']; ?><br>
                     <label for=""><b>Apartemen : </b></label>
                     <?= $ruangan['nama_apartemen']; ?><br>
                     <label for=""><b>Lokasi Apartemen : </b></label>

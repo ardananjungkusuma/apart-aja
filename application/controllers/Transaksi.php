@@ -10,6 +10,7 @@ class Transaksi extends CI_Controller
         $this->load->model('pengelola_model');
         $this->load->model('user_model');
         $this->load->model('transaksi_model');
+        $this->load->model('rekening_model');
     }
 
     //Fitur User
@@ -50,6 +51,7 @@ class Transaksi extends CI_Controller
         }
         $this->form_validation->set_rules('id_ruangan', 'id_ruangan', 'trim|required');
         $this->form_validation->set_rules('randomNum', 'randomNum', 'trim|required');
+        $this->form_validation->set_rules('id_pengelola', 'id_pengelola', 'trim|required');
         $this->form_validation->set_rules('priceCode', 'priceCode', 'trim|required');
         if ($this->form_validation->run() == FALSE) {
             redirect('home');
@@ -58,7 +60,7 @@ class Transaksi extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Apartemen berhasil dibooking, silahkan bayar sebelum batas waktu
           </div>');
-            redirect('user/transaksiAnda');
+            redirect('transaksi/transaksiAnda');
         }
     }
 
@@ -74,9 +76,17 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function detailTransaksiAnda($id)
+    public function detailTransaksiAnda()
     {
-        # code...
+        if ($this->session->userdata('level') != "user") {
+            redirect('auth/loginUser', 'refresh');
+        }
+        $data['transaksi'] = $this->transaksi_model->getDetailTransaksiById($this->input->post('id_transaksi'));
+        $data['rekening'] = $this->rekening_model->getRekeningByIdPengelola($this->input->post('id_pengelola'));
+        $this->load->view('templates/header-user');
+        $this->load->view('templates/sidebar-menu');
+        $this->load->view('user/detail-transaksi-anda', $data);
+        $this->load->view('templates/footer');
     }
 
     // FITUR Pengelola

@@ -13,7 +13,6 @@ class Pengelola extends CI_Controller
 
     public function index()
     {
-        //TODO Lanjutkan crud ruangan.
         redirect('transaksi/transaksiPembelianUser');
     }
 }

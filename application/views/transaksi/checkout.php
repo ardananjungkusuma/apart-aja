@@ -27,11 +27,13 @@
                         <?= $no ?>. <?= $rek['no_rek']; ?> - <?= $rek['nama_bank']; ?> - <?= $rek['nama_pemilik']; ?><br>
                     <?php
                         $no++;
+                        $idPengelola = $rek['id_pengelola'];
                     }
                     ?>
                     <br>
                     <?= form_open_multipart('transaksi/checkoutProses') ?>
                     <form action="" method="POST">
+                        <input type="hidden" name="id_pengelola" value="<?= $idPengelola ?>">
                         <input type="hidden" name="id_ruangan" value="<?= $pembayaran['id_ruangan'] ?>">
                         <input type="hidden" name="randomNum" value="<?= $randomNum ?>">
                         <input type="hidden" name="priceCode" value="<?= $priceCode ?>">

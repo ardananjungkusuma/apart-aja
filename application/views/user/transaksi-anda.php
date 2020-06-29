@@ -22,10 +22,16 @@
                 foreach ($transaksi as $transaksi) {
                 ?>
                     <tr>
-                        <td><?= $transaksi['nama'] ?></td>
+                        <td><?= $transaksi['nama_ruangan'] ?></td>
                         <td>Rp. <?= number_format($transaksi['total_harga'], 0, ',', '.');; ?></td>
                         <td><?= $transaksi['status_pemesanan'] ?></td>
-                        <td><a href="<?= base_url() ?>user/detailTransaksi/<?= $transaksi['id_transaksi_pembelian'] ?>" class="btn btn-info">Lihat Detail</a></td>
+                        <td>
+                            <form action="<?= base_url() ?>transaksi/detailTransaksiAnda" method="POST">
+                                <input type="hidden" name="id_transaksi" value="<?= $transaksi['id_transaksi_pembelian'] ?>">
+                                <input type="hidden" name="id_pengelola" value="<?= $transaksi['id_pengelola'] ?>">
+                                <button class="btn btn-info" type="submit">Lihat Detail</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php
                 }
