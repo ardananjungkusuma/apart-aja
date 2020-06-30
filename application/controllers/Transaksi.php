@@ -126,4 +126,15 @@ class Transaksi extends CI_Controller
         $this->load->view('pengelola/index', $data);
         $this->load->view('templates/footer-pengelola');
     }
+
+    public function detailTransaksiPembelianUser($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $data['transaksi'] =  $this->transaksi_model->getDetailTransaksiById($id);
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/detail-transaksi-apart', $data);
+        $this->load->view('templates/footer-pengelola');
+    }
 }

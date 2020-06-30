@@ -35,7 +35,7 @@
                                 } else {
                                 ?>
                                     <a href="edit-transaksi-pembelian.php?id_transaksi_pembelian=<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-success">Edit Transaksi</a>
-                                    <a href="detail-transaksi-pembelian.php?id_transaksi_pembelian=<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
+                                    <a href="<?= base_url() ?>transaksi/detailTransaksiPembelianUser/<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
                                 <?php
                                 }
                                 ?>
