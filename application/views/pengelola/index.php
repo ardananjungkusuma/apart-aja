@@ -2,6 +2,14 @@
     <div class="row">
         <div class="col-lg-12" style="margin: 0 auto;">
             <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Transaksi Pembelian Apartemen</h3>
+            <?php if ($this->session->flashdata('message')) { ?>
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    Data telah <strong><?= $this->session->flashdata('message') ?></strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            <?php } ?>
             <table class="table table-hover" id="listTransaksiPembelian">
                 <thead style="background-color: #343a40;color:white">
                     <tr>
@@ -28,14 +36,14 @@
                             <td><?= $status_pemesananan  ?></td>
                             <td>
                                 <?php
-                                if ($status_pemesananan == "Berhasil Verifikasi") {
+                                if ($status_pemesananan != "Berhasil Verifikasi") {
                                 ?>
-                                    <a href="detail-transaksi-pembelian.php?id_transaksi_pembelian=<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
+                                    <a href="<?= base_url() ?>transaksi/editTransaksiBeliApart/<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-success">Edit Transaksi</a>
+                                    <a href="<?= base_url() ?>transaksi/detailTransaksiBeliApart/<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
                                 <?php
                                 } else {
                                 ?>
-                                    <a href="edit-transaksi-pembelian.php?id_transaksi_pembelian=<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-success">Edit Transaksi</a>
-                                    <a href="<?= base_url() ?>transaksi/detailTransaksiPembelianUser/<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
+                                    <a href="<?= base_url() ?>transaksi/detailTransaksiBeliApart/<?= $tampil['id_transaksi_pembelian'] ?>" class="badge badge-info">Detail Transaksi</a>
                                 <?php
                                 }
                                 ?>

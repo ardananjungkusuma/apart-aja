@@ -77,4 +77,30 @@ class transaksi_model extends CI_Model
             $this->db->update('transaksi_pembelian', $data);
         }
     }
+
+    public function verifikasiTransferBeliApart()
+    {
+        $id = $this->input->post('id_transaksi_pembelian');
+        $status = $this->input->post('status_pemesanan');
+        $pesan = $this->input->post('pesan_pengelola');
+        if ($status == "Berhasil Verifikasi") {
+            $data = [
+                "status_pemesanan" => $status,
+                "pesan_pengelola" => "Terimakasih, pembayaran sudah berhasil terverifikasi. Anda akan segera mendapatkan akses ke Ruang Apartemen Anda."
+            ];
+        } else {
+            if ($pesan == "" || empty($pesan)) {
+                $data = [
+                    "status_pemesanan" => $status
+                ];
+            } else {
+                $data = [
+                    "status_pemesanan" => $status,
+                    "pesan_pengelola" => $pesan
+                ];
+            }
+        }
+        $this->db->where('id_transaksi_pembelian', $id);
+        $this->db->update('transaksi_pembelian', $data);
+    }
 }

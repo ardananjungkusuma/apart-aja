@@ -30,7 +30,7 @@
                     <tr>
                         <td><?= $transaksi['nama_ruangan'] ?></td>
                         <td>Rp. <?= number_format($transaksi['total_harga'], 0, ',', '.');; ?></td>
-                        <td><?= $transaksi['status_pemesanan'] ?></td>
+                        <td style="font-weight: bolder;"><?= $transaksi['status_pemesanan'] ?></td>
                         <td>
                             <form action="<?= base_url() ?>transaksi/detailTransaksiAnda" method="POST">
                                 <input type="hidden" name="id_transaksi" value="<?= $transaksi['id_transaksi_pembelian'] ?>">

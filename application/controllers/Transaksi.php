@@ -127,7 +127,7 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/footer-pengelola');
     }
 
-    public function detailTransaksiPembelianUser($id)
+    public function detailTransaksiBeliApart($id)
     {
         if ($this->session->userdata('level') != "pengelola") {
             redirect('auth/loginPengelola', 'refresh');
@@ -136,5 +136,32 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/header-pengelola');
         $this->load->view('pengelola/detail-transaksi-apart', $data);
         $this->load->view('templates/footer-pengelola');
+    }
+
+    public function editTransaksiBeliApart($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $data['transaksi'] =  $this->transaksi_model->getDetailTransaksiById($id);
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/edit-transaksi-apart', $data);
+        $this->load->view('templates/footer-pengelola');
+    }
+
+    public function prosesEditTransaksiBeliApart()
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $this->form_validation->set_rules('id_transaksi_pembelian', 'id_transaksi_pembelian', 'trim|required');
+        $this->form_validation->set_rules('status_pemesanan', 'status_pemesanan', 'trim|required');
+        if ($this->form_validation->run() == FALSE) {
+            redirect('pengelola');
+        } else {
+            $this->transaksi_model->verifikasiTransferBeliApart();
+            $this->session->set_flashdata('message', 'Diubah');
+            redirect('transaksi/transaksiPembelianUser');
+        }
     }
 }
