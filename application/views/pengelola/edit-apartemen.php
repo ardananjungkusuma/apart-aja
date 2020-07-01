@@ -12,8 +12,7 @@
                 <?php
                 foreach ($apartemenDetail as $row) {
                 ?>
-                    <?= form_open_multipart('apartemen/prosesEditApartemenAnda') ?>
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="<?= base_url() ?>apartemen/prosesEditApartemenAnda" enctype="multipart/form-data">
                         <div class="form-group">
                             <input type="hidden" id="id_apartemen" name="id_apartemen" value="<?= $row['id_apartemen'] ?>" required>
                             <label>Nama Apartemen</label>
@@ -39,7 +38,6 @@
                         <a href="<?= base_url() ?>apartemen/listApartemen" class="btn btn-primary float-left">Kembali</a>
                         <button type="submit" name="submit" class="btn btn-info float-right">Edit Data Apartemen</button><br><br>
                     </form>
-                    <?= form_close() ?>
                 <?php
                 }
                 ?>

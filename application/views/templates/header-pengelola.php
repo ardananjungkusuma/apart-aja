@@ -84,8 +84,8 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="daftar-penghuni.php">Daftar Penghuni</a>
-                                <a class="nav-link" href="tambah-daftar-penghuni.php">Tambah Penghuni</a>
+                                <a class="nav-link" href="<?= base_url() ?>penghuniapart/listPenghuni">Daftar Penghuni</a>
+                                <a class="nav-link" href="<?= base_url() ?>penghuniapart/tambahPenghuni">Tambah Penghuni</a>
                             </nav>
 
                         </div>

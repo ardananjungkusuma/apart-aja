@@ -3,8 +3,7 @@
 		<div class="image-holder">
 			<img src="<?= base_url() ?>assets/img/etc/registration2-form-1-user.jpg" alt="">
 		</div>
-		<?= form_open_multipart('auth/prosesRegisterUser') ?>
-		<form role="form" enctype="multipart/form-data" method="POST">
+		<form role="form" action="<?= base_url() ?>auth/prosesRegisterUser" enctype="multipart/form-data" method="POST">
 			<i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="<?= base_url() ?>" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
 			<h3>User Registration</h3>
 			<div class="form-wrapper">
@@ -37,7 +36,6 @@
 				<i class="zmdi zmdi-arrow-right"></i>
 			</button>
 		</form>
-		<?= form_close() ?>
 	</div>
 </div>
 </body>

@@ -103,4 +103,12 @@ class transaksi_model extends CI_Model
         $this->db->where('id_transaksi_pembelian', $id);
         $this->db->update('transaksi_pembelian', $data);
     }
+
+    public function getPembeli()
+    {
+        $id_pengelola = $this->session->userdata('id_pengelola');
+
+        $query = $this->db->query("SELECT * FROM transaksi_pembelian tp JOIN ruangan_apartemen ra ON tp.id_ruangan = ra.id_ruangan JOIN pengelola_apartemen pa ON tp.id_pengelola = pa.id_pengelola JOIN user u ON tp.id_user = u.id_user where tp.id_pengelola = $id_pengelola AND tp.status_pemesanan = 'Berhasil Verifikasi'");
+        return $query->result_array();
+    }
 }

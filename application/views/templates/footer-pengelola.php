@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $('#listTransaksiPembelian').DataTable();
-
+        $('#listDaftarPenghuni').DataTable();
     });
 </script>
 <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>

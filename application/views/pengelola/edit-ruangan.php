@@ -13,8 +13,7 @@
                 foreach ($ruanganApartemen as $row) {
                     $gambar = $row['gambar_utama']
                 ?>
-                    <?= form_open_multipart('ruangan/prosesEditRuangan') ?>
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" action="<?= base_url() ?>ruangan/prosesEditRuangan" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Nama Ruangan</label>
                             <input type="hidden" id="id_ruangan" name="id_ruangan" class="form-control mb-2" placeholder="Nama" value="<?= $row['id_ruangan'] ?>" required>
@@ -47,7 +46,6 @@
                     <a href="<?= base_url() ?>ruangan/listRuangan" class="btn btn-primary float-left">Kembali</a>
                     <button type="submit" name="submit" class="btn btn-info float-right">Edit Data</button><br><br>
                     </form>
-                    <?= form_close() ?>
             </div>
         </div>
     </div>

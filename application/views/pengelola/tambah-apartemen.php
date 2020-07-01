@@ -9,8 +9,7 @@
                         margin-top: 10px;
                     }
                 </style>
-                <?= form_open_multipart('apartemen/prosesTambahApartemen') ?>
-                <form method="POST" enctype="multipart/form-data">
+                <form method="POST" enctype="multipart/form-data" action="<?= base_url() ?>apartemen/tambahApartemen">
                     <div class="form-group">
                         <label>Nama Apartemen</label>
                         <input type="text" id="nama_apartemen" name="nama_apartemen" class="form-control mb-2" placeholder="Nama" required>
@@ -33,7 +32,6 @@
                     </div>
                     <button type="submit" name="submit" class="btn btn-primary float-right">Tambah Apartemen</button><br><br>
                 </form>
-                <?= form_close() ?>
             </div>
         </div>
     </div>

@@ -26,6 +26,7 @@ class Apartemen extends CI_Controller
     }
 
     //Fitur User
+    //TODO Lanjutkan tambah penghuni apartemen ,get apartemen anda & kritik saran.
     public function apartemenAnda()
     {
         $data['apartemen'] =  $this->user_model->getApartemenById($this->session->userdata('id_user'));
@@ -101,16 +102,6 @@ class Apartemen extends CI_Controller
     }
 
     public function tambahApartemen()
-    {
-        if ($this->session->userdata('level') != "pengelola") {
-            redirect('auth/loginPengelola');
-        }
-        $this->load->view('templates/header-pengelola');
-        $this->load->view('pengelola/tambah-apartemen');
-        $this->load->view('templates/footer-pengelola');
-    }
-
-    public function prosesTambahApartemen()
     {
         $this->form_validation->set_rules('nama_apartemen', 'nama_apartemen', 'trim|required');
         $this->form_validation->set_rules('alamat_apartemen', 'alamat_apartemen', 'trim|required');
