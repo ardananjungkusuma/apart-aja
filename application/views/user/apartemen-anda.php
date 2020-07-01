@@ -18,7 +18,7 @@
                 foreach ($apartemen as $apartemen) {
                 ?>
                     <tr>
-                        <td><?= $apartemen['nama'] ?></td>
+                        <td><?= $apartemen['nama_ruangan'] ?></td>
                         <td><?= $apartemen['nama_nomer_ruangan'] ?></td>
                         <td><?= $apartemen['lantai'] ?></td>
                     </tr>

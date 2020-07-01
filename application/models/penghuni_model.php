@@ -11,6 +11,12 @@ class penghuni_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getPemilikByIdUser($id)
+    {
+        $query = $this->db->query("SELECT * FROM pemilik_apartemen pa JOIN ruangan_apartemen ra ON pa.id_ruangan = ra.id_ruangan JOIN apartemen a ON ra.id_apartemen = a.id_apartemen WHERE pa.id_user = $id");
+        return $query->result_array();
+    }
+
     public function tambahPenghuni()
     {
         $data = [

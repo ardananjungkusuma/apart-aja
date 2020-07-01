@@ -1,8 +1,13 @@
 <div class="card">
     <div class="card-header" style="background:#e32447;color:white;font-weight: bold">
-        Kritik & Saran yang Anda Kirim
+        Kritik & Saran Untuk Pengelola Apartemen
     </div>
+    <?php if ($this->session->flashdata('message')) { ?>
+        <?= $this->session->flashdata('message') ?>
+    <?php
+    } ?>
     <div class="card-body">
+        <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" style="text-decoration: none;font-weight: bolder;">Klik disini untuk Kirim Kritik & Saran</a>
         <?php
         if (!empty($kritiksaran)) {
         ?>
@@ -26,11 +31,18 @@
                 }
                 ?>
             </table>
-        <?php
+            <?php
         } else {
-        ?>
-            Maaf Anda Belum Mengirimkan Kritik & Saran.
+            if (empty($userCheck)) {
+            ?>
+                Anda Belum Memiliki Apartemen. Fitur ini hanya bisa diakses jika sudah membeli apartemen.
+            <?php
+            } else {
+            ?>
+                Maaf Anda Belum Mengirimkan Kritik & Saran. Jika ingin mengirim silahkan klik tombol dibawah ini.
+                <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" style="margin-top:10px" class="btn btn-info">Kirim Kritik / Saran</a>
         <?php
+            }
         }
         ?>
     </div>

@@ -9,7 +9,7 @@
                     <a href="<?= base_url() ?>user/profile" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Profile</a>
                     <a href="<?= base_url() ?>apartemen/apartemenAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Apartemen Anda</a>
                     <a href="<?= base_url() ?>transaksi/transaksiAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Transaksi Pembelian</a>
-                    <a href="<?= base_url() ?>user/kritikSaranAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Kritik & Saran</a>
+                    <a href="<?= base_url() ?>kritiksaran/kritikSaranAnda" style="text-decoration: none;color: black" id="itemmenu" class="list-group-item">Kritik & Saran</a>
                 </ul>
             </div>
         </div>
