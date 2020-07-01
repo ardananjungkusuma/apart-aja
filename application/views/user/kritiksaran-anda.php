@@ -7,10 +7,10 @@
     <?php
     } ?>
     <div class="card-body">
-        <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" style="text-decoration: none;font-weight: bolder;">Klik disini untuk Kirim Kritik & Saran</a>
         <?php
         if (!empty($kritiksaran)) {
         ?>
+            <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" style="text-decoration: none;font-weight: bolder;">Klik disini untuk Kirim Kritik & Saran</a>
             <table class="table table-hover">
                 <thead style="background-color: #343a40;color:white">
                     <tr>

@@ -18,30 +18,13 @@
     <style>
         .zoom {
             transition: transform .2s;
-            /* Animation */
             margin: 0 auto;
         }
 
         .zoom:hover {
             transform: scale(2);
-            /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
         }
     </style>
-    <script>
-        var modal = document.getElementById("myModal");
-        var img = document.getElementById("myImg");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        img.onclick = function() {
-            modal.style.display = "block";
-            modalImg.src = this.src;
-            captionText.innerHTML = this.alt;
-        }
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-    </script>
 </head>
 
 <body class="sb-nav-fixed">
@@ -89,18 +72,10 @@
                             </nav>
 
                         </div>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts2" aria-expanded="false" aria-controls="collapseLayouts">
+                        <a class="nav-link" href="<?= base_url() ?>kritiksaran/listKritikSaran">
                             <div class="sb-nav-link-icon"><i class="fas fa-comments"></i></div>
-                            Kritik Saran
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            Kritik & Saran
                         </a>
-                        <div class="collapse" id="collapseLayouts2" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="kritik-saran.php?kategori=kritik">Kritik Penghuni</a>
-                                <a class="nav-link" href="kritik-saran.php?kategori=saran">Saran Penghuni</a>
-                            </nav>
-                        </div>
-
                         <div class="sb-sidenav-menu-heading">Profile</div>
                         <a class="nav-link" href="profil-pengelola.php">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>

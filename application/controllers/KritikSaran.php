@@ -6,15 +6,17 @@ class Kritiksaran extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('level') != "user") {
-            redirect('auth/loginUser', 'refresh');
-        }
         $this->load->model('kritiksaran_model');
         $this->load->model('penghuni_model');
     }
 
+    //Fitur User
+
     public function kritikSaranAnda()
     {
+        if ($this->session->userdata('level') != "user") {
+            redirect('auth/loginUser', 'refresh');
+        }
         $data['kritiksaran'] = $this->kritiksaran_model->getKritikSaranByIdUser($this->session->userdata('id_user'));
         $data['userCheck'] = $this->penghuni_model->getPemilikByIdUser($this->session->userdata('id_user'));
         $this->load->view('templates/header-user', $data);
@@ -25,6 +27,9 @@ class Kritiksaran extends CI_Controller
 
     public function kirimKritikSaran()
     {
+        if ($this->session->userdata('level') != "user") {
+            redirect('auth/loginUser', 'refresh');
+        }
         $this->form_validation->set_rules('kategori', 'kategori', 'required');
         $this->form_validation->set_rules('id_apartemen', 'id_apartemen', 'required');
         $this->form_validation->set_rules('isi_kritik_saran', 'isi_kritik_saran', 'required');
@@ -42,5 +47,17 @@ class Kritiksaran extends CI_Controller
           </div>');
             redirect('kritiksaran/kritikSaranAnda');
         }
+    }
+
+    //Fitur Pengelola
+    public function listKritikSaran()
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $data['kritiksaran'] = $this->kritiksaran_model->getKritikSaranByIdPengelola($this->session->userdata('id_pengelola'));
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/kritik-saran', $data);
+        $this->load->view('templates/footer-pengelola');
     }
 }

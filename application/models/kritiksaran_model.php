@@ -10,6 +10,12 @@ class kritiksaran_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getKritikSaranByIdPengelola($id)
+    {
+        $query = $this->db->query("SELECT * FROM kritik_saran ks JOIN apartemen a on ks.id_apartemen = a.id_apartemen JOIN user u ON ks.id_user = u.id_user WHERE a.id_pengelola = $id");
+        return $query->result_array();
+    }
+
     public function tambahKritikSaran()
     {
         $data = [
