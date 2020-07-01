@@ -11,12 +11,7 @@
             <?php
             }
             if ($this->session->flashdata('message')) { ?>
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                    Data telah <strong><?= $this->session->flashdata('message') ?></strong>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+                <?= $this->session->flashdata('message') ?>
             <?php }
             if (!empty($gambarInterior)) {
             ?>

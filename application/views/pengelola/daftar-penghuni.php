@@ -2,7 +2,10 @@
     <div class="row">
         <div class="col-lg-12" style="margin: 0 auto;">
             <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Penghuni Apartemen</h3>
+            <?php if ($this->session->flashdata('message')) { ?>
+                <?= $this->session->flashdata('message') ?>
             <?php
+            }
             if (!empty($penghuni)) {
             ?>
                 <table class="table table-hover" id="listDaftarPenghuni">
@@ -20,10 +23,10 @@
                         foreach ($penghuni as $penghuni) {
                         ?>
                             <tr>
-                                <td><?= $tampil['nama'] ?></td>
-                                <td><?= $ruangan['nama'] ?></td>
-                                <td><?= $tampil['nama_nomer_ruangan'] ?></td>
-                                <td><?= $tampil['lantai'] ?></td>
+                                <td><?= $penghuni['nama'] ?></td>
+                                <td><?= $penghuni['nama_ruangan'] ?></td>
+                                <td><?= $penghuni['nama_nomer_ruangan'] ?></td>
+                                <td><?= $penghuni['lantai'] ?></td>
                                 <td>
                                     <a href="#" class="badge badge-success">Edit Penghuni</a>
                                     <a href="#" class="badge badge-info">Hapus Penghuni</a>

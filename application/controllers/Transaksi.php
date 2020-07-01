@@ -111,7 +111,9 @@ class Transaksi extends CI_Controller
             redirect('transaksi/transaksiAnda');
         } else {
             $this->transaksi_model->tambahBuktiTransfer();
-            $this->session->set_flashdata('message', 'Ditambahkan');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Bukti Transfer Sukses Terupload, silahkan tunggu konfirmasi dari pihak pengelola apartemen.
+          </div>');
             redirect('transaksi/transaksiAnda');
         }
     }
@@ -160,7 +162,9 @@ class Transaksi extends CI_Controller
             redirect('pengelola');
         } else {
             $this->transaksi_model->verifikasiTransferBeliApart();
-            $this->session->set_flashdata('message', 'Diubah');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data telah diverifikasi.
+          </div>');
             redirect('transaksi/transaksiPembelianUser');
         }
     }

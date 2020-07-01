@@ -32,9 +32,9 @@
                             ?>
                         </select>
                         <label><b>Nama Ruangan & Nomor: </b></label>
-                        <input type="text" class="form-control" name="nama_nomer_ruangan" placeholder="Seville 01">
+                        <input type="text" class="form-control" name="nama_nomer_ruangan" placeholder="Seville 01" required>
                         <label><b>Letak Lantai Ruangan: </b></label>
-                        <input type="number" class="form-control" name="lantai" placeholder="2">
+                        <input type="number" class="form-control" name="lantai" placeholder="2" required>
                     </div>
                     <a href="<?= base_url() ?>penghuniapart/listPenghuni" class="btn btn-primary">Kembali</a>
                     <button type="submit" name="submit" class="btn btn-success float-right">Tambah Penghuni Apartemen</button><br><br>

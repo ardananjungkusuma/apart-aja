@@ -47,8 +47,10 @@ class PenghuniApart extends CI_Controller
             $this->load->view('pengelola/tambah-penghuni', $data);
             $this->load->view('templates/footer-pengelola');
         } else {
-            $this->apartemen_model->tambahApartemen();
-            $this->session->set_flashdata('message', 'Ditambahkan');
+            $this->penghuni_model->tambahPenghuni();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Data Penghuni Berhasil Ditambahkan
+          </div>');
             redirect('penghuniapart/listPenghuni');
         }
     }
