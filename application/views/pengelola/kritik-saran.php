@@ -21,6 +21,7 @@
                             <td>Isi Pesan</td>
                             <td>Tanggal Dikirim</td>
                             <td>Kategori</td>
+                            <td>Respon</td>
                             <td>Aksi</td>
                         </tr>
                     </thead>
@@ -33,12 +34,18 @@
                                 <td><?= $tampil['nama'] ?></td>
                                 <td><?= $tampil['isi_kritik_saran'] ?></td>
                                 <td><?= $tampil['tanggal_masuk'] ?></td>
+                                <td><?= $tampil['respon_pengelola'] ?></td>
                                 <td><?= $tampil['kategori'] ?></td>
                                 <td>
-                                    <form action="respon-pengelola.php" method="POST">
-                                        <input type="hidden" name="idKS" value="<?= $tampil['id_kritik_saran'] ?>">
-                                        <button class="btn btn-warning">Beri Pesan Respon</button>
-                                    </form>
+                                    <?php
+                                    if ($tampil['respon_pengelola'] == "Belum ada respon dari pihak pengelola Apartemen.") {
+                                    ?>
+                                        <a href="<?= base_url() ?>kritiksaran/kirimResponKritikSaran/<?= $tampil['id_kritik_saran'] ?>" class="btn btn-warning">Beri Pesan Respon</a>
+                                    <?php
+                                    } else {
+                                        echo "Respon Telah Sukses Dikirim.";
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                         <?php

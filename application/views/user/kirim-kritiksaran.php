@@ -6,7 +6,7 @@
     if (!empty($apartemen)) {
     ?>
         <div class="card-body">
-            <form action="<?= base_url() ?>kritiksaran/kirimKritikSaran" method="POST" enctype="multipart/form-data">
+            <form action="<?= base_url() ?>kritiksaran/kirimKritikSaran/ok" method="POST" enctype="multipart/form-data">
                 <label>Pilih Kategori</label><br>
                 <select name="kategori" class="form-control">
                     <option value="kritik">Kritik</option>

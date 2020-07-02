@@ -10,7 +10,6 @@
         <?php
         if (!empty($kritiksaran)) {
         ?>
-            <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" style="text-decoration: none;font-weight: bolder;">Klik disini untuk Kirim Kritik & Saran</a>
             <table class="table table-hover">
                 <thead style="background-color: #343a40;color:white">
                     <tr>
@@ -31,6 +30,7 @@
                 }
                 ?>
             </table>
+            <a href="<?= base_url() ?>kritiksaran/kirimKritikSaran" class="btn btn-primary">Klik disini untuk Kirim Kritik & Saran</a>
             <?php
         } else {
             if (empty($userCheck)) {

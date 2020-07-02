@@ -60,4 +60,34 @@ class Kritiksaran extends CI_Controller
         $this->load->view('pengelola/kritik-saran', $data);
         $this->load->view('templates/footer-pengelola');
     }
+
+    public function kirimResponKritikSaran($id)
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $data['kritiksaran'] = $this->kritiksaran_model->getKritikSaranById($id);
+        $this->load->view('templates/header-pengelola');
+        $this->load->view('pengelola/respon-kritik-saran', $data);
+        $this->load->view('templates/footer-pengelola');
+    }
+
+    public function prosesKirimResponKritikSaran()
+    {
+        if ($this->session->userdata('level') != "pengelola") {
+            redirect('auth/loginPengelola', 'refresh');
+        }
+        $this->form_validation->set_rules('id_kritik_saran', 'id_kritik_saran', 'trim|required');
+        $this->form_validation->set_rules('respon_pengelola', 'respon_pengelola', 'required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('kritiksaran/listKritikSaran');
+        } else {
+            $this->kritiksaran_model->responKritikSaran();
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Respon Telah Dikirim ke Penghuni Apartemen.
+          </div>');
+            redirect('kritiksaran/listKritikSaran');
+        }
+    }
 }

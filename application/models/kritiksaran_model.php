@@ -10,6 +10,12 @@ class kritiksaran_model extends CI_Model
         return $query->result_array();
     }
 
+    public function getKritikSaranById($id)
+    {
+        $query = $this->db->query("SELECT * FROM kritik_saran ks JOIN apartemen a on ks.id_apartemen = a.id_apartemen JOIN user u ON ks.id_user = u.id_user WHERE ks.id_kritik_saran = $id");
+        return $query->result_array();
+    }
+
     public function getKritikSaranByIdPengelola($id)
     {
         $query = $this->db->query("SELECT * FROM kritik_saran ks JOIN apartemen a on ks.id_apartemen = a.id_apartemen JOIN user u ON ks.id_user = u.id_user WHERE a.id_pengelola = $id");
@@ -27,5 +33,14 @@ class kritiksaran_model extends CI_Model
             "respon_pengelola" => "Belum ada respon dari pihak pengelola Apartemen."
         ];
         $this->db->insert('kritik_saran', $data);
+    }
+
+    public function responKritikSaran()
+    {
+        $data = [
+            "respon_pengelola" => $this->input->post('respon_pengelola')
+        ];
+        $this->db->where('id_kritik_saran', $this->input->post('id_kritik_saran'));
+        $this->db->update('kritik_saran', $data);
     }
 }
