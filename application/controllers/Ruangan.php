@@ -86,10 +86,12 @@ class Ruangan extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			redirect('ruangan/listRuangan');
 		} else {
-			$this->ruangan_model->tambahRuangan();
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data Ruangan Berhasil Ditambahkan
-          </div>');
+			$data = $this->ruangan_model->tambahRuangan();
+			if ($data == "True") {
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+				Data Ruangan Berhasil Ditambahkan
+			  	</div>');
+			}
 			redirect('ruangan/listRuangan');
 		}
 	}
@@ -136,10 +138,12 @@ class Ruangan extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			redirect('ruangan/listRuangan');
 		} else {
-			$this->gambarruangan_model->tambahGambarRuangan();
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data Gambar Berhasil Ditambah
-          </div>');
+			$data = $this->gambarruangan_model->tambahGambarRuangan();
+			if ($data == "True") {
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+				Data Gambar Berhasil Ditambah
+				</div>');
+			}
 			redirect('ruangan/galeriGambarRuangan/' . $this->input->post('id_ruangan'));
 		}
 	}
@@ -170,10 +174,12 @@ class Ruangan extends CI_Controller
 		if ($this->form_validation->run() == FALSE) {
 			redirect('ruangan/listRuangan');
 		} else {
-			$this->ruangan_model->editRuangan();
-			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Data Ruangan Berhasil Diedit
-          </div>');
+			$data = $this->ruangan_model->editRuangan();
+			if ($data == "True") {
+				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+				Data Ruangan Berhasil Diedit
+			  	</div>');
+			}
 			redirect('ruangan/listRuangan');
 		}
 	}

@@ -4,9 +4,17 @@
             <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Ruangan Apartemen Anda</h3>
             <br>
             <?php
-            if ($this->session->flashdata('message')) { ?>
-                <?= $this->session->flashdata('message') ?>
-                <?php }
+            if ($this->session->flashdata('message')) {
+                echo $this->session->flashdata('message');
+            } else if ($this->session->flashdata('error')) {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $this->session->flashdata('error'); ?>
+                    1. Max File Size 1Mb / 1024 Kb.<br>
+                    2. Format jpg/png.
+                </div>
+                <?php
+            }
             if (!empty($ruanganApartemen)) {
                 foreach ($ruanganApartemen as $ruanganApartemen) {
                 ?>

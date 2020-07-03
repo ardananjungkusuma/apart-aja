@@ -25,15 +25,22 @@ class gambarruangan_model extends CI_Model
 
             if ($this->upload->do_upload('gambar')) {
                 $this->upload->data('file_name');
+                $data = [
+                    "id_ruangan" => $this->input->post('id_ruangan', true),
+                    "deskripsi_singkat" => $this->input->post('deskripsi', true),
+                    "gambar" => $newName
+                ];
+                $data = [
+                    "id_ruangan" => $this->input->post('id_ruangan', true),
+                    "deskripsi_singkat" => $this->input->post('deskripsi', true),
+                    "gambar" => $newName
+                ];
+                $this->db->insert('gambar_apartemen', $data);
+                return "True";
             } else {
-                echo $this->upload->display_errors();
+                $error = array('error' => $this->upload->display_errors());
+                return $this->session->set_flashdata('error', $error['error']);
             }
-            $data = [
-                "id_ruangan" => $this->input->post('id_ruangan', true),
-                "deskripsi_singkat" => $this->input->post('deskripsi', true),
-                "gambar" => $newName
-            ];
-            $this->db->insert('gambar_apartemen', $data);
         }
     }
 

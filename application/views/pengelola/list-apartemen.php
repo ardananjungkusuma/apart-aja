@@ -3,9 +3,20 @@
         <div class="col-lg-11" style="margin: 0 auto;">
             <h3 style="margin-top:20px;margin-bottom: 20px">Daftar Apartemen Anda</h3>
             <?php
+            if ($this->session->flashdata('message')) {
+                echo $this->session->flashdata('message');
+            } else if ($this->session->flashdata('error')) {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    <?= $this->session->flashdata('error'); ?>
+                    1. Max File Size 1Mb / 1024 Kb.<br>
+                    2. Format jpg/png.
+                </div>
+                <?php
+            }
             if (!empty($apartemen)) {
                 foreach ($apartemen as $ruanganApartemen) {
-            ?>
+                ?>
                     <div class="card" onclick=" location.href='<?= base_url() ?>apartemen/detailApartemenAnda/<?= $ruanganApartemen['id_apartemen'] ?>'" style=" width: 18rem;display:inline-block;cursor: pointer;">
                         <img style="width:285px;height: 270px;object-fit: cover;" src="<?= base_url() . "assets/img/gambar_apartemen/" . $ruanganApartemen['gambar_apartemen'] ?>" alt="Card image cap">
                         <div class="card-body">

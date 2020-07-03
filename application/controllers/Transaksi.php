@@ -110,13 +110,16 @@ class Transaksi extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             redirect('transaksi/transaksiAnda');
         } else {
-            $this->transaksi_model->tambahBuktiTransfer();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Bukti Transfer Sukses Terupload, silahkan tunggu konfirmasi dari pihak pengelola apartemen.
-          </div>');
+            $data = $this->transaksi_model->tambahBuktiTransfer();
+            if ($data == "True") {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Bukti Transfer Sukses Terupload, silahkan tunggu konfirmasi dari pihak pengelola apartemen.
+                </div>');
+            }
             redirect('transaksi/transaksiAnda');
         }
     }
+
     // FITUR Pengelola
     public function transaksiPembelianUser()
     {

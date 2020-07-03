@@ -68,31 +68,23 @@ class ruangan_model extends CI_Model
 
 			if ($this->upload->do_upload('gambar_utama')) {
 				$this->upload->data('file_name');
+				$data = [
+					"id_pengelola" => $this->session->userdata('id_pengelola'),
+					"id_apartemen" => $this->input->post('id_apartemen', true),
+					"nama_ruangan" => $this->input->post('nama_ruangan', true),
+					"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+					"harga_beli" => $this->input->post('harga_beli', true),
+					"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
+					"detail_ruangan" => $this->input->post('detail_ruangan', true),
+					"gambar_utama" => $newName
+				];
+				$this->db->insert('ruangan_apartemen', $data);
+				return "True";
 			} else {
-				echo $this->upload->display_errors();
+				$error = array('error' => $this->upload->display_errors());
+				return $this->session->set_flashdata('error', $error['error']);
 			}
-			$data = [
-				"id_pengelola" => $this->session->userdata('id_pengelola'),
-				"id_apartemen" => $this->input->post('id_apartemen', true),
-				"nama_ruangan" => $this->input->post('nama_ruangan', true),
-				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
-				"harga_beli" => $this->input->post('harga_beli', true),
-				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
-				"detail_ruangan" => $this->input->post('detail_ruangan', true),
-				"gambar_utama" => $newName
-			];
-		} else {
-			$data = [
-				"id_pengelola" => $this->session->userdata('id_pengelola'),
-				"id_apartemen" => $this->input->post('id_apartemen', true),
-				"nama_ruangan" => $this->input->post('nama_ruangan', true),
-				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
-				"harga_beli" => $this->input->post('harga_beli', true),
-				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
-				"detail_ruangan" => $this->input->post('detail_ruangan', true)
-			];
 		}
-		$this->db->insert('ruangan_apartemen', $data);
 	}
 
 	public function editRuangan()
@@ -121,18 +113,22 @@ class ruangan_model extends CI_Model
 
 			if ($this->upload->do_upload('gambar')) {
 				$this->upload->data('file_name');
+				$data = [
+					"id_pengelola" => $this->session->userdata('id_pengelola'),
+					"nama_ruangan" => $this->input->post('nama_ruangan', true),
+					"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
+					"harga_beli" => $this->input->post('harga_beli', true),
+					"detail_ruangan" => $this->input->post('detail_ruangan', true),
+					"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
+					"gambar_utama" => $newName
+				];
+				$this->db->where('id_ruangan', $id);
+				$this->db->update('ruangan_apartemen', $data);
+				return "True";
 			} else {
-				echo $this->upload->display_errors();
+				$error = array('error' => $this->upload->display_errors());
+				return $this->session->set_flashdata('error', $error['error']);
 			}
-			$data = [
-				"id_pengelola" => $this->session->userdata('id_pengelola'),
-				"nama_ruangan" => $this->input->post('nama_ruangan', true),
-				"jenis_ruangan" => $this->input->post('jenis_ruangan', true),
-				"harga_beli" => $this->input->post('harga_beli', true),
-				"detail_ruangan" => $this->input->post('detail_ruangan', true),
-				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true),
-				"gambar_utama" => $newName
-			];
 		} else {
 			$data = [
 				"id_pengelola" => $this->session->userdata('id_pengelola'),
@@ -142,9 +138,9 @@ class ruangan_model extends CI_Model
 				"detail_ruangan" => $this->input->post('detail_ruangan', true),
 				"sisa_ruang_apartemen" => $this->input->post('sisa_ruang_apartemen', true)
 			];
+			$this->db->where('id_ruangan', $id);
+			$this->db->update('ruangan_apartemen', $data);
 		}
-		$this->db->where('id_ruangan', $id);
-		$this->db->update('ruangan_apartemen', $data);
 	}
 
 	public function hapusRuangan($id)

@@ -75,10 +75,12 @@ class Apartemen extends CI_Controller
             $this->load->view('pengelola/list-apartemen');
             $this->load->view('templates/footer-pengelola');
         } else {
-            $this->apartemen_model->editApartemen();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            $data = $this->apartemen_model->editApartemen();
+            if ($data == "True") {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Data Apartemen Berhasil Diedit
           </div>');
+            }
             redirect('apartemen/listApartemen');
         }
     }
@@ -118,10 +120,12 @@ class Apartemen extends CI_Controller
             $this->load->view('pengelola/tambah-apartemen');
             $this->load->view('templates/footer-pengelola');
         } else {
-            $this->apartemen_model->tambahApartemen();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
-            Berhasil Menambahkan Apartemen
-          </div>');
+            $data = $this->apartemen_model->tambahApartemen();
+            if ($data == "True") {
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Berhasil Menambahkan Apartemen
+                </div>');
+            }
             redirect('apartemen/listApartemen');
         }
     }

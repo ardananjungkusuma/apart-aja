@@ -46,17 +46,18 @@ class transaksi_model extends CI_Model
 
             if ($this->upload->do_upload('gambar')) {
                 $this->upload->data('file_name');
+                $data = [
+                    "gambar_bukti_transfer" => $newName
+                ];
+                $this->db->where('id_transaksi_pembelian', $id_trans);
+                $this->db->update('transaksi_pembelian', $data);
+                return "True";
             } else {
-                echo $this->upload->display_errors();
+                $error = array('error' => $this->upload->display_errors());
+                return $this->session->set_flashdata('error', $error['error']);
             }
-            $data = [
-                "gambar_bukti_transfer" => $newName
-            ];
-            $this->db->where('id_transaksi_pembelian', $id_trans);
-            $this->db->update('transaksi_pembelian', $data);
         } else {
             $path = "assets/img/bukti_pembayaran/";
-            unlink($path . $namaFile);
             $config['upload_path']          = './assets/img/bukti_pembayaran/';
             $config['allowed_types']        = 'jpg|png';
             $newName = date('dmYHis') . $_FILES['gambar']['name'];
@@ -66,15 +67,18 @@ class transaksi_model extends CI_Model
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('gambar')) {
+                unlink($path . $namaFile);
                 $this->upload->data('file_name');
+                $data = [
+                    "gambar_bukti_transfer" => $newName
+                ];
+                $this->db->where('id_transaksi_pembelian', $id_trans);
+                $this->db->update('transaksi_pembelian', $data);
+                return "True";
             } else {
-                echo $this->upload->display_errors();
+                $error = array('error' => $this->upload->display_errors());
+                return $this->session->set_flashdata('error', $error['error']);
             }
-            $data = [
-                "gambar_bukti_transfer" => $newName
-            ];
-            $this->db->where('id_transaksi_pembelian', $id_trans);
-            $this->db->update('transaksi_pembelian', $data);
         }
     }
 

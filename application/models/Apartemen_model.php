@@ -45,30 +45,22 @@ class apartemen_model extends CI_Model
 
             if ($this->upload->do_upload('gambar')) {
                 $this->upload->data('file_name');
+                $data = [
+                    "id_pengelola" => $this->session->userdata('id_pengelola'),
+                    "nama_apartemen" => $this->input->post('nama_apartemen', true),
+                    "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
+                    "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
+                    "provinsi" => $this->input->post('provinsi', true),
+                    "gambar_apartemen" => $newName,
+                    "maps_link" => $this->input->post('maps_link', true)
+                ];
+                $this->db->insert('apartemen', $data);
+                return "True";
             } else {
-                echo $this->upload->display_errors();
+                $error = array('error' => $this->upload->display_errors());
+                return $this->session->set_flashdata('error', $error['error']);
             }
-            $data = [
-                "id_pengelola" => $this->session->userdata('id_pengelola'),
-                "nama_apartemen" => $this->input->post('nama_apartemen', true),
-                "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
-                "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
-                "provinsi" => $this->input->post('provinsi', true),
-                "gambar_apartemen" => $newName,
-                "maps_link" => $this->input->post('maps_link', true)
-            ];
-        } else {
-            $data = [
-                "id_pengelola" => $this->session->userdata('id_pengelola'),
-                "nama_apartemen" => $this->input->post('nama_apartemen', true),
-                "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
-                "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
-                "provinsi" => $this->input->post('provinsi', true),
-                "gambar_apartemen" => "test.jpg",
-                "maps_link" => $this->input->post('maps_link', true)
-            ];
         }
-        $this->db->insert('apartemen', $data);
     }
 
     public function editApartemen()
@@ -82,10 +74,7 @@ class apartemen_model extends CI_Model
             foreach ($getDataGambar->result_array() as $gambar) {
                 $namaFile = $gambar['gambar_apartemen'];
             }
-            if ($namaFile != "no_img.jpg") {
-                //hapus gambar
-                unlink($path . $namaFile);
-            }
+
 
             $config['upload_path']          = './assets/img/gambar_apartemen/';
             $config['allowed_types']        = 'jpg|png';
@@ -96,19 +85,27 @@ class apartemen_model extends CI_Model
             $this->load->library('upload', $config);
 
             if ($this->upload->do_upload('gambar')) {
+                if ($namaFile != "no_img.jpg") {
+                    //hapus gambar
+                    unlink($path . $namaFile);
+                }
                 $this->upload->data('file_name');
+                $data = [
+                    "id_pengelola" => $this->session->userdata('id_pengelola'),
+                    "nama_apartemen" => $this->input->post('nama_apartemen', true),
+                    "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
+                    "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
+                    "provinsi" => $this->input->post('provinsi', true),
+                    "gambar_apartemen" => $newName,
+                    "maps_link" => $this->input->post('maps_link', true)
+                ];
+                $this->db->where('id_apartemen', $id);
+                $this->db->update('apartemen', $data);
+                return "True";
             } else {
-                echo $this->upload->display_errors();
+                $error = array('error' => $this->upload->display_errors());
+                return $this->session->set_flashdata('error', $error['error']);
             }
-            $data = [
-                "id_pengelola" => $this->session->userdata('id_pengelola'),
-                "nama_apartemen" => $this->input->post('nama_apartemen', true),
-                "alamat_apartemen" => $this->input->post('alamat_apartemen', true),
-                "kota_kabupaten" => $this->input->post('kota_kabupaten', true),
-                "provinsi" => $this->input->post('provinsi', true),
-                "gambar_apartemen" => $newName,
-                "maps_link" => $this->input->post('maps_link', true)
-            ];
         } else {
             $data = [
                 "id_pengelola" => $this->session->userdata('id_pengelola'),
@@ -118,9 +115,9 @@ class apartemen_model extends CI_Model
                 "provinsi" => $this->input->post('provinsi', true),
                 "maps_link" => $this->input->post('maps_link', true)
             ];
+            $this->db->where('id_apartemen', $id);
+            $this->db->update('apartemen', $data);
         }
-        $this->db->where('id_apartemen', $id);
-        $this->db->update('apartemen', $data);
     }
 
     public function hapusApartemen($id)
