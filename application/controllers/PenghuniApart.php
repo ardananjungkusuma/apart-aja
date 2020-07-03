@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PenghuniApart extends CI_Controller
+class Penghuniapart extends CI_Controller
 {
     public function __construct()
     {

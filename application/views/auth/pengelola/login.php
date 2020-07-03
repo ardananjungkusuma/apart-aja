@@ -4,7 +4,7 @@
             <img src="<?= base_url() ?>assets/img/etc/registration-form-1-manager.jpg" alt="">
         </div>
         <form action="<?= base_url() ?>auth/prosesLoginPengelola" method="POST">
-            <i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="index.php" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
+            <i class="zmdi zmdi-long-arrow-left" style="font-size: 15px"></i><a href="<?= base_url() ?>" style="text-decoration: none;color:#333;font-size:15px;font-family: Poppins-Regular;"> Back to Homepage</a><br><br>
             <h3>Pengelola Login</h3>
             <?= $this->session->flashdata('message'); ?><br>
             <div class="form-wrapper">
