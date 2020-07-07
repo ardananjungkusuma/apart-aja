@@ -15,6 +15,37 @@ class Auth extends CI_Controller
 		redirect('auth/loginUser', 'refresh');
 	}
 
+	public function loginAdmin()
+	{
+		if ($this->session->userdata('level') == "user") {
+			redirect('home', 'refresh');
+		} elseif ($this->session->userdata('level') == "pengelola") {
+			redirect('pengelola', 'refresh');
+		}
+
+		$this->form_validation->set_rules('username', 'username', 'trim|required');
+		$this->form_validation->set_rules('password', 'password', 'trim|required');
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('templates/header-admin');
+			$this->load->view('auth/admin/index');
+		} else {
+			$cekLogin = $this->auth_model->loginAdmin($this->input->post('username'), $this->input->post('password'));
+
+			if (!empty($cekLogin)) {
+				foreach ($cekLogin as $row);
+				$this->session->set_userdata('id_admin', $row->id_user);
+				$this->session->set_userdata('username', $row->username);
+				$this->session->set_userdata('jabatan', $row->jabatan);
+				redirect('admin');
+			} else {
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
+            Wrong Username or Password!
+          </div>');
+				redirect('auth/loginAdmin');
+			}
+		}
+	}
+
 	public function loginUser()
 	{
 		if ($this->session->userdata('level') == "user") {
@@ -152,11 +183,12 @@ class Auth extends CI_Controller
 	}
 	public function logout()
 	{
+		$this->session->sess_destroy();
 		if ($this->session->userdata('id_pengelola')) {
-			$this->session->sess_destroy();
 			redirect('auth/loginPengelola', 'refresh');
+		} else if ($this->session->userdata('id_admin')) {
+			redirect('auth/loginAdmin', 'refresh');
 		} else {
-			$this->session->sess_destroy();
 			redirect('auth/loginUser', 'refresh');
 		}
 	}

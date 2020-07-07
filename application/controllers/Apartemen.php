@@ -26,7 +26,7 @@ class Apartemen extends CI_Controller
     }
 
     //Fitur User
-    //TODO Lanjutkan ,IMAGE OBJECT FIT CROPPED, Fix add feature verifikasi user, edit profile user
+    //TODO Lanjutkan REGISTER PENGELOLA ,IMAGE OBJECT FIT CROPPED, Fix add feature verifikasi user, edit profile user
     public function apartemenAnda()
     {
         $data['apartemen'] =  $this->user_model->getApartemenById($this->session->userdata('id_user'));
