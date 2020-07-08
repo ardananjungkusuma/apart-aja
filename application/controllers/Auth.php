@@ -77,9 +77,21 @@ class Auth extends CI_Controller
 		} elseif ($this->session->userdata('level') == "admin") {
 			redirect('admin', 'refresh');
 		}
-		$data['title'] = 'Register';
+		$data['title'] = 'Register User';
 		$this->load->view('auth/user/header', $data);
 		$this->load->view('auth/user/register');
+	}
+
+	public function registerPengelola()
+	{
+		if ($this->session->userdata('level') == "user") {
+			redirect('home', 'refresh');
+		} elseif ($this->session->userdata('level') == "admin") {
+			redirect('admin', 'refresh');
+		}
+		$data['title'] = 'Register Pengelola';
+		$this->load->view('auth/pengelola/header', $data);
+		$this->load->view('auth/pengelola/register');
 	}
 
 	public function prosesLoginUser()
@@ -170,9 +182,9 @@ class Auth extends CI_Controller
 
 
 		if ($this->form_validation->run() == FALSE) {
-			$data['title'] = 'User Register';
-			$this->load->view('auth/header', $data);
-			$this->load->view('auth/register');
+			$data['title'] = 'Register User';
+			$this->load->view('auth/user/header', $data);
+			$this->load->view('auth/user/register');
 		} else {
 			$this->auth_model->registerUser();
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
@@ -181,6 +193,34 @@ class Auth extends CI_Controller
 			redirect('auth');
 		}
 	}
+
+	public function prosesRegisterPengelola()
+	{
+		$this->form_validation->set_rules('nama', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('jenis_kelamin', 'Jenis_Kelamin', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email|is_unique[pengelola_apartemen.email]', [
+			'is_unique' => 'This email already taken'
+		]);
+		$this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[pengelola_apartemen.username]', [
+			'is_unique' => 'This username already taken'
+		]);
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]', [
+			'min_length' => 'Password minimum 6 character'
+		]);
+
+		if ($this->form_validation->run() == FALSE) {
+			$data['title'] = 'Register Pengelola';
+			$this->load->view('auth/pengelola/header', $data);
+			$this->load->view('auth/pengelola/register');
+		} else {
+			$this->auth_model->registerPengelola();
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Congratulations, your account has been created.
+          </div>');
+			redirect('auth');
+		}
+	}
+
 	public function logout()
 	{
 		$this->session->sess_destroy();
