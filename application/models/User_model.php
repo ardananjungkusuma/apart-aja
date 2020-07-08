@@ -4,6 +4,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class user_model extends CI_Model
 {
+	public function getAllUser()
+	{
+		$query = $this->db->query("SELECT * FROM user");
+		return $query->result_array();
+	}
+
 	public function getUserById($id)
 	{
 		$query = $this->db->query("SELECT * FROM user WHERE id_user = $id");

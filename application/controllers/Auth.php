@@ -29,11 +29,11 @@ class Auth extends CI_Controller
 			$this->load->view('templates/header-admin');
 			$this->load->view('auth/admin/index');
 		} else {
-			$cekLogin = $this->auth_model->loginAdmin($this->input->post('username'), $this->input->post('password'));
+			$cekLogin = $this->auth_model->loginAdmin($this->input->post('username'), MD5($this->input->post('password')));
 
 			if (!empty($cekLogin)) {
 				foreach ($cekLogin as $row);
-				$this->session->set_userdata('id_admin', $row->id_user);
+				$this->session->set_userdata('id_admin', $row->id_admin);
 				$this->session->set_userdata('username', $row->username);
 				$this->session->set_userdata('jabatan', $row->jabatan);
 				redirect('admin');

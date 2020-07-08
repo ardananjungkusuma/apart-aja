@@ -6,15 +6,18 @@ class Admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        if ($this->session->userdata('level') != "admin") {
+        if (empty($this->session->userdata('id_admin'))) {
             redirect('auth/loginAdmin');
         }
+        $this->load->model('user_model');
     }
 
     public function index()
     {
         //load list tabel pengelola & user untuk verifikasi
-        $this->load->view('admin/header');
-        $this->load->view('admin/index');
+        $data['user'] = $this->user_model->getAllUser();
+        $this->load->view('templates/header-admin');
+        $this->load->view('admin/data-user', $data);
+        $this->load->view('templates/footer-admin');
     }
 }
