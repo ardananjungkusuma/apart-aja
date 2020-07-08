@@ -26,7 +26,7 @@
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <?php
-                if (!empty($this->session->userdata('jabatan'))) {
+                if ($this->session->userdata('level') == "hrd" or $this->session->userdata('level') == "staff" or $this->session->userdata('level') == "kepala") {
                 ?>
                     <a class="nav-item nav-link" href="<?= base_url(); ?>admin">Manajemen User</a>
                     <a class="nav-item nav-link" href="<?= base_url(); ?>admin/dataPengelola">Manajemen Pengelola</a>

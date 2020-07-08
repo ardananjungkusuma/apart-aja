@@ -9,7 +9,7 @@
                 <?php endif ?>
                 <h4 style="text-align: center">Login</h4><br>
                 <?= $this->session->flashdata('message'); ?>
-                <form action="" method="POST">
+                <form action="<?= base_url() ?>auth/loginAdmin" method="POST">
                     <div class="form-group">
                         <label for="username">Username</label>
                         <input type="text" class="form-control" id="username" name="username">

@@ -30,12 +30,11 @@ class Auth extends CI_Controller
 			$this->load->view('auth/admin/index');
 		} else {
 			$cekLogin = $this->auth_model->loginAdmin($this->input->post('username'), MD5($this->input->post('password')));
-
 			if (!empty($cekLogin)) {
 				foreach ($cekLogin as $row);
-				$this->session->set_userdata('id_admin', $row->id_admin);
+				$this->session->set_userdata('id_user', $row->id_user);
 				$this->session->set_userdata('username', $row->username);
-				$this->session->set_userdata('jabatan', $row->jabatan);
+				$this->session->set_userdata('level', $row->level);
 				redirect('admin');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">
@@ -217,7 +216,7 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Congratulations, your account has been created.
           </div>');
-			redirect('auth');
+			redirect('auth/loginUser');
 		}
 	}
 
@@ -226,7 +225,7 @@ class Auth extends CI_Controller
 		$this->session->sess_destroy();
 		if ($this->session->userdata('id_pengelola')) {
 			redirect('auth/loginPengelola', 'refresh');
-		} else if ($this->session->userdata('id_admin')) {
+		} else if ($this->session->userdata('level') != "user") {
 			redirect('auth/loginAdmin', 'refresh');
 		} else {
 			redirect('auth/loginUser', 'refresh');

@@ -34,4 +34,10 @@ class pengelola_model extends CI_Model
         $this->db->where('id_pengelola', $id_peng);
         $this->db->delete('rekening_bank');
     }
+
+    public function getAllPengelola()
+    {
+        $query = $this->db->query("SELECT * FROM pengelola_apartemen");
+        return $query->result_array();
+    }
 }

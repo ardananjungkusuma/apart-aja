@@ -39,9 +39,11 @@ class auth_model extends CI_Model
     function loginAdmin($username, $password)
     {
         $this->db->select('*');
-        $this->db->from('admin');
+        $this->db->from('user');
         $this->db->where("(username='$username' OR email='$username')");
         $this->db->where('password', $password);
+        $level = array('kepala', 'hrd', 'staff');
+        $this->db->where_in('level', $level);
         $this->db->limit(1);
 
         $query = $this->db->get();
