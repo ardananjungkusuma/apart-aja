@@ -12,30 +12,31 @@
                     Anda dapat membeli apartemen dengan <b>Verifikasi Identitas</b> terlebih dahulu.<br><i><b>**Nama Lengkap wajib sama dengan identitas**</b></i>
                 </div>
             <?php
-            } else if ($profile['gambar_kartu_identitas'] != "None" and $profile['status_user'] == "Belum Terverifikasi") {
-            ?>
-                <div class="alert alert-info" role="alert">
-                    Profil sedang dalam proses verifikasi. Proses verifikasi memakan waktu 1x24 Jam dalam hari kerja.
-                </div>
-            <?php
             }
             ?>
 
-            <label class="label-profil">Nama Lengkap : </label>
+            <label class="label-profil" style="font-weight: bold;">Nama Lengkap : </label>
             <?= $profile['nama'] ?><br>
-            <label class="label-profil">Email : </label>
+            <label class="label-profil" style="font-weight: bold;">Email : </label>
             <?= $profile['email'] ?><br>
-            <label class="label-profil">Username : </label>
+            <label class="label-profil" style="font-weight: bold;">Username : </label>
             <?= $profile['username'] ?><br>
-            <label class="label-profil">Alamat : </label>
+            <label class="label-profil" style="font-weight: bold;">Alamat : </label>
             <?= $profile['alamat'] ?><br>
-            <label class="label-profil">Nomer Telfon : </label>
+            <label class="label-profil" style="font-weight: bold;">Nomer Telfon : </label>
             <?= $profile['no_telpon'] ?><br>
-            <label class="label-profil">Jenis Kelamin : </label>
+            <label class="label-profil" style="font-weight: bold;">Jenis Kelamin : </label>
             <?= $profile['jenis_kelamin'] ?><br>
-            <label class="label-profil">Status User : </label>
-            <b><?= $profile['status_user'] ?></b><br>
-            <label class="label-profil">Gambar Kartu Identitas : </label><br>
+            <label class="label-profil" style="font-weight: bold;">Status User : </label>
+            <?php
+            if ($profile['gambar_kartu_identitas'] != "None" and $profile['status_user'] == "Belum Terverifikasi") {
+                echo $profile['status_user'] . " (Verifikasi Anda sedang <b>direview</b>, tunggu 1-2 hari kerja)";
+            } else {
+                echo $profile['status_user'];
+            }
+            ?>
+            <br>
+            <label class="label-profil" style="font-weight: bold;">Gambar Kartu Identitas : </label><br>
             <?php
             if ($profile['gambar_kartu_identitas'] != "None") {
             ?>

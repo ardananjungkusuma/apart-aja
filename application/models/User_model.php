@@ -28,6 +28,19 @@ class user_model extends CI_Model
 		return $query->result_array();
 	}
 
+	public function editProfile($id)
+	{
+		$data = [
+			"nama" => $this->input->post('nama'),
+			"email" => $this->input->post('email'),
+			"alamat" => $this->input->post('alamat'),
+			"jenis_kelamin" => $this->input->post('jenis_kelamin'),
+			"no_telpon" => $this->input->post('no_telpon')
+		];
+		$this->db->where('id_user', $id);
+		$this->db->update('user', $data);
+	}
+
 	public function verifikasiIdentitas($id)
 	{
 		$path = "assets/img/identitas/kartu_identitas/";

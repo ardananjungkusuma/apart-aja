@@ -35,6 +35,28 @@ class User extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 
+	public function editProfile()
+	{
+		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
+		$this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+		$this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric');
+		if ($this->form_validation->run() == FALSE) {
+			$data['profile'] = $this->user_model->getUserById($this->session->userdata('id_user'));
+			$this->load->view('templates/header-user', $data);
+			$this->load->view('templates/sidebar-menu');
+			$this->load->view('user/edit-profile', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$this->user_model->editProfile($this->session->userdata('id_user'));
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            	Profile Telah Berhasil Diubah.
+		  	</div>');
+			redirect('user/profile');
+		}
+	}
+
 	public function verifikasi()
 	{
 		$cekData = $this->user_model->getUserById($this->session->userdata('id_user'));
