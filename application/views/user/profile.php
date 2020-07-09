@@ -4,9 +4,24 @@
     </div>
     <div class="card-body">
         <?php
+        echo $this->session->flashdata('message');
         foreach ($profile as $profile) {
+            if ($profile['gambar_kartu_identitas'] == "None") {
         ?>
-            <label class="label-profil">Nama : </label>
+                <div class="alert alert-info" role="alert">
+                    Anda dapat membeli apartemen dengan <b>Verifikasi Identitas</b> terlebih dahulu.<br><i><b>**Nama Lengkap wajib sama dengan identitas**</b></i>
+                </div>
+            <?php
+            } else if ($profile['gambar_kartu_identitas'] != "None" and $profile['status_user'] == "Belum Terverifikasi") {
+            ?>
+                <div class="alert alert-info" role="alert">
+                    Profil sedang dalam proses verifikasi. Proses verifikasi memakan waktu 1x24 Jam dalam hari kerja.
+                </div>
+            <?php
+            }
+            ?>
+
+            <label class="label-profil">Nama Lengkap : </label>
             <?= $profile['nama'] ?><br>
             <label class="label-profil">Email : </label>
             <?= $profile['email'] ?><br>
@@ -22,17 +37,23 @@
             <b><?= $profile['status_user'] ?></b><br>
             <label class="label-profil">Gambar Kartu Identitas : </label><br>
             <?php
-            if ($profile['gambar_kartu_identitas'] == "None") {
+            if ($profile['gambar_kartu_identitas'] != "None") {
             ?>
-                Anda Belum Mengupload Gambar Identitas, silahkan Klik Edit Profile. <br>
+                <img src="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $profile['gambar_kartu_identitas'] ?>">
             <?php
             } else {
+                echo "<b>Belum Diupload.</b>";
+            }
             ?>
-                <a href="<?= $profile['gambar_kartu_identitas'] ?>">Klik Disini Untuk Melihat Gambar Identitas Anda</a><br><br>
+            <br><br>
+            <a href="<?= base_url(); ?>user/editProfile" class="btn btn-success">Edit Profile</a>
+            <?php
+            if ($profile['status_user'] == "Belum Terverifikasi" or $profile['status_user'] != "Terverifikasi") {
+            ?>
+                <a href="<?= base_url(); ?>user/verifikasi" class="btn btn-info">Verifikasi Data</a>
             <?php
             }
             ?>
-            <a href="<?= base_url(); ?>user/editProfile" class="btn btn-success">Edit Profile</a>
         <?php
         }
         ?>
