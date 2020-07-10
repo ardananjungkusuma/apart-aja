@@ -18,6 +18,7 @@
                         <td>Jenis Kelamin</td>
                         <td>Gambar Kartu Identitas</td>
                         <td>Status</td>
+                        <td>Tipe User</td>
                         <td>Aksi</td>
                     </tr>
                 </thead>
@@ -46,20 +47,37 @@
                                     echo "Belum diupload.";
                                 } else {
                                 ?>
-                                    <a href="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $usr['gambar_kartu_identitas'] ?>">Gambar</a>
+                                    <a href="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $usr['gambar_kartu_identitas'] ?>" target="_blank">Gambar</a>
                                 <?php
                                 }
                                 ?>
                             </td>
                             <td>
+                                <?= $usr['level'] ?>
+                            </td>
+                            <td>
                                 <?= $usr['status_user'] ?>
                             </td>
                             <td>
-                                <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiUser/<?= $usr['id_user'] ?>">Verifikasi</a>
-                                <a class="badge badge-warning" href="<?= base_url() ?>admin//<?= $usr['id_user'] ?>">Edit Password</a>
-                                <a class="badge badge-danger" href="<?= base_url() ?>admin//<?= $usr['id_user'] ?>">Hapus</a>
+                                <?php
+                                if ($usr['level'] == "user") {
+                                    if ($usr['status_user'] == "Terverifikasi" or $usr['status_user'] == "Verifikasi Ditolak") {
+                                    } else {
+                                ?>
+                                        <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiUser/<?= $usr['id_user'] ?>">Verifikasi</a>
+                                    <?php
+                                    }
+                                    ?>
+                                    <a class="badge badge-warning" href="<?= base_url() ?>admin//<?= $usr['id_user'] ?>">Edit Password</a>
+                                    <a class="badge badge-danger" href="<?= base_url() ?>admin//<?= $usr['id_user'] ?>">Hapus</a>
+                                <?php
+                                } else {
+                                    echo "None";
+                                }
+                                ?>
                             </td>
                         </tr>
+
                     <?php
                     }
                     ?>

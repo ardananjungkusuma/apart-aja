@@ -11,6 +11,7 @@ class Admin extends CI_Controller
         }
         $this->load->model('user_model');
         $this->load->model('pengelola_model');
+        $this->load->model('admin_model');
     }
 
     public function index()
@@ -28,5 +29,41 @@ class Admin extends CI_Controller
         $this->load->view('templates/header-admin');
         $this->load->view('admin/data-pengelola', $data);
         $this->load->view('templates/footer-admin');
+    }
+
+    public function verifikasiUser($id)
+    {
+        $check = $this->user_model->getUserById($id);
+        $loginLevel = $this->session->userdata('level');
+        foreach ($check as $c) {
+            $status = $c['status_user'];
+            $level = $c['level'];
+        }
+        if ($status == "Terverifikasi" or $status == "Verifikasi Ditolak") {
+            redirect('admin');
+        } else if ($level != "user" && $loginLevel != "kepala") {
+            redirect('admin');
+        } else {
+            $data['usr'] = $this->user_model->getUserById($id);
+            $this->load->view('templates/header-admin');
+            $this->load->view('admin/verifikasi-user', $data);
+            $this->load->view('templates/footer-admin');
+        }
+    }
+
+    public function prosesVerifikasiUser()
+    {
+        $this->form_validation->set_rules('id_user', 'id_user', 'trim|required');
+        $this->form_validation->set_rules('status_user', 'status_user', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('admin');
+        } else {
+            $this->admin_model->verifikasiUser($this->input->post('id_user'));
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Proses Verifikasi Berhasil.
+          </div>');
+            redirect('admin');
+        }
     }
 }

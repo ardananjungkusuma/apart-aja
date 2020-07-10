@@ -12,9 +12,20 @@
                     Anda dapat membeli apartemen dengan <b>Verifikasi Identitas</b> terlebih dahulu.<br><i><b>**Nama Lengkap wajib sama dengan identitas**</b></i>
                 </div>
             <?php
+            } else if ($profile['gambar_kartu_identitas'] != "None" and $profile['status_user'] == "Verifikasi Ditolak") {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    Pastikan Anda Mengirim Data Sesuai Peraturan Dibawah<br>
+                    <b>
+                        1. Nama Lengkap wajib sama dengan identitas <br>
+                        2. Gambar Tidak Blur <br>
+                        3. Data Identitas Yang Anda Berikan Valid<br>
+                    </b>
+                    Silahkan Kirimkan Data Identitas Kembali.
+                </div>
+            <?php
             }
             ?>
-
             <label class="label-profil" style="font-weight: bold;">Nama Lengkap : </label>
             <?= $profile['nama'] ?><br>
             <label class="label-profil" style="font-weight: bold;">Email : </label>
