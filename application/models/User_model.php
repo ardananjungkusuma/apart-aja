@@ -47,6 +47,7 @@ class user_model extends CI_Model
 		$getDataGambar = $this->db->query("SELECT * FROM user WHERE id_user = $id");
 		foreach ($getDataGambar->result_array() as $gambar) {
 			$namaFile = $gambar['gambar_kartu_identitas'];
+			$status_user = $gambar['status_user'];
 		}
 
 		$config['upload_path']          = './assets/img/identitas/kartu_identitas/';
@@ -61,9 +62,16 @@ class user_model extends CI_Model
 				unlink($path . $namaFile);
 			}
 			$this->upload->data('file_name');
-			$data = [
-				"gambar_kartu_identitas" => $newName
-			];
+			if ($status_user == "Verifikasi Ditolak") {
+				$data = [
+					"gambar_kartu_identitas" => $newName,
+					"status_user" => "Belum Terverifikasi"
+				];
+			} else {
+				$data = [
+					"gambar_kartu_identitas" => $newName
+				];
+			}
 			$this->db->where('id_user', $id);
 			$this->db->update('user', $data);
 			return "True";

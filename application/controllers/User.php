@@ -63,7 +63,7 @@ class User extends CI_Controller
 		foreach ($cekData as $cd) {
 			$status = $cd['status_user'];
 		}
-		if ($status == "Berhasil Verifikasi") {
+		if ($status == "Terverifikasi") {
 			redirect('user/profile');
 		} else {
 			$this->form_validation->set_rules('id_user', 'id_user', 'trim|required');
