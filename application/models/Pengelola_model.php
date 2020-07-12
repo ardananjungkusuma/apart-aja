@@ -16,6 +16,18 @@ class pengelola_model extends CI_Model
         return $query->result_array();
     }
 
+    public function editProfile($id)
+    {
+        $data = [
+            "nama" => $this->input->post('nama'),
+            "email" => $this->input->post('email'),
+            "jenis_kelamin" => $this->input->post('jenis_kelamin'),
+            "no_telpon" => $this->input->post('no_telpon')
+        ];
+        $this->db->where('id_pengelola', $id);
+        $this->db->update('pengelola_apartemen', $data);
+    }
+
     public function tambahRekening()
     {
         $data = [

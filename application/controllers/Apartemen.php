@@ -26,7 +26,7 @@ class Apartemen extends CI_Controller
     }
 
     //Fitur User
-    //TODO Lanjutkan reupload verifikasi saat ditolak (saat user reupload dimodel ubah status jadi Belum Verifikasi), edit profile pengelola, verifikasi pengelola, tambah karyawan staff, filter fitur khusus pengguna terverifikasi, IMAGE OBJECT FIT CROPPED.
+    //TODO Lanjutkan edit profile pengelola, kyc pengelola, verifikasi pengelola, ubah password user & pengelola,tambah karyawan staff, filter fitur khusus pengguna terverifikasi, IMAGE OBJECT FIT CROPPED.
     public function apartemenAnda()
     {
         $data['apartemen'] =  $this->user_model->getApartemenById($this->session->userdata('id_user'));

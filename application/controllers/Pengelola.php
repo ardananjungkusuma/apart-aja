@@ -26,6 +26,27 @@ class Pengelola extends CI_Controller
         $this->load->view('templates/footer-pengelola');
     }
 
+    public function editProfile()
+    {
+        $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+        $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+        $this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric');
+        $this->form_validation->set_rules('email', 'email', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            $data['profile'] = $this->pengelola_model->getDataById($this->session->userdata('id_pengelola'));
+            $this->load->view('templates/header-pengelola');
+            $this->load->view('pengelola/edit-profile', $data);
+            $this->load->view('templates/footer-pengelola');
+        } else {
+            $data = $this->pengelola_model->editProfile($this->session->userdata('id_pengelola'));
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Profil Telah Berhasil Diubah.
+          </div>');
+            redirect('pengelola/profil');
+        }
+    }
+
     public function rekening()
     {
         $data['rekening'] = $this->pengelola_model->getRekeningById($this->session->userdata('id_pengelola'));

@@ -81,6 +81,7 @@ class auth_model extends CI_Model
             'username' => htmlspecialchars($this->input->post('username', true)),
             'password' => htmlspecialchars(MD5($this->input->post('password'))),
             'gambar_identitas' => 'None',
+            'kyc_identitas' => 'None',
             'status_pengelola' => 'Belum Terverifikasi'
         ];
         $this->db->insert('pengelola_apartemen', $data);

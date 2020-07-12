@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <?= $this->session->flashdata('message') ?>
-        <form method="POST" enctype="multipart/form-data" action="<?= base_url() ?>user/editProfile">
+        <form method="POST" action="<?= base_url() ?>user/editProfile">
             <div class="form-group">
                 <?php
                 foreach ($profile as $profile) {
@@ -13,7 +13,7 @@
                     <input type="text" name="nama" class="form-control" value="<?= $profile['nama'] ?>">
                     <label>Username</label>
                     <input type="text" name="username" class="form-control" value="<?= $profile['username'] ?>" disabled>
-                    <small class="form-text text-muted">Username can't be changed</small>
+                    <small class="form-text text-muted">Username tidak bisa diubah.</small>
                     <label>Email</label>
                     <input type="email" name="email" class="form-control" value="<?= $profile['email'] ?>">
                     <label>Jenis Kelamin</label>
@@ -31,7 +31,7 @@
                 }
                 ?>
                 <button type="submit" class="btn btn-success" name="submit">Edit Profile</button>
-                <a href="<?= base_url(); ?>user/profile" class="btn btn-primary">Kembali</a>
+                <a href="<?= base_url(); ?>pengelola/profile" class="btn btn-primary">Kembali</a>
             </div>
         </form>
     </div>
