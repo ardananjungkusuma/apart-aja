@@ -28,8 +28,10 @@ class Pengelola extends CI_Controller
 
     public function editProfile()
     {
-        $this->form_validation->set_rules('nama', 'nama', 'trim|required');
-        $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+        if ($this->session->userdata('status') == "Belum Terverifikasi" or $this->session->userdata('status') == "Belum Terverifikasi") {
+            $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+            $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+        }
         $this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric');
         $this->form_validation->set_rules('email', 'email', 'trim|required');
 

@@ -41,7 +41,7 @@
             <?php
             }
             ?>
-            <a href="<?= base_url() ?>pengelola/profil" class="btn btn-info" style="margin-top: 20px;">Kembali ke Profil</a>
+            <a href="<?= base_url() ?>pengelola/profile" class="btn btn-info" style="margin-top: 20px;">Kembali ke Profil</a>
             <a href="<?= base_url() ?>pengelola/tambahRekening" class="btn btn-success" style="margin-top: 20px;margin-left:10px">Tambah Rekening</a>
         </div>
     </div>

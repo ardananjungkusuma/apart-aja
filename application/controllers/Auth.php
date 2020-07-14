@@ -21,6 +21,8 @@ class Auth extends CI_Controller
 			redirect('home', 'refresh');
 		} elseif ($this->session->userdata('level') == "pengelola") {
 			redirect('pengelola', 'refresh');
+		} elseif ($this->session->userdata('level') == "kepala" or $this->session->userdata('level') == "staff") {
+			redirect('admin', 'refresh');
 		}
 
 		$this->form_validation->set_rules('username', 'username', 'trim|required');
@@ -104,6 +106,7 @@ class Auth extends CI_Controller
 			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_user', $row->id_user);
 			$this->session->set_userdata('username', $row->username);
+			$this->session->set_userdata('status', $row->status_user);
 			$this->session->set_userdata('level', $row->level);
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');
@@ -141,6 +144,7 @@ class Auth extends CI_Controller
 			foreach ($cekLogin as $row);
 			$this->session->set_userdata('id_pengelola', $row->id_pengelola);
 			$this->session->set_userdata('username', $row->username);
+			$this->session->set_userdata('status', $row->status_pengelola);
 			$this->session->set_userdata('level', "pengelola");
 			if ($this->session->userdata('level') == "admin") {
 				redirect('admin');

@@ -15,14 +15,20 @@
                 ?>
                     <form method="POST" enctype="multipart/form-data" action="<?= base_url() ?>pengelola/editProfile">
                         <div class="form-group">
-                            <label>Nama Lengkap</label>
-                            <input type="text" id="nama" name="nama" class="form-control mb-2" value="<?= $p['nama'] ?>" required>
-                            <label>Nomer Telfon</label>
-                            <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
-                                <option value="<?= $p['jenis_kelamin'] ?>" selected><?= $p['jenis_kelamin'] ?></option>
-                                <option value="Pria">Pria</option>
-                                <option value="Wanita">Wanita</option>
-                            </select>
+                            <?php
+                            if ($p['status_pengelola'] != "Terverifikasi") {
+                            ?>
+                                <label>Nama Lengkap</label>
+                                <input type="text" id="nama" name="nama" class="form-control mb-2" value="<?= $p['nama'] ?>" required>
+                                <label>Jenis Kelamin</label>
+                                <select name="jenis_kelamin" id="jenis_kelamin" class="form-control" required>
+                                    <option value="<?= $p['jenis_kelamin'] ?>" selected><?= $p['jenis_kelamin'] ?></option>
+                                    <option value="Pria">Pria</option>
+                                    <option value="Wanita">Wanita</option>
+                                </select>
+                            <?php
+                            }
+                            ?>
                             <label>Nomer Telfon</label>
                             <input type="text" id="no_telpon" name="no_telpon" class="form-control mb-2" value="<?= $p['no_telpon'] ?>" required>
                             <label>Email</label>

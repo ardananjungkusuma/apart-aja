@@ -4,11 +4,11 @@
         foreach ($profile as $profile) {
         ?>
             <div class="col-md-8" style="margin: 0 auto;">
-                <?= $this->session->flashdata('message') ?>
                 <center>
                     <h2>Profile Anda</h2>
                     <hr>
                 </center>
+                <?= $this->session->flashdata('message') ?>
                 <?php
                 if ($profile['status_pengelola'] == "Belum Terverifikasi" and $profile['kyc_identitas'] == "None") {
                 ?>
