@@ -12,4 +12,13 @@ class admin_model extends CI_Model
         $this->db->where('id_user', $id);
         $this->db->update('user', $data);
     }
+
+    public function verifikasiPengelola($id)
+    {
+        $data = [
+            "status_pengelola" => $this->input->post('status_pengelola')
+        ];
+        $this->db->where('id_pengelola', $id);
+        $this->db->update('pengelola_apartemen', $data);
+    }
 }

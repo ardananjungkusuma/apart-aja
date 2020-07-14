@@ -66,4 +66,37 @@ class Admin extends CI_Controller
             redirect('admin');
         }
     }
+
+    public function verifikasiPengelola($id)
+    {
+        $check = $this->pengelola_model->getDataById($id);
+        $loginLevel = $this->session->userdata('level');
+        foreach ($check as $c) {
+            $status = $c['status_pengelola'];
+        }
+        if ($status == "Terverifikasi" or $status == "Verifikasi Ditolak") {
+            redirect('admin');
+        } else {
+            $data['pengelola'] = $this->pengelola_model->getDataById($id);
+            $this->load->view('templates/header-admin');
+            $this->load->view('admin/verifikasi-pengelola', $data);
+            $this->load->view('templates/footer-admin');
+        }
+    }
+
+    public function prosesVerifikasiPengelola()
+    {
+        $this->form_validation->set_rules('id_pengelola', 'id_pengelola', 'trim|required');
+        $this->form_validation->set_rules('status_pengelola', 'status_pengelola', 'trim|required');
+
+        if ($this->form_validation->run() == FALSE) {
+            redirect('admin/dataPengelola');
+        } else {
+            $this->admin_model->verifikasiPengelola($this->input->post('id_pengelola'));
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            Proses Verifikasi Berhasil.
+          </div>');
+            redirect('admin/dataPengelola');
+        }
+    }
 }

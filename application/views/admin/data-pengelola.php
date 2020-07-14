@@ -16,7 +16,8 @@
                         <td>Email</td>
                         <td>No Telepon</td>
                         <td>Jenis Kelamin</td>
-                        <td>Gambar Kartu Identitas</td>
+                        <td>Kartu Identitas</td>
+                        <td>KYC Identitas</td>
                         <td>Status</td>
                         <td>Aksi</td>
                     </tr>
@@ -43,10 +44,21 @@
                             <td>
                                 <?php
                                 if ($pengelola['gambar_identitas'] == "None") {
-                                    echo "Belum diupload.";
+                                    echo "Belum upload gambar.";
                                 } else {
                                 ?>
-                                    <a href="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $pengelola['gambar_identitas'] ?>">Gambar</a>
+                                    <a href="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $pengelola['gambar_identitas'] ?>" target="_blank">Gambar</a>
+                                <?php
+                                }
+                                ?>
+                            </td>
+                            <td>
+                                <?php
+                                if ($pengelola['kyc_identitas'] == "None") {
+                                    echo "Belum upload gambar.";
+                                } else {
+                                ?>
+                                    <a href="<?= base_url() ?>assets/img/identitas/kyc_identitas/<?= $pengelola['kyc_identitas'] ?>" target="_blank">Gambar</a>
                                 <?php
                                 }
                                 ?>
@@ -55,7 +67,7 @@
                                 <?= $pengelola['status_pengelola'] ?>
                             </td>
                             <td>
-                                <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiUser/<?= $pengelola['id_pengelola'] ?>">Verifikasi</a>
+                                <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiPengelola/<?= $pengelola['id_pengelola'] ?>">Verifikasi</a>
                                 <a class="badge badge-warning" href="<?= base_url() ?>admin//<?= $pengelola['id_pengelola'] ?>">Edit Password</a>
                                 <a class="badge badge-danger" href="<?= base_url() ?>admin//<?= $pengelola['id_pengelola'] ?>">Hapus</a>
                             </td>

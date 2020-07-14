@@ -10,9 +10,26 @@
                     <hr>
                 </center>
                 <?php
-                if ($profile['status_pengelola'] == "Belum Terverifikasi") {
+                if ($profile['status_pengelola'] == "Belum Terverifikasi" and $profile['kyc_identitas'] == "None") {
                 ?>
-                    <div class="alert alert-info">Anda harus melakukan verifikasi agar bisa menambahkan dan mulai menjual Apartemen. Proses verifikasi biasanya memakan waktu 1-2 hari kerja.</div>
+                    <div class="alert alert-info">Anda harus melakukan verifikasi agar bisa menambahkan dan mulai menjual Apartemen.</div>
+                <?php
+                } else if ($profile['status_pengelola'] == "Belum Terverifikasi" and $profile['kyc_identitas'] != "None") {
+                ?>
+                    <div class="alert alert-info">Proses verifikasi biasanya memakan waktu 1-2 hari kerja. Harap bersabar menunggu verifikasi</div>
+                <?php
+                } else if ($profile['status_pengelola'] == "Verifikasi Ditolak") {
+                ?>
+                    <div class="alert alert-danger" role="alert">
+                        Verifikasi Anda <b>Ditolak</b><br>
+                        Pastikan Anda Mengirim Data Sesuai Peraturan Dibawah<br>
+                        <b>
+                            1. Nama Lengkap wajib sama dengan identitas <br>
+                            2. Gambar Tidak Blur <br>
+                            3. Data Identitas Yang Anda Berikan Valid<br>
+                        </b>
+                        Silahkan Verifikasi Data Identitas Kembali.
+                    </div>
                 <?php
                 }
                 ?>
@@ -42,15 +59,17 @@
                 if ($profile['gambar_identitas'] != 'None' and $profile['kyc_identitas'] != 'None') {
                     ?>
                     <b> Gambar Identitas Anda</b> :<br>
-                    <img class="rounded mx-auto d-block" src="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $profile['gambar_identitas'] ?>" alt="Gambar Identitas">
-                    <img class="rounded mx-auto d-block" src="<?= base_url() ?>assets/img/identitas/kyc_identitas/<?= $profile['kyc_identitas'] ?>" alt="Gambar KYC">
+                    <ul>
+                        <li><a href="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $profile['gambar_identitas'] ?>" target="_blank">Identitas</a></li>
+                        <li><a href="<?= base_url() ?>assets/img/identitas/kyc_identitas/<?= $profile['kyc_identitas'] ?>" target="_blank">Gambar KYC</a></li>
+                    </ul>
                 </span><br>
             <?php
                 }
             ?>
             <a href="<?= base_url() ?>pengelola/editProfile" class="btn btn-success" style="margin-top: 20px;">Edit Profil</a>
             <a href="<?= base_url() ?>pengelola/rekening" class="btn btn-primary" style="margin-top: 20px;margin-left:10px">Rekening Anda</a>
-            <?php if ($profile['status_pengelola'] == "Belum Terverifikasi") {
+            <?php if ($profile['status_pengelola'] == "Belum Terverifikasi" or $profile['status_pengelola'] == "Verifikasi Ditolak") {
             ?>
                 <a href="<?= base_url() ?>pengelola/verifikasi" class="btn btn-info" style="margin-top: 20px;margin-left:10px">Verifikasi</a>
             <?php

@@ -77,7 +77,7 @@
                             Kritik & Saran
                         </a>
                         <div class="sb-sidenav-menu-heading">Profile</div>
-                        <a class="nav-link" href="<?= base_url() ?>pengelola/profil">
+                        <a class="nav-link" href="<?= base_url() ?>pengelola/profile">
                             <div class="sb-nav-link-icon"><i class="fas fa-cog"></i></div>
                             Profile Anda
                         </a><a class="nav-link" href="<?= base_url() ?>auth/logout">
