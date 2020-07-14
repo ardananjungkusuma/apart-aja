@@ -60,6 +60,7 @@ class ruangan_model extends CI_Model
 		if ($uploaded_image) {
 			$config['upload_path']          = './assets/img/gambar_ruangan/';
 			$config['allowed_types']        = 'jpg|png';
+			$config['remove_spaces'] = TRUE;
 			$newName = date('dmYHis') . $_FILES['gambar_utama']['name'];
 			$config['file_name']         = $newName;
 			$config['max_size']             = 1024;
@@ -105,6 +106,7 @@ class ruangan_model extends CI_Model
 
 			$config['upload_path']          = './assets/img/gambar_ruangan/';
 			$config['allowed_types']        = 'jpg|png';
+			$config['remove_spaces'] = TRUE;
 			$newName = date('dmYHis') . $_FILES['gambar']['name'];
 			$config['file_name']         = $newName;
 			$config['max_size']             = 1024;

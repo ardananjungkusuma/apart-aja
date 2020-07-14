@@ -17,12 +17,12 @@ class Pengelola extends CI_Controller
         redirect('transaksi/transaksiPembelianUser');
     }
 
-    public function profil()
+    public function profile()
     {
         $data['profile'] = $this->pengelola_model->getDataById($this->session->userdata('id_pengelola'));
         $data['rekening'] = $this->pengelola_model->getRekeningById($this->session->userdata('id_pengelola'));
         $this->load->view('templates/header-pengelola');
-        $this->load->view('pengelola/profil', $data);
+        $this->load->view('pengelola/profile', $data);
         $this->load->view('templates/footer-pengelola');
     }
 
@@ -43,7 +43,35 @@ class Pengelola extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
             Profil Telah Berhasil Diubah.
           </div>');
-            redirect('pengelola/profil');
+            redirect('pengelola/profile');
+        }
+    }
+
+    public function verifikasi()
+    {
+        $cekData = $this->pengelola_model->getDataById($this->session->userdata('id_pengelola'));
+        foreach ($cekData as $cd) {
+            $status = $cd['status_pengelola'];
+        }
+        if ($status == "Terverifikasi") {
+            redirect('pengelola/profile');
+        } else {
+            $this->form_validation->set_rules('id_pengelola', 'id_pengelola', 'trim|required|numeric');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('templates/header-pengelola');
+                $this->load->view('pengelola/verifikasi-identitas');
+                $this->load->view('templates/footer-pengelola');
+            } else {
+                $data = $this->pengelola_model->verifikasiIdentitas($this->session->userdata('id_pengelola'));
+                if ($data == "True") {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            			Berhasil upload data identitas, silahkan menunggu proses verifikasi 1-2 Hari Kerja.
+		  			</div>');
+                    redirect('pengelola/profile');
+                } else {
+                    redirect('pengelola/verifikasi');
+                }
+            }
         }
     }
 

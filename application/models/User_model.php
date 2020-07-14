@@ -55,6 +55,7 @@ class user_model extends CI_Model
 		$newName = date('dmYHis') . $_FILES['gambar']['name'];
 		$config['file_name']         = $newName;
 		$config['max_size']             = 3100;
+		$config['remove_spaces'] = TRUE;
 
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('gambar')) {

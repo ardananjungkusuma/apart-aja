@@ -38,6 +38,7 @@ class transaksi_model extends CI_Model
         if ($namaFile === "None") {
             $config['upload_path']          = './assets/img/bukti_pembayaran/';
             $config['allowed_types']        = 'jpg|png';
+            $config['remove_spaces'] = TRUE;
             $newName = date('dmYHis') . $_FILES['gambar']['name'];
             $config['file_name']         = $newName;
             $config['max_size']             = 1024;
@@ -60,6 +61,7 @@ class transaksi_model extends CI_Model
             $path = "assets/img/bukti_pembayaran/";
             $config['upload_path']          = './assets/img/bukti_pembayaran/';
             $config['allowed_types']        = 'jpg|png';
+            $config['remove_spaces'] = TRUE;
             $newName = date('dmYHis') . $_FILES['gambar']['name'];
             $config['file_name']         = $newName;
             $config['max_size']             = 1024;

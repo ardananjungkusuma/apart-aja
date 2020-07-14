@@ -11,7 +11,9 @@
                 </center>
                 <?php
                 if ($profile['status_pengelola'] == "Belum Terverifikasi") {
-                    echo "Anda Harus Melakukan Verifikasi Agar Bisa menambahkan Apartemen";
+                ?>
+                    <div class="alert alert-info">Anda harus melakukan verifikasi agar bisa menambahkan dan mulai menjual Apartemen. Proses verifikasi biasanya memakan waktu 1-2 hari kerja.</div>
+                <?php
                 }
                 ?>
                 <span style="font-size: 20px">
@@ -22,7 +24,6 @@
                     <b> Username</b> : <?= $profile['username'] ?><br>
                     <b> Status</b> : <?= $profile['status_pengelola'] ?><br>
                     <b> Rekening Anda</b> : <br>
-
                     <?php
                     if (!empty($rekening)) {
                         $no = 1;
@@ -35,15 +36,25 @@
                     } else {
                         ?>
                         Maaf Anda Belum Menambah Daftar Rekening.<br>
-                <?php
+                    <?php
                     }
                 }
-                ?>
-                <!-- <b> Gambar Identitas Anda</b> :<br>
-                        <img style="width:350px;margin:0 auto;border-radius: 20px;border:1px solid black" src="" alt="Desc"> -->
+                if ($profile['gambar_identitas'] != 'None' and $profile['kyc_identitas'] != 'None') {
+                    ?>
+                    <b> Gambar Identitas Anda</b> :<br>
+                    <img class="rounded mx-auto d-block" src="<?= base_url() ?>assets/img/identitas/kartu_identitas/<?= $profile['gambar_identitas'] ?>" alt="Gambar Identitas">
+                    <img class="rounded mx-auto d-block" src="<?= base_url() ?>assets/img/identitas/kyc_identitas/<?= $profile['kyc_identitas'] ?>" alt="Gambar KYC">
                 </span><br>
-                <a href="<?= base_url() ?>pengelola/editProfile" class="btn btn-info" style="margin-top: 20px;">Edit Profil</a>
-                <a href="<?= base_url() ?>pengelola/rekening" class="btn btn-primary" style="margin-top: 20px;margin-left:10px">Rekening Anda</a>
+            <?php
+                }
+            ?>
+            <a href="<?= base_url() ?>pengelola/editProfile" class="btn btn-success" style="margin-top: 20px;">Edit Profil</a>
+            <a href="<?= base_url() ?>pengelola/rekening" class="btn btn-primary" style="margin-top: 20px;margin-left:10px">Rekening Anda</a>
+            <?php if ($profile['status_pengelola'] == "Belum Terverifikasi") {
+            ?>
+                <a href="<?= base_url() ?>pengelola/verifikasi" class="btn btn-info" style="margin-top: 20px;margin-left:10px">Verifikasi</a>
+            <?php
+            } ?>
             </div>
     </div>
 </div>

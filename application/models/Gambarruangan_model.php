@@ -20,6 +20,7 @@ class gambarruangan_model extends CI_Model
             $newName = date('dmYHis') . $_FILES['gambar']['name'];
             $config['file_name']         = $newName;
             $config['max_size']             = 1024;
+            $config['remove_spaces'] = TRUE;
 
             $this->load->library('upload', $config);
 
