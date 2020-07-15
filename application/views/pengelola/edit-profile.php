@@ -4,7 +4,15 @@
             <br>
             <p class="h4" style="text-align: center">Edit Profil</p>
             <div class="card-body">
-                <?= $this->session->flashdata('message') ?>
+                <?php
+                if (!empty(validation_errors())) {
+                ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= validation_errors() ?>
+                    </div>
+                <?php
+                }
+                ?>
                 <style>
                     label {
                         margin-top: 10px;
@@ -40,7 +48,8 @@
                     <?php
                 }
                     ?>
-                    <button type="submit" name="submit" class="btn btn-primary float-right">Edit Profile</button><br><br>
+                    <a href="<?= base_url(); ?>pengelola/profile" class="btn btn-primary">Kembali</a>
+                    <button type="submit" name="submit" class="btn btn-success float-right">Edit Profile</button><br><br>
                     </form>
             </div>
         </div>

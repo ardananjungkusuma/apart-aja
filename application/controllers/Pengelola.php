@@ -32,8 +32,12 @@ class Pengelola extends CI_Controller
             $this->form_validation->set_rules('nama', 'nama', 'trim|required');
             $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
         }
-        $this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric');
-        $this->form_validation->set_rules('email', 'email', 'trim|required');
+        $this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric|is_unique[pengelola_apartemen.no_telpon]', [
+            'is_unique' => 'This Phone Number already taken'
+        ]);
+        $this->form_validation->set_rules('email', 'email', 'trim|required|is_unique[pengelola_apartemen.email]', [
+            'is_unique' => 'This Email already taken'
+        ]);
 
         if ($this->form_validation->run() == FALSE) {
             $data['profile'] = $this->pengelola_model->getDataById($this->session->userdata('id_pengelola'));

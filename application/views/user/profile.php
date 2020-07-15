@@ -66,6 +66,7 @@
             <?php
             }
             ?>
+            <a href="<?= base_url(); ?>user/changePassword" class="btn btn-warning">Change Password</a>
         <?php
         }
         ?>

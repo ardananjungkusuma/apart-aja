@@ -37,11 +37,17 @@ class User extends CI_Controller
 
 	public function editProfile()
 	{
-		$this->form_validation->set_rules('nama', 'nama', 'trim|required');
-		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');
-		$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
-		$this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
-		$this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric');
+		if ($this->session->userdata('status') == "Belum Terverifikasi" or $this->session->userdata('status') == "Belum Terverifikasi") {
+			$this->form_validation->set_rules('nama', 'nama', 'trim|required');
+			$this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+			$this->form_validation->set_rules('alamat', 'alamat', 'trim|required');
+		}
+		$this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[user.email]', [
+			'is_unique' => 'This Email already taken'
+		]);
+		$this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|numeric|is_unique[user.no_telpon]', [
+			'is_unique' => 'This Phone Number already taken'
+		]);
 		if ($this->form_validation->run() == FALSE) {
 			$data['profile'] = $this->user_model->getUserById($this->session->userdata('id_user'));
 			$this->load->view('templates/header-user', $data);
@@ -59,11 +65,7 @@ class User extends CI_Controller
 
 	public function verifikasi()
 	{
-		$cekData = $this->user_model->getUserById($this->session->userdata('id_user'));
-		foreach ($cekData as $cd) {
-			$status = $cd['status_user'];
-		}
-		if ($status == "Terverifikasi") {
+		if ($this->session->userdata('status') == "Terverifikasi") {
 			redirect('user/profile');
 		} else {
 			$this->form_validation->set_rules('id_user', 'id_user', 'trim|required');
@@ -84,5 +86,12 @@ class User extends CI_Controller
 				}
 			}
 		}
+	}
+
+	public function changePassword()
+	{
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]', [
+			'min_length' => 'Password minimum 6 character'
+		]);
 	}
 }
