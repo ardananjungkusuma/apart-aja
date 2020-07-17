@@ -129,4 +129,13 @@ class pengelola_model extends CI_Model
         $query = $this->db->query("SELECT * FROM pengelola_apartemen");
         return $query->result_array();
     }
+
+    public function changePassword()
+    {
+        $data = [
+            "password" => MD5($this->input->post('password'))
+        ];
+        $this->db->where('id_pengelola', $this->session->userdata('id_pengelola'));
+        $this->db->update('pengelola_apartemen', $data);
+    }
 }

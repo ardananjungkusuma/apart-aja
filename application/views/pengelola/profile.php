@@ -68,10 +68,11 @@
                 }
             ?>
             <a href="<?= base_url() ?>pengelola/editProfile" class="btn btn-success" style="margin-top: 20px;">Edit Profil</a>
-            <a href="<?= base_url() ?>pengelola/rekening" class="btn btn-primary" style="margin-top: 20px;margin-left:10px">Rekening Anda</a>
+            <a href="<?= base_url() ?>pengelola/changePassword" class="btn btn-warning" style="margin-top: 20px;">Change Password</a>
+            <a href="<?= base_url() ?>pengelola/rekening" class="btn btn-primary" style="margin-top: 20px">Rekening Anda</a>
             <?php if ($profile['status_pengelola'] == "Belum Terverifikasi" or $profile['status_pengelola'] == "Verifikasi Ditolak") {
             ?>
-                <a href="<?= base_url() ?>pengelola/verifikasi" class="btn btn-info" style="margin-top: 20px;margin-left:10px">Verifikasi</a>
+                <a href="<?= base_url() ?>pengelola/verifikasi" class="btn btn-info" style="margin-top: 20px">Verifikasi</a>
             <?php
             } ?>
             </div>
