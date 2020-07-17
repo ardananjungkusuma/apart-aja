@@ -50,7 +50,16 @@
 <script src="<?= base_url(); ?>assets/formoid/formoid.min.js"></script>
 <script src="<?= base_url(); ?>assets/web/assets/jquery/jquery.min.js"></script>
 <script src="<?= base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
-
+<script>
+	function passwordShowUnshow() {
+		var x = document.getElementById("password");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+</script>
 
 </body>
 

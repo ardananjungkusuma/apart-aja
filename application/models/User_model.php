@@ -52,10 +52,10 @@ class user_model extends CI_Model
 
 		$config['upload_path']          = './assets/img/identitas/kartu_identitas/';
 		$config['allowed_types']        = 'jpg|png';
+		$config['remove_spaces'] = TRUE;
 		$newName = date('dmYHis') . $_FILES['gambar']['name'];
 		$config['file_name']         = $newName;
 		$config['max_size']             = 3100;
-		$config['remove_spaces'] = TRUE;
 
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('gambar')) {
@@ -80,5 +80,13 @@ class user_model extends CI_Model
 			$error = array('error' => $this->upload->display_errors());
 			return $this->session->set_flashdata('error', $error['error']);
 		}
+	}
+	public function changePassword()
+	{
+		$data = [
+			"password" => MD5($this->input->post('password'))
+		];
+		$this->db->where('id_user', $this->session->userdata('id_user'));
+		$this->db->update('user', $data);
 	}
 }

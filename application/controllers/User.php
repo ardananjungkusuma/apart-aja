@@ -90,8 +90,22 @@ class User extends CI_Controller
 
 	public function changePassword()
 	{
-		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]', [
+		$this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[6]|matches[passwordConf]', [
+			'matches' => 'Password Doesn"t match!',
 			'min_length' => 'Password minimum 6 character'
 		]);
+		$this->form_validation->set_rules('passwordConf', 'passwordConf', 'required|trim|min_length[6]');
+		if ($this->form_validation->run() == FALSE) {
+			$this->load->view('templates/header-user');
+			$this->load->view('templates/sidebar-menu');
+			$this->load->view('user/change-password');
+			$this->load->view('templates/footer');
+		} else {
+			$this->user_model->changePassword();
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            	Password Berhasil Diganti
+		  	</div>');
+			redirect('user/profile');
+		}
 	}
 }
