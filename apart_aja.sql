@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2020 at 03:48 PM
+-- Generation Time: Jul 19, 2020 at 03:49 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -165,9 +165,9 @@ CREATE TABLE `pengelola_apartemen` (
 --
 
 INSERT INTO `pengelola_apartemen` (`id_pengelola`, `nama`, `no_telpon`, `jenis_kelamin`, `email`, `username`, `password`, `gambar_identitas`, `kyc_identitas`, `status_pengelola`) VALUES
-(1, 'Ardan Anjung Kusuma', '6285258967800', 'Pria', 'ardananjungkusuma@gmail.com', 'ardananjungkusuma', 'd2219d75098abd01493908d2f7f4d13d', 'None', 'None', 'Terverifikasi'),
+(1, 'Ardan Anjung Kusuma', '6285252135912', 'Pria', 'ardananjungkusuma@gmail.com', 'ardananjungkusuma', 'd2219d75098abd01493908d2f7f4d13d', '14072020160622ktp.jpg', '14072020160622example_kyc_(2).jpg', 'Terverifikasi'),
 (2, 'Agit Ari Irawan', '62851213512', 'Pria', 'agitari@gmail.com', 'agit', 'a505c964caa2a7a9f158378df55462f9', 'None', 'None', 'Belum Terverifikasi'),
-(3, 'Adristi Iftitah Yuniar', '6285875327846', 'Wanita', 'adristi@gmail.com', 'adristi', '65d2eddc1daa96cc4db3ef4a33b14d92', 'None', 'None', 'Belum Terverifikasi'),
+(3, 'Adristi Iftitah Yuniar', '6285875327846', 'Wanita', 'adristi@gmail.com', 'adristi', '65d2eddc1daa96cc4db3ef4a33b14d92', '17072020160030ktp.jpg', '17072020160030example_kyc_(2).jpg', 'Belum Terverifikasi'),
 (4, 'A Safa Dhiata', 'None', 'Pria', 'asafa@gmail.com', 'asafa', '72c88c1a4049809d8d031acf12fc8ddb', 'None', 'None', 'Belum Terverifikasi');
 
 -- --------------------------------------------------------
@@ -284,7 +284,8 @@ INSERT INTO `user` (`id_user`, `nama`, `alamat`, `no_telpon`, `jenis_kelamin`, `
 (7, 'Denny Nur', 'None', 'None', 'Pria', 'dennynur@gmail.com', 'denny', '34814f45c5b89ee4ea7e77662747a0e6', 'None', 'Belum Terverifikasi', 'user'),
 (8, 'Risda Dewi', 'None', '085212345623', 'Wanita', 'risdadewi@apartaja.com', 'risda', '1439c273342e708a0be4874aa6994b52', 'None', 'Terverifikasi', 'staff'),
 (10, 'Unero Bhagaskara', 'Jl. Pisang Kipas', '62849823842', 'Pria', 'unero@gmail.com', 'unero', 'b98b83c535005abfdf996d5e248dc944', 'None', 'Belum Terverifikasi', 'user'),
-(12, 'Sultan Achmad Qum', 'None', 'None', 'Pria', 'sultan123@gmail.com', 'sultan', 'f310bbc6d56f2b8a45b8c40973e3d48a', 'None', 'Belum Terverifikasi', 'user');
+(12, 'Sultan Achmad Qum', 'None', 'None', 'Pria', 'sultan123@gmail.com', 'sultan', 'f310bbc6d56f2b8a45b8c40973e3d48a', 'None', 'Belum Terverifikasi', 'user'),
+(13, 'Amelia Kusuma', '', '08264646472', 'Wanita', 'amelia1212@gmail.com', 'amel', '4338bdd345300e0bc575352a5637dc60', 'None', 'Terverifikasi', 'staff');
 
 --
 -- Indexes for dumped tables
@@ -426,7 +427,7 @@ ALTER TABLE `transaksi_pembelian`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
