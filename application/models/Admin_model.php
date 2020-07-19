@@ -21,4 +21,20 @@ class admin_model extends CI_Model
         $this->db->where('id_pengelola', $id);
         $this->db->update('pengelola_apartemen', $data);
     }
+
+    public function tambahKaryawan()
+    {
+        $data = [
+            'nama' => htmlspecialchars($this->input->post('nama', true)),
+            'no_telpon' => htmlspecialchars($this->input->post('no_telpon', true)),
+            'jenis_kelamin' => htmlspecialchars($this->input->post('jenis_kelamin', true)),
+            'email' => htmlspecialchars($this->input->post('email', true)),
+            'username' => htmlspecialchars($this->input->post('username', true)),
+            'password' => htmlspecialchars(MD5($this->input->post('password'))),
+            'gambar_kartu_identitas' => 'None',
+            'status_user' => 'Terverifikasi',
+            'level' => htmlspecialchars($this->input->post('level', true))
+        ];
+        $this->db->insert('user', $data);
+    }
 }

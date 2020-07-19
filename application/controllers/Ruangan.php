@@ -62,8 +62,8 @@ class Ruangan extends CI_Controller
 
 	public function tambahRuangan()
 	{
-		if ($this->session->userdata('level') != "pengelola") {
-			redirect('auth/loginPengelola', 'refresh');
+		if ($this->session->userdata('status') != "Terverifikasi") {
+			redirect('pengelola/profile');
 		}
 		$data['apartemenList'] =  $this->apartemen_model->getApartemenByIdPengelola($this->session->userdata('id_pengelola'));
 		$this->load->view('templates/header-pengelola');

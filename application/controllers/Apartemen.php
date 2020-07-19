@@ -5,6 +5,7 @@ class Apartemen extends CI_Controller
 {
     public function __construct()
     {
+
         parent::__construct();
         $this->load->model('apartemen_model');
         $this->load->model('user_model');
@@ -26,7 +27,6 @@ class Apartemen extends CI_Controller
     }
 
     //Fitur User
-    //TODO Lanjutkan ubah password pengelola,tambah karyawan staff, filter fitur khusus pengguna terverifikasi, IMAGE OBJECT FIT CROPPED.
     public function apartemenAnda()
     {
         $data['apartemen'] =  $this->user_model->getApartemenById($this->session->userdata('id_user'));
@@ -107,26 +107,30 @@ class Apartemen extends CI_Controller
 
     public function tambahApartemen()
     {
-        $this->form_validation->set_rules('nama_apartemen', 'nama_apartemen', 'trim|required');
-        $this->form_validation->set_rules('alamat_apartemen', 'alamat_apartemen', 'trim|required');
-        $this->form_validation->set_rules('kota_kabupaten', 'kota_kabupaten', 'trim|required');
-        $this->form_validation->set_rules('provinsi', 'provinsi', 'trim|required');
-
-        if ($this->form_validation->run() == FALSE) {
-            if ($this->session->userdata('level') != "pengelola") {
-                redirect('auth/loginPengelola');
-            }
-            $this->load->view('templates/header-pengelola');
-            $this->load->view('pengelola/tambah-apartemen');
-            $this->load->view('templates/footer-pengelola');
+        if ($this->session->userdata('status') != "Terverifikasi") {
+            redirect('pengelola/profile');
         } else {
-            $data = $this->apartemen_model->tambahApartemen();
-            if ($data == "True") {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+            $this->form_validation->set_rules('nama_apartemen', 'nama_apartemen', 'trim|required');
+            $this->form_validation->set_rules('alamat_apartemen', 'alamat_apartemen', 'trim|required');
+            $this->form_validation->set_rules('kota_kabupaten', 'kota_kabupaten', 'trim|required');
+            $this->form_validation->set_rules('provinsi', 'provinsi', 'trim|required');
+
+            if ($this->form_validation->run() == FALSE) {
+                if ($this->session->userdata('level') != "pengelola") {
+                    redirect('auth/loginPengelola');
+                }
+                $this->load->view('templates/header-pengelola');
+                $this->load->view('pengelola/tambah-apartemen');
+                $this->load->view('templates/footer-pengelola');
+            } else {
+                $data = $this->apartemen_model->tambahApartemen();
+                if ($data == "True") {
+                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
                 Berhasil Menambahkan Apartemen
                 </div>');
+                }
+                redirect('apartemen/listApartemen');
             }
-            redirect('apartemen/listApartemen');
         }
     }
 }

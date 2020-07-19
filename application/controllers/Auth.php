@@ -37,6 +37,7 @@ class Auth extends CI_Controller
 				$this->session->set_userdata('id_user', $row->id_user);
 				$this->session->set_userdata('username', $row->username);
 				$this->session->set_userdata('level', $row->level);
+				$this->session->set_userdata('status', $row->status);
 				redirect('admin');
 			} else {
 				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">

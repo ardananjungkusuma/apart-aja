@@ -18,11 +18,14 @@ class Transaksi extends CI_Controller
     {
         if ($this->session->userdata('level') != "user") {
             redirect('auth/loginUser', 'refresh');
+        } else if ($this->session->userdata('status') != "Terverifikasi") {
+            redirect('user/profile');
+        } else {
+            $data['previewapart'] = $this->ruangan_model->getDetailRuangan($id_ruangan);
+            $this->load->view('templates/header-user', $data);
+            $this->load->view('transaksi/preview', $data);
+            $this->load->view('templates/footer');
         }
-        $data['previewapart'] = $this->ruangan_model->getDetailRuangan($id_ruangan);
-        $this->load->view('templates/header-user', $data);
-        $this->load->view('transaksi/preview', $data);
-        $this->load->view('templates/footer');
     }
 
     public function checkout()

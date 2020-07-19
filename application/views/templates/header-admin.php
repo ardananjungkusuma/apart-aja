@@ -30,6 +30,13 @@
                 ?>
                     <a class="nav-item nav-link" href="<?= base_url(); ?>admin">Manajemen User</a>
                     <a class="nav-item nav-link" href="<?= base_url(); ?>admin/dataPengelola">Manajemen Pengelola</a>
+                    <?php
+                    if ($this->session->userdata('level') == "hrd" or $this->session->userdata('level') == "kepala") {
+                    ?>
+                        <a class="nav-item nav-link" href="<?= base_url(); ?>admin/tambahStaff">Tambah Karyawan</a>
+                    <?php
+                    }
+                    ?>
                     <a class="nav-item nav-link" href="<?= base_url(); ?>auth/logout">Logout</a>
                 <?php
                 }

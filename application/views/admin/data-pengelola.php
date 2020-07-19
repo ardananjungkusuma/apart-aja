@@ -67,7 +67,14 @@
                                 <?= $pengelola['status_pengelola'] ?>
                             </td>
                             <td>
-                                <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiPengelola/<?= $pengelola['id_pengelola'] ?>">Verifikasi</a>
+                                <?php
+                                if ($pengelola['status_pengelola'] == "Terverifikasi" or $pengelola['status_pengelola'] == "Verifikasi Ditolak" or $pengelola['kyc_identitas'] == "None") {
+                                } else {
+                                ?>
+                                    <a class="badge badge-success" href="<?= base_url() ?>admin/verifikasiPengelola/<?= $pengelola['id_pengelola'] ?>">Verifikasi</a>
+                                <?php
+                                }
+                                ?>
                                 <a class="badge badge-warning" href="<?= base_url() ?>admin//<?= $pengelola['id_pengelola'] ?>">Edit Password</a>
                                 <a class="badge badge-danger" href="<?= base_url() ?>admin//<?= $pengelola['id_pengelola'] ?>">Hapus</a>
                             </td>

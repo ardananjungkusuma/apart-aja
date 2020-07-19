@@ -51,6 +51,31 @@ class Admin extends CI_Controller
         }
     }
 
+    public function tambahStaff()
+    {
+        if ($this->session->userdata('level') != "hrd" && $this->session->userdata('level') != "kepala") {
+            redirect('admin');
+        } else {
+            $this->form_validation->set_rules('nama', 'nama', 'trim|required');
+            $this->form_validation->set_rules('no_telpon', 'no_telpon', 'trim|required|is_unique[user.no_telpon]');
+            $this->form_validation->set_rules('jenis_kelamin', 'jenis_kelamin', 'trim|required');
+            $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[user.username]');
+            $this->form_validation->set_rules('email', 'email', 'trim|required|is_unique[user.email]');
+            $this->form_validation->set_rules('level', 'level', 'trim|required');
+            if ($this->form_validation->run() == FALSE) {
+                $this->load->view('templates/header-admin');
+                $this->load->view('admin/tambah-staff');
+                $this->load->view('templates/footer-admin');
+            } else {
+                $this->admin_model->tambahKaryawan();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">
+                Tambah Karyawan Berhasil
+                </div>');
+                redirect('admin');
+            }
+        }
+    }
+
     public function prosesVerifikasiUser()
     {
         $this->form_validation->set_rules('id_user', 'id_user', 'trim|required');
